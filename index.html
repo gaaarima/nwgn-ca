@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>NWGN-CA | Nepalese Women's Global Network – California Chapter</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson: #c0392b;
+    --deep-red: #8B0000;
+    --gold: #D4A017;
+    --amber: #E8B84B;
+    --cream: #FDF6EC;
+    --warm-white: #FEFAF4;
+    --charcoal: #1a1a1a;
+    --mid-gray: #555;
+    --light-gray: #f0ebe2;
+    --border: #e2d8cc;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--charcoal); overflow-x: hidden; }
+  /* NAV */
+  nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(253,246,236,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; }
+  .nav-inner { max-width: 1200px; margin: auto; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo-emblem { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--crimson), var(--deep-red)); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; color: white; font-size: 11px; font-weight: 900; letter-spacing: -0.5px; flex-shrink: 0; text-align:center; line-height:1.2; }
+  .logo-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 16px; color: var(--deep-red); line-height: 1.1; }
+  .logo-text span { font-size: 11px; color: var(--mid-gray); letter-spacing: 0.04em; }
+  .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--charcoal); font-size: 13px; font-weight: 500; padding: 8px 10px; border-radius: 6px; transition: all 0.2s; }
+  .nav-links a:hover { background: var(--light-gray); color: var(--crimson); }
+  .nav-cta { background: var(--crimson) !important; color: white !important; border-radius: 8px !important; font-weight: 600 !important; }
+  .nav-cta:hover { background: var(--deep-red) !important; }
+  .nav-donate { background: var(--gold) !important; color: var(--charcoal) !important; border-radius: 8px !important; font-weight: 600 !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background:none; border:none; }
+  .hamburger span { width: 24px; height: 2px; background: var(--charcoal); border-radius: 2px; transition: 0.3s; display:block; }
+  /* HERO */
+  #home { min-height: 100vh; padding-top: 68px; background: linear-gradient(165deg, #fff8f0 0%, #fdebd0 40%, #f8d7c4 100%); position: relative; overflow: hidden; display: flex; align-items: center; }
+  .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(circle at 20% 80%, rgba(192,57,43,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(212,160,23,0.12) 0%, transparent 50%); pointer-events: none; }
+  .hero-circle { position: absolute; right: -100px; top: 50%; transform: translateY(-50%); width: 600px; height: 600px; opacity: 0.06; background: conic-gradient(from 0deg, var(--crimson), var(--gold), var(--crimson)); border-radius: 50%; animation: spin 30s linear infinite; }
+  @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+  .hero-content { max-width: 1200px; margin: auto; padding: 4rem 2rem; position: relative; z-index: 1; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(192,57,43,0.1); color: var(--crimson); border: 1px solid rgba(192,57,43,0.2); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5rem; animation: fadeUp 0.8s ease both; }
+  h1.hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.05; color: var(--charcoal); margin-bottom: 1.5rem; animation: fadeUp 0.8s 0.1s ease both; }
+  h1.hero-title em { color: var(--crimson); font-style: italic; }
+  .hero-sub { font-size: 1.1rem; color: var(--mid-gray); max-width: 540px; line-height: 1.7; margin-bottom: 2.5rem; animation: fadeUp 0.8s 0.2s ease both; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.8s 0.3s ease both; }
+  .btn-primary { padding: 13px 26px; border-radius: 10px; background: var(--crimson); color: white; font-weight: 600; font-size: 14px; text-decoration: none; border: 2px solid var(--crimson); transition: all 0.25s; cursor: pointer; display: inline-block; font-family:'DM Sans',sans-serif; }
+  .btn-primary:hover { background: var(--deep-red); border-color: var(--deep-red); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(192,57,43,0.3); }
+  .btn-secondary { padding: 13px 26px; border-radius: 10px; background: transparent; color: var(--charcoal); font-weight: 600; font-size: 14px; text-decoration: none; border: 2px solid var(--border); transition: all 0.25s; cursor: pointer; display: inline-block; font-family:'DM Sans',sans-serif; }
+  .btn-secondary:hover { border-color: var(--charcoal); transform: translateY(-2px); }
+  .btn-gold { padding: 13px 26px; border-radius: 10px; background: var(--gold); color: var(--charcoal); font-weight: 700; font-size: 14px; text-decoration: none; border: 2px solid var(--gold); transition: all 0.25s; cursor: pointer; display: inline-block; font-family:'DM Sans',sans-serif; }
+  .btn-gold:hover { background: var(--amber); border-color: var(--amber); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,160,23,0.4); }
+  .hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; flex-wrap: wrap; animation: fadeUp 0.8s 0.4s ease both; }
+  .stat { border-left: 3px solid var(--crimson); padding-left: 1rem; }
+  .stat strong { display: block; font-family: 'Playfair Display', serif; font-size: 1.9rem; color: var(--crimson); }
+  .stat span { font-size: 13px; color: var(--mid-gray); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  /* SECTION COMMON */
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width: 1200px; margin: auto; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--crimson); margin-bottom: 0.75rem; }
+  h2.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; color: var(--charcoal); margin-bottom: 1rem; }
+  .section-divider { width: 60px; height: 3px; background: linear-gradient(to right, var(--crimson), var(--gold)); border-radius: 2px; margin-bottom: 1.5rem; }
+  /* ABOUT */
+  #about { background: white; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .about-visual { position: relative; height: 460px; }
+  .about-card { background: linear-gradient(135deg, var(--crimson), var(--deep-red)); border-radius: 20px; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; padding: 2.5rem; text-align: center; position: relative; overflow: hidden; }
+  .about-card::before { content: ''; position: absolute; bottom: -50px; right: -50px; width: 200px; height: 200px; background: rgba(255,255,255,0.06); border-radius: 50%; }
+  .about-card .big-symbol { font-size: 5rem; margin-bottom: 1rem; }
+  .about-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1rem; }
+  .about-card p { opacity: 0.85; line-height: 1.65; font-size: 0.95rem; }
+  .about-floating { position: absolute; top: 14px; right: 14px; background: var(--gold); color: var(--charcoal); border-radius: 100px; padding: 5px 12px; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(212,160,23,0.4); z-index: 2; }
+  .about-floating strong { font-size: 12px; font-family: 'Playfair Display', serif; line-height: 1; font-weight: 700; }
+  .about-floating span { font-size: 10px; font-weight: 600; opacity: 0.75; letter-spacing: 0.04em; text-transform: uppercase; }
+  .about-text p { color: var(--mid-gray); line-height: 1.8; margin-bottom: 1.25rem; }
+  .mission-list { list-style: none; margin-top: 1.5rem; }
+  .mission-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; color: var(--mid-gray); line-height: 1.6; font-size: 0.95rem; }
+  .mission-list li::before { content: '✦'; color: var(--crimson); flex-shrink: 0; margin-top: 2px; }
+  /* MEMBERS */
+  #members { background: var(--cream); }
+  .members-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
+  .member-card { background: white; border-radius: 14px; padding: 1.5rem 1.25rem; text-align: center; border: 1px solid var(--border); transition: all 0.25s; }
+  .member-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); border-color: var(--crimson); }
+  .member-avatar { width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 0.75rem; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: white; }
+  .member-card h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
+  .member-card span { font-size: 12px; color: var(--mid-gray); }
+  /* PRESIDENTS */
+  #presidents { background: white; }
+  .presidents-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; }
+  .pres-timeline { position: relative; padding-left: 2rem; }
+  .pres-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--crimson), var(--gold)); }
+  .president-item { position: relative; margin-bottom: 2.5rem; padding-left: 1.5rem; }
+  .president-item::before { content: ''; position: absolute; left: -2rem; top: 8px; width: 14px; height: 14px; border-radius: 50%; background: var(--crimson); border: 3px solid white; box-shadow: 0 0 0 2px var(--crimson); margin-left: -6px; }
+  .year-badge { display: inline-block; background: var(--crimson); color: white; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; padding: 3px 10px; border-radius: 100px; margin-bottom: 0.5rem; }
+  .president-item h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 4px; }
+  .president-item p { font-size: 0.875rem; color: var(--mid-gray); }
+  /* EVENTS */
+  #events { background: var(--cream); }
+  .events-tabs { display: flex; gap: 1rem; margin-bottom: 2.5rem; }
+  .tab-btn { padding: 10px 22px; border-radius: 100px; font-weight: 600; font-size: 14px; border: 2px solid var(--border); background: white; cursor: pointer; transition: all 0.2s; color: var(--mid-gray); font-family:'DM Sans',sans-serif; }
+  .tab-btn.active { background: var(--crimson); color: white; border-color: var(--crimson); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+  .event-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); transition: all 0.25s; }
+  .event-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.1); }
+  .event-banner { height: 130px; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+  .event-body { padding: 1.25rem 1.5rem 1.5rem; }
+  .event-date { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--crimson); text-transform: uppercase; margin-bottom: 0.5rem; }
+  .event-body h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .event-body p { font-size: 0.875rem; color: var(--mid-gray); line-height: 1.6; }
+  .event-tag { display: inline-block; margin-top: 0.75rem; background: var(--light-gray); color: var(--mid-gray); font-size: 11px; padding: 3px 10px; border-radius: 100px; font-weight: 600; }
+  .event-tag.upcoming { background: rgba(192,57,43,0.08); color: var(--crimson); }
+  /* GALLERY */
+  #gallery { background: white; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 190px; gap: 12px; margin-top: 2.5rem; }
+  .gallery-item { border-radius: 12px; overflow: hidden; position: relative; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+  .gallery-item:nth-child(4) { grid-column: span 2; }
+  .gallery-item:hover { transform: scale(1.02); box-shadow: 0 16px 40px rgba(0,0,0,0.15); }
+  .gallery-ph { display: flex; flex-direction: column; align-items: center; gap: 6px; opacity: 0.5; }
+  .gallery-ph .emoji { font-size: 2.5rem; }
+  .gallery-ph small { font-size: 11px; color: var(--mid-gray); letter-spacing: 0.05em; font-family:'DM Sans',sans-serif; }
+  .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); opacity: 0; transition: 0.3s; display: flex; align-items: flex-end; padding: 0.75rem; }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-overlay span { color: white; font-size: 12px; font-weight: 500; }
+  .gallery-note { text-align: center; margin-top: 1.5rem; padding: 1.25rem; background: var(--cream); border-radius: 12px; border: 1px dashed var(--border); color: var(--mid-gray); font-size: 0.875rem; }
+  /* DONATE BANNER */
+  .donate-banner { background: linear-gradient(135deg, var(--deep-red) 0%, var(--crimson) 60%, #e74c3c 100%); color: white; text-align: center; padding: 4rem 2rem; position: relative; overflow: hidden; }
+  .donate-banner::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 10% 50%, rgba(255,255,255,0.05) 0%, transparent 40%), radial-gradient(circle at 90% 50%, rgba(255,255,255,0.05) 0%, transparent 40%); }
+  .donate-banner h2 { font-family: 'Playfair Display', serif; font-size: 2.4rem; margin-bottom: 1rem; position: relative; }
+  .donate-banner p { opacity: 0.85; max-width: 500px; margin: 0 auto 2rem; line-height: 1.7; position: relative; }
+  .donate-banner .btn-gold { position: relative; font-size: 1rem; padding: 14px 32px; }
+  /* CONTACT */
+  #contact { background: var(--cream); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; }
+  .contact-info h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 2rem; }
+  .contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+  .contact-icon { width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0; background: var(--crimson); color: white; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+  .contact-item strong { display: block; font-size: 12px; color: var(--mid-gray); margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .contact-item span { font-size: 0.9rem; color: var(--charcoal); line-height: 1.5; }
+  .contact-form { background: white; border-radius: 20px; padding: 2.5rem; border: 1px solid var(--border); }
+  .contact-form h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; margin-bottom: 1.5rem; }
+  .form-group { margin-bottom: 1.15rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  label { display: block; font-size: 12px; font-weight: 600; color: var(--mid-gray); margin-bottom: 5px; letter-spacing: 0.03em; }
+  input, textarea, select { width: 100%; padding: 11px 13px; border-radius: 9px; border: 1.5px solid var(--border); background: var(--warm-white); font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--charcoal); transition: border-color 0.2s; }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--crimson); box-shadow: 0 0 0 3px rgba(192,57,43,0.1); }
+  textarea { resize: vertical; min-height: 90px; }
+  /* FOOTER */
+  footer { background: var(--charcoal); color: rgba(255,255,255,0.65); padding: 3rem 2rem 1.5rem; }
+  .footer-inner { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.5rem; }
+  .footer-brand strong { display: block; font-family: 'Playfair Display', serif; font-size: 1.15rem; color: white; margin-bottom: 0.75rem; }
+  .footer-brand p { font-size: 13px; line-height: 1.7; margin-bottom: 1.25rem; }
+  .social-links { display: flex; gap: 10px; }
+  .social-links a { width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,0.08); color: white; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 13px; transition: background 0.2s; }
+  .social-links a:hover { background: var(--crimson); }
+  footer h4 { color: white; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1rem; }
+  footer ul { list-style: none; }
+  footer ul li { margin-bottom: 0.6rem; }
+  footer ul li a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+  footer ul li a:hover { color: var(--gold); }
+  .footer-bottom { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; font-size: 12px; flex-wrap: wrap; gap: 0.5rem; }
+  /* MODALS */
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.65); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 1rem; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: white; border-radius: 22px; max-width: 600px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 40px 80px rgba(0,0,0,0.3); animation: modalIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both; }
+  @keyframes modalIn { from { opacity: 0; transform: scale(0.85) translateY(30px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+  .modal-header { padding: 1.75rem 2rem 1.5rem; background: linear-gradient(135deg, var(--crimson), var(--deep-red)); color: white; border-radius: 22px 22px 0 0; position: relative; }
+  .modal-header.gold { background: linear-gradient(135deg, #c09b17, var(--gold)); }
+  .modal-header h2 { font-family: 'Playfair Display', serif; font-size: 1.7rem; margin-bottom: 4px; }
+  .modal-header p { opacity: 0.85; font-size: 0.875rem; }
+  .modal-close { position: absolute; top: 1.1rem; right: 1.1rem; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; color: white; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+  .modal-close:hover { background: rgba(255,255,255,0.35); }
+  .modal-body { padding: 2rem; }
+  .tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-bottom: 1.75rem; }
+  .tier { border: 2px solid var(--border); border-radius: 12px; padding: 1.1rem; cursor: pointer; transition: all 0.2s; text-align: center; background: none; width: 100%; font-family:'DM Sans',sans-serif; }
+  .tier:hover, .tier.selected { border-color: var(--crimson); background: rgba(192,57,43,0.04); }
+  .tier .price { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--crimson); font-weight: 700; }
+  .tier .tier-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 3px; }
+  .tier .tier-desc { font-size: 11px; color: var(--mid-gray); }
+  .form-sep { font-weight: 700; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mid-gray); margin: 1.4rem 0 0.9rem; border-top: 1px solid var(--border); padding-top: 1.4rem; }
+  .payment-note { background: var(--cream); border-radius: 10px; padding: 1.1rem; border: 1px solid var(--border); margin-top: 1rem; font-size: 0.85rem; color: var(--mid-gray); line-height: 1.6; }
+  .pay-methods { display: flex; gap: 0.6rem; margin-top: 0.6rem; flex-wrap: wrap; }
+  .pay-badge { background: white; border: 1px solid var(--border); border-radius: 6px; padding: 5px 12px; font-size: 12px; font-weight: 600; color: var(--charcoal); }
+  .success-msg { display: none; text-align: center; padding: 2.5rem 2rem; }
+  .check-circle { width: 68px; height: 68px; border-radius: 50%; background: linear-gradient(135deg, #27ae60, #2ecc71); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: white; margin: 0 auto 1.25rem; }
+  .success-msg h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 0.75rem; }
+  .success-msg p { color: var(--mid-gray); font-size: 0.9rem; margin-bottom: 0.5rem; }
+  .admin-note { color: var(--mid-gray); font-size: 0.85rem; margin-top: 1.25rem; padding: 1rem 1.1rem; background: white; border-radius: 9px; border: 1px solid var(--border); }
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .about-visual { height: 300px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .presidents-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2,1fr); grid-auto-rows: 160px; }
+    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+    .gallery-item:nth-child(4) { grid-column: span 2; }
+  }
+  /* UPLOAD */
+  .upload-area { border: 2px dashed var(--border); border-radius: 12px; padding: 2rem 1.5rem; text-align: center; cursor: pointer; transition: all 0.2s; background: var(--warm-white); }
+  .upload-area:hover { border-color: var(--crimson); background: rgba(192,57,43,0.03); }
+  .upload-area .upload-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  .upload-area p { color: var(--mid-gray); font-size: 0.875rem; line-height: 1.5; }
+  .upload-area small { font-size: 11px; }
+  .upload-previews { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 0.75rem; }
+  .upload-previews img { width: 72px; height: 72px; object-fit: cover; border-radius: 8px; border: 2px solid var(--border); }
+  .upload-progress-wrap { margin-top: 1rem; }
+  .upload-progress-bar-bg { background: var(--light-gray); border-radius: 100px; height: 6px; overflow: hidden; }
+  .upload-progress-bar { background: var(--crimson); height: 100%; width: 0; transition: width 0.3s; }
+  .gallery-upload-trigger { text-align: center; margin-top: 1.5rem; padding: 1.25rem; background: var(--cream); border-radius: 12px; border: 1px dashed var(--border); }
+  .gallery-upload-trigger p { color: var(--mid-gray); font-size: 0.875rem; margin-bottom: 0.75rem; }
+  @media (max-width: 680px) {
+    .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; background: var(--cream); border-bottom: 1px solid var(--border); flex-direction: column; padding: 1rem; gap: 4px; }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+    .tier-grid { grid-template-columns: 1fr; }
+    .modal-body { padding: 1.5rem; }
+    .modal-header { padding: 1.5rem; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#home">
+      <div class="logo-emblem">NWGN<br>CA</div>
+      <div class="logo-text">
+        <strong>NWGN-CA</strong>
+        <span>California Chapter</span>
+      </div>
+    </a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#members">Members</a></li>
+      <li><a href="#presidents">Presidents</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" class="nav-donate" onclick="openDonate(event)">&#x1F49B; Donate</a></li>
+      <li><a href="#" class="nav-cta" onclick="openMembership(event)">Join Us</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-circle"></div>
+  <div class="hero-content">
+    <div class="hero-badge">&#10031; Established 2012 &middot; San Francisco Bay Area &middot; Non-Profit 501(c)(3)</div>
+    <h1 class="hero-title">
+      Empowering<br><em>Nepalese Women</em><br>in California
+    </h1>
+    <p class="hero-sub">
+      A women-led non-profit dedicated to supporting Nepalese women through financial assistance, emotional support, education, advocacy, and community connection across the Bay Area.
+    </p>
+    <div class="hero-actions">
+      <a href="#about" class="btn-primary">Our Mission</a>
+      <a href="#" class="btn-gold" onclick="openMembership(event)">&#10022; Become a Member</a>
+      <a href="#events" class="btn-secondary">Upcoming Events &rarr;</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>2012</strong><span>Founded</span></div>
+      <div class="stat"><strong>12+</strong><span>Years of Service</span></div>
+      <div class="stat"><strong>Bay Area</strong><span>California</span></div>
+      <div class="stat"><strong>100+</strong><span>Members</span></div>
+    </div>
+  </div>
+</section>
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-card">
+          <div class="big-symbol">&#x1F338;</div>
+          <h3>Our Purpose</h3>
+          <p>We believe the dreams and goals of Nepali women are worth pursuing. Through networking, education, and advocacy, we empower Nepali women to achieve success and self-reliance in California and beyond.</p>
+        </div>
+        <div class="about-floating">
+          <strong>501(c)(3)</strong>
+          <span>Non-Profit</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-label">About Us</div>
+        <h2 class="section-title">Who We Are</h2>
+        <div class="section-divider"></div>
+        <p>The NWGN California Chapter is a non-profit, women-led organization established in 2012, dedicated to supporting the growth and development of Nepalese women in the San Francisco Bay Area and beyond.</p>
+        <p>We provide a range of support &mdash; including financial assistance, emotional support, and social resources &mdash; to help Nepalese women grow, achieve self-reliance, and make their mark in society.</p>
+        <p>We collaborate with national and international organizations that share our vision, and actively represent and advocate for the interests of Nepali women and women in general.</p>
+        <ul class="mission-list">
+          <li>Foster a supportive global network of friendship and understanding between Nepali women</li>
+          <li>Collaborate with national and international organizations with similar missions</li>
+          <li>Represent and advocate for the interests of Nepali women and women in general</li>
+          <li>Provide leadership training and opportunities within the organization</li>
+          <li>Promote citizenship and civic involvement in the community</li>
+          <li>Support women in crisis through peer support, counseling, and resource pooling</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- MEMBERS -->
+<section id="members">
+  <div class="section-inner">
+    <div class="section-label">Our Community</div>
+    <h2 class="section-title">Current Board Members</h2>
+    <div class="section-divider"></div>
+    <p style="color:var(--mid-gray);max-width:600px;line-height:1.7;">Our dedicated board members guide NWGN-CA's programs, events, and mission. We welcome volunteers and new members to join our growing community.</p>
+    <div class="members-grid">
+      <div class="member-card">
+        <div class="member-avatar" style="background:linear-gradient(135deg,#c0392b,#8B0000);">P</div>
+        <h4>President</h4><span>Executive Board</span>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar" style="background:linear-gradient(135deg,#D4A017,#c0392b);">VP</div>
+        <h4>Vice President</h4><span>Executive Board</span>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar" style="background:linear-gradient(135deg,#2980b9,#1a5276);">S</div>
+        <h4>Secretary</h4><span>Executive Board</span>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar" style="background:linear-gradient(135deg,#27ae60,#1e8449);">T</div>
+        <h4>Treasurer</h4><span>Executive Board</span>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar" style="background:linear-gradient(135deg,#8e44ad,#6c3483);">M</div>
+        <h4>Member at Large</h4><span>Board Member</span>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar" style="background:linear-gradient(135deg,#e67e22,#ca6f1e);">M</div>
+        <h4>Member at Large</h4><span>Board Member</span>
+      </div>
+      <div class="member-card" style="border:2px dashed var(--crimson);background:rgba(192,57,43,0.02);">
+        <div class="member-avatar" style="background:linear-gradient(135deg,#bdc3c7,#95a5a6);">+</div>
+        <h4 style="color:var(--crimson);">Join the Board</h4><span>Become a leader</span>
+      </div>
+    </div>
+    <p class="admin-note">&#x1F4CB; <strong>Admin note:</strong> Replace placeholder cards with real board member names and photos. Email <a href="mailto:nwgnca2012@gmail.com" style="color:var(--crimson);">nwgnca2012@gmail.com</a> to update.</p>
+  </div>
+</section>
+<!-- PAST PRESIDENTS -->
+<section id="presidents">
+  <div class="section-inner">
+    <div class="section-label">Leadership Legacy</div>
+    <h2 class="section-title">Past Presidents</h2>
+    <div class="section-divider"></div>
+    <p style="color:var(--mid-gray);max-width:560px;line-height:1.7;margin-bottom:0.5rem;">We honor the dedicated women who have led the NWGN California Chapter since its founding in 2012.</p>
+    <div class="presidents-grid">
+      <div class="pres-timeline">
+        <div class="president-item">
+          <div class="year-badge">2023 &ndash; Present</div>
+          <h4>Current President</h4>
+          <p>Serving with dedication and vision for the NWGN-CA Chapter community.</p>
+        </div>
+        <div class="president-item">
+          <div class="year-badge">2021 &ndash; 2022</div>
+          <h4>Former President</h4>
+          <p>Led the organization through virtual programming and expanded digital outreach.</p>
+        </div>
+        <div class="president-item">
+          <div class="year-badge">2019 &ndash; 2020</div>
+          <h4>Former President</h4>
+          <p>Expanded community outreach and Bay Area partnerships significantly.</p>
+        </div>
+      </div>
+      <div class="pres-timeline">
+        <div class="president-item">
+          <div class="year-badge">2017 &ndash; 2018</div>
+          <h4>Former President</h4>
+          <p>Strengthened financial support programs and scholarship initiatives.</p>
+        </div>
+        <div class="president-item">
+          <div class="year-badge">2015 &ndash; 2016</div>
+          <h4>Former President</h4>
+          <p>Grew membership and established signature annual events and traditions.</p>
+        </div>
+        <div class="president-item">
+          <div class="year-badge">2012 &ndash; 2014</div>
+          <h4>Founding President</h4>
+          <p>Established the NWGN California Chapter in the San Francisco Bay Area.</p>
+        </div>
+      </div>
+    </div>
+    <p class="admin-note" style="margin-top:1.5rem;">&#x1F4CB; <strong>Admin note:</strong> Please update with actual past presidents' full names and accurate terms of service.</p>
+  </div>
+</section>
+<!-- EVENTS -->
+<section id="events">
+  <div class="section-inner">
+    <div class="section-label">Community Events</div>
+    <h2 class="section-title">Events</h2>
+    <div class="section-divider"></div>
+    <div class="events-tabs">
+      <button class="tab-btn active" onclick="switchTab('upcoming',this)">&#x1F5D3; Upcoming Events</button>
+      <button class="tab-btn" onclick="switchTab('past',this)">&#x1F4DA; Past Events</button>
+    </div>
+    <div class="tab-panel active" id="tab-upcoming">
+      <div class="event-card">
+        <div class="event-banner" style="background:linear-gradient(135deg,#fdebd0,#f8c8b4);">&#x1F33A;</div>
+        <div class="event-body">
+          <div class="event-date">March 8, 2025 &middot; San Francisco, CA</div>
+          <h3>International Women's Day 2025</h3>
+          <p>Join us for our annual IWD celebration honoring the strength, resilience, and achievements of Nepalese women in California and beyond.</p>
+          <span class="event-tag upcoming">Upcoming</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-banner" style="background:linear-gradient(135deg,#d5f5e3,#a9dfbf);">&#x1F91D;</div>
+        <div class="event-body">
+          <div class="event-date">Summer 2025 &middot; Bay Area</div>
+          <h3>Annual Community Networking Mixer</h3>
+          <p>Connect with fellow members, share stories, and build lasting friendships within the NWGN-CA network.</p>
+          <span class="event-tag upcoming">Upcoming</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-banner" style="background:linear-gradient(135deg,#d6eaf8,#a9cce3);">&#x1F4DA;</div>
+        <div class="event-body">
+          <div class="event-date">Fall 2025 &middot; Hybrid (Online + In-Person)</div>
+          <h3>Leadership Development Workshop</h3>
+          <p>Training session equipping members with leadership skills, civic engagement strategies, and professional tools.</p>
+          <span class="event-tag upcoming">Upcoming</span>
+        </div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-past">
+      <div class="event-card">
+        <div class="event-banner" style="background:linear-gradient(135deg,#fdebd0,#f0b27a);">&#x1F338;</div>
+        <div class="event-body">
+          <div class="event-date">March 9, 2024 &middot; San Francisco, CA</div>
+          <h3>International Women's Day 2024</h3>
+          <p>Celebrated IWD 2024 under the UN theme &ldquo;Inspire Inclusion&rdquo; with influential speakers and vibrant cultural performances by Nepali artists.</p>
+          <span class="event-tag">Past Event</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-banner" style="background:linear-gradient(135deg,#d5f5e3,#76d7c4);">&#x1F6B6;&#x200D;&#x2640;&#xFE0F;</div>
+        <div class="event-body">
+          <div class="event-date">September 10, 2022 &middot; Bay Area</div>
+          <h3>Walk-A-Thon: Empower Women's Health</h3>
+          <p>NWGN-CA's first-ever Walk-A-Thon with the theme &ldquo;To Empower Woman's Health and Well-Being&rdquo; &mdash; a landmark community event.</p>
+          <span class="event-tag">Past Event</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-banner" style="background:linear-gradient(135deg,#d6eaf8,#7fb3d3);">&#x1F4BB;</div>
+        <div class="event-body">
+          <div class="event-date">March 5, 2022 &middot; Virtual (Zoom)</div>
+          <h3>International Women's Day 2022</h3>
+          <p>Theme: &ldquo;Gender equality today for a sustainable tomorrow.&rdquo; Speakers included Dr. Samikshya Koirala, Dr. Chori Laxmi Maharjan, and Aarti Chataut.</p>
+          <span class="event-tag">Past Event</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-banner" style="background:linear-gradient(135deg,#f9ebf0,#f1948a);">&#x1F469;&#x200D;&#x1F4BC;</div>
+        <div class="event-body">
+          <div class="event-date">December 11, 2021 &middot; Virtual</div>
+          <h3>Women In Leadership Training</h3>
+          <p>NWGN Global Team provided virtual training on Women In Leadership, Roles &amp; Responsibilities for all chapters.</p>
+          <span class="event-tag">Past Event</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-banner" style="background:linear-gradient(135deg,#fef9e7,#f7dc6f);">&#x1F30D;</div>
+        <div class="event-body">
+          <div class="event-date">March 6, 2021 &middot; Virtual (Zoom)</div>
+          <h3>International Women's Day 2021</h3>
+          <p>111th International Women's Day celebration via Zoom, continuing the cherished tradition of honoring women's contributions globally.</p>
+          <span class="event-tag">Past Event</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner">
+    <div class="section-label">Photo Gallery</div>
+    <h2 class="section-title">Our Moments</h2>
+    <div class="section-divider"></div>
+    <p style="color:var(--mid-gray);max-width:560px;line-height:1.7;">Glimpses from our events, celebrations, and community gatherings over the years.</p>
+    <div class="gallery-grid" id="gallery-grid">
+      <div class="gallery-item" style="background:linear-gradient(135deg,#fdebd0,#f0b27a);">
+        <div class="gallery-ph"><div class="emoji">&#x1F338;</div><small>IWD 2024</small></div>
+        <div class="gallery-overlay"><span>International Women's Day 2024</span></div>
+      </div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#d5f5e3,#76d7c4);">
+        <div class="gallery-ph"><div class="emoji">&#x1F6B6;&#x200D;&#x2640;&#xFE0F;</div><small>Walk-A-Thon 2022</small></div>
+        <div class="gallery-overlay"><span>Walk-A-Thon 2022</span></div>
+      </div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#d6eaf8,#7fb3d3);">
+        <div class="gallery-ph"><div class="emoji">&#x1F4BB;</div><small>IWD 2022 Virtual</small></div>
+        <div class="gallery-overlay"><span>IWD Virtual 2022</span></div>
+      </div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#fef9e7,#f7dc6f);">
+        <div class="gallery-ph"><div class="emoji">&#x1F91D;</div><small>Networking</small></div>
+        <div class="gallery-overlay"><span>Community Networking</span></div>
+      </div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#f9ebf0,#f1948a);">
+        <div class="gallery-ph"><div class="emoji">&#x1F469;&#x200D;&#x1F4BC;</div><small>Leadership 2021</small></div>
+        <div class="gallery-overlay"><span>Leadership Training 2021</span></div>
+      </div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#e8daef,#a569bd);">
+        <div class="gallery-ph"><div class="emoji">&#x1F30D;</div><small>IWD 2021</small></div>
+        <div class="gallery-overlay"><span>IWD 2021</span></div>
+      </div>
+      <div class="gallery-item" style="background:linear-gradient(135deg,#d1f2eb,#45b39d);">
+        <div class="gallery-ph"><div class="emoji">&#x1F389;</div><small>Community</small></div>
+        <div class="gallery-overlay"><span>Community Gathering</span></div>
+      </div>
+      <div class="gallery-item" id="gallery-placeholder" style="background:var(--light-gray);border:2px dashed var(--border);">
+        <div class="gallery-ph"><div class="emoji">&#x1F4F7;</div><small>More coming soon</small></div>
+        <div class="gallery-overlay"><span>More photos coming soon</span></div>
+      </div>
+    </div>
+    <div class="gallery-upload-trigger">
+      <p>&#x1F4F7; Are you an admin? Upload event photos directly to the gallery.</p>
+      <button class="btn-primary" onclick="openUpload(event)">&#x2B06; Upload Event Photos</button>
+    </div>
+  </div>
+</section>
+<!-- DONATE BANNER -->
+<div class="donate-banner">
+  <div class="section-inner" style="position:relative;">
+    <h2>Want to Contribute? Donate Here &#x1F49B;</h2>
+    <p>Your generous donation helps us provide financial assistance, counseling, scholarships, and resources to Nepalese women in California. Every contribution makes a difference.</p>
+    <a href="#" class="btn-gold" onclick="openDonate(event)">&#x2665; Donate Now via Stripe</a>
+  </div>
+</div>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Contact Us</h2>
+    <div class="section-divider"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>We'd love to hear from you</h3>
+        <div class="contact-item">
+          <div class="contact-icon">&#x1F4CD;</div>
+          <div><strong>Address</strong><span>1437 El Camino Real<br>Burlingame, CA 94010</span></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">&#x1F4E7;</div>
+          <div><strong>Email</strong><span><a href="mailto:nwgnca2012@gmail.com" style="color:var(--crimson);text-decoration:none;">nwgnca2012@gmail.com</a></span></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">&#x1F4DE;</div>
+          <div><strong>Phone</strong><span><a href="tel:9255181875" style="color:var(--crimson);text-decoration:none;">925.518.1875</a></span></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">&#x1F310;</div>
+          <div><strong>Website</strong><span><a href="https://nwgnca.org" target="_blank" style="color:var(--crimson);text-decoration:none;">nwgnca.org</a></span></div>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <strong style="font-size:12px;color:var(--mid-gray);text-transform:uppercase;letter-spacing:0.06em;">Follow Us</strong>
+          <div class="social-links" style="margin-top:0.75rem;">
+            <a href="#" title="Facebook" style="background:var(--light-gray);color:var(--charcoal);">f</a>
+            <a href="#" title="Instagram" style="background:var(--light-gray);color:var(--charcoal);">&#x1F4F8;</a>
+            <a href="mailto:nwgnca2012@gmail.com" title="Email" style="background:var(--light-gray);color:var(--charcoal);">&#x2709;</a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Send Us a Message</h3>
+        <form onsubmit="handleContact(event)">
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" placeholder="Sita" required></div>
+            <div class="form-group"><label>Last Name</label><input type="text" placeholder="Sharma" required></div>
+          </div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@example.com" required></div>
+          <div class="form-group">
+            <label>Subject</label>
+            <select>
+              <option>General Inquiry</option>
+              <option>Membership Question</option>
+              <option>Volunteer Opportunity</option>
+              <option>Event Information</option>
+              <option>Donation</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Message</label><textarea placeholder="How can we help you?"></textarea></div>
+          <button type="submit" class="btn-primary" style="width:100%;text-align:center;margin-top:0.5rem;">Send Message &rarr;</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <strong>NWGN &ndash; California Chapter</strong>
+      <p>A non-profit, women-led organization dedicated to empowering Nepalese women in California through education, advocacy, and community support since 2012.</p>
+      <div class="social-links">
+        <a href="#" title="Facebook">f</a>
+        <a href="#" title="Instagram">&#x1F4F8;</a>
+        <a href="mailto:nwgnca2012@gmail.com" title="Email">&#x2709;</a>
+      </div>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#members">Board Members</a></li>
+        <li><a href="#presidents">Past Presidents</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="#" onclick="openMembership(event)">Become a Member</a></li>
+        <li><a href="#" onclick="openDonate(event)">Donate</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#contact">Volunteer</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:nwgnca2012@gmail.com">nwgnca2012@gmail.com</a></li>
+        <li><a href="tel:9255181875">925.518.1875</a></li>
+        <li><a href="#">1437 El Camino Real, Burlingame CA 94010</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 NWGN California Chapter. All rights reserved.</span>
+    <span>Non-Profit 501(c)(3) &middot; San Francisco Bay Area, CA</span>
+  </div>
+</footer>
+<!-- MEMBERSHIP MODAL -->
+<div class="modal-overlay" id="membershipModal">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeMembership()">&#x2715;</button>
+      <h2>Join NWGN-CA</h2>
+      <p>Become part of our community and make a difference</p>
+    </div>
+    <div class="modal-body" id="membershipFormBody">
+      <p style="color:var(--mid-gray);font-size:0.875rem;margin-bottom:1.25rem;line-height:1.65;">Choose your membership tier and fill in your details. Your membership helps support Nepalese women across California.</p>
+      <div class="tier-grid" style="grid-template-columns:1fr 1fr;">
+        <button class="tier selected" onclick="selectTier(this,'General Membership',25)">
+          <div class="tier-name">General Membership</div>
+          <div class="price">$25<span style="font-size:0.9rem;font-weight:400">/yr</span></div>
+          <div class="tier-desc">Full membership &amp; community access</div>
+        </button>
+        <button class="tier" onclick="selectTier(this,'Lifetime Membership',250)">
+          <div class="tier-name">Lifetime Membership</div>
+          <div class="price">$250<span style="font-size:0.9rem;font-weight:400"> once</span></div>
+          <div class="tier-desc">&#x1F3AB; Free tickets to all future events</div>
+        </button>
+      </div>
+      <form id="membershipForm" onsubmit="handleMembership(event)">
+        <div class="form-sep">Personal Information</div>
+        <div class="form-group"><label>Full Name *</label><input type="text" id="mem-fullname" placeholder="Sita Sharma" required></div>
+        <div class="form-group"><label>Email Address *</label><input type="email" id="mem-email" placeholder="you@example.com" required></div>
+        <div class="form-group"><label>Phone Number *</label><input type="tel" id="mem-phone" placeholder="(415) 555-0100" required></div>
+        <div class="form-sep">Address</div>
+        <div class="form-group"><label>Street Address *</label><input type="text" id="mem-street" placeholder="123 Main Street" required></div>
+        <div class="form-row">
+          <div class="form-group"><label>City *</label><input type="text" id="mem-city" placeholder="San Francisco" required></div>
+          <div class="form-group"><label>ZIP Code *</label><input type="text" id="mem-zip" placeholder="94105" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>State</label><input type="text" id="mem-state" value="CA"></div>
+          <div class="form-group"><label>Country</label><input type="text" id="mem-country" value="USA"></div>
+        </div>
+        <div class="form-sep">Payment</div>
+        <div class="payment-note">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.75rem;">
+            <div style="width:32px;height:32px;background:#635bff;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M13.479 9.883c-1.626-.604-2.512-1.067-2.512-1.803 0-.612.502-.973 1.404-.973 1.583 0 3.193.607 4.302 1.205l.633-3.893C16.089 3.866 14.447 3 12.042 3 9.054 3 6.918 4.609 6.918 7.294c0 3.141 2.938 4.154 4.817 4.851 1.868.698 2.494 1.132 2.494 1.867 0 .747-.635 1.115-1.742 1.115-1.745 0-3.766-.76-5.013-1.558l-.65 3.928C8.04 18.316 10.038 19 12.319 19c3.182 0 5.461-1.56 5.461-4.457 0-3.198-2.921-4.169-4.301-4.66z"/></svg>
+            </div>
+            <div>
+              <strong>Secure payment via Stripe</strong>
+              <div style="font-size:11px;color:var(--mid-gray);">You'll be redirected to Stripe's secure checkout page</div>
+            </div>
+          </div>
+          <strong>Selected plan: <span id="selected-plan-name">General Membership &ndash; $25/year</span></strong>
+          <div style="margin-top:0.5rem;font-size:12px;color:var(--mid-gray);">&#x1F512; 256-bit SSL encryption &middot; All major cards accepted</div>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;text-align:center;margin-top:1.5rem;font-size:15px;padding:14px;" id="membershipSubmitBtn">&#x1F4B3; Proceed to Secure Payment &rarr;</button>
+      </form>
+    </div>
+    <div class="success-msg" id="membershipSuccess">
+      <div class="check-circle">&#x2713;</div>
+      <h3>Welcome to NWGN-CA! &#x1F338;</h3>
+      <p>Your membership application has been received.</p>
+      <p>A confirmation email will be sent to you shortly, and our team will follow up within 2 business days.</p>
+      <p style="margin-top:0.75rem;font-size:0.85rem;color:var(--crimson);">Please complete your payment to activate your membership.</p>
+      <button class="btn-primary" style="margin-top:1.5rem;" onclick="closeMembership()">Close</button>
+    </div>
+  </div>
+</div>
+<!-- DONATE MODAL -->
+<div class="modal-overlay" id="donateModal">
+  <div class="modal">
+    <div class="modal-header gold">
+      <button class="modal-close" onclick="closeDonate()">&#x2715;</button>
+      <h2>Donate to NWGN-CA</h2>
+      <p>Your generosity empowers Nepalese women in California</p>
+    </div>
+    <div class="modal-body" id="donateFormBody">
+      <p style="color:var(--mid-gray);line-height:1.7;margin-bottom:1.5rem;">NWGN-CA is a 501(c)(3) non-profit. Your donation supports scholarships, crisis support, leadership training, and community events for Nepalese women.</p>
+      <div class="tier-grid" style="grid-template-columns:repeat(3,1fr);" id="donateAmounts">
+        <button class="tier selected" onclick="selectDonate(this,'25')"><div class="price">$25</div><div class="tier-desc">Supporter</div></button>
+        <button class="tier" onclick="selectDonate(this,'50')"><div class="price">$50</div><div class="tier-desc">Friend</div></button>
+        <button class="tier" onclick="selectDonate(this,'100')"><div class="price">$100</div><div class="tier-desc">Champion</div></button>
+        <button class="tier" onclick="selectDonate(this,'250')"><div class="price">$250</div><div class="tier-desc">Patron</div></button>
+        <button class="tier" onclick="selectDonate(this,'500')"><div class="price">$500</div><div class="tier-desc">Benefactor</div></button>
+        <button class="tier" onclick="selectDonate(this,'custom')"><div class="price" style="font-size:1.2rem;">Custom</div><div class="tier-desc">Your amount</div></button>
+      </div>
+      <div id="customAmountField" style="display:none;margin-bottom:1rem;">
+        <label>Enter Amount ($)</label>
+        <input type="number" id="customAmount" placeholder="e.g. 75" min="1">
+      </div>
+      <div class="form-sep" style="margin-top:0.5rem;">Your Information</div>
+      <div class="form-row">
+        <div class="form-group"><label>Full Name *</label><input type="text" id="donate-name" placeholder="Sita Sharma" required></div>
+        <div class="form-group"><label>Email Address *</label><input type="email" id="donate-email" placeholder="you@example.com" required></div>
+      </div>
+      <div class="payment-note">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.6rem;">
+          <div style="width:28px;height:28px;background:#635bff;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M13.479 9.883c-1.626-.604-2.512-1.067-2.512-1.803 0-.612.502-.973 1.404-.973 1.583 0 3.193.607 4.302 1.205l.633-3.893C16.089 3.866 14.447 3 12.042 3 9.054 3 6.918 4.609 6.918 7.294c0 3.141 2.938 4.154 4.817 4.851 1.868.698 2.494 1.132 2.494 1.867 0 .747-.635 1.115-1.742 1.115-1.745 0-3.766-.76-5.013-1.558l-.65 3.928C8.04 18.316 10.038 19 12.319 19c3.182 0 5.461-1.56 5.461-4.457 0-3.198-2.921-4.169-4.301-4.66z"/></svg>
+          </div>
+          <strong>Secure payment via Stripe</strong>
+        </div>
+        <div style="font-size:12px;color:var(--mid-gray);">&#x1F512; 256-bit SSL &middot; All major cards accepted &middot; Tax-deductible (501(c)(3))</div>
+      </div>
+      <button class="btn-gold" style="width:100%;text-align:center;margin-top:1.5rem;font-size:15px;padding:14px;" onclick="proceedDonate()">&#x2665; Proceed to Secure Donation &rarr;</button>
+    </div>
+    <div class="success-msg" id="donateSuccess" style="display:none;">
+      <div class="check-circle" style="background:linear-gradient(135deg,var(--gold),var(--amber));">&#x2665;</div>
+      <h3>Thank You! &#x1F49B;</h3>
+      <p>Your generous donation is making a difference for Nepalese women in California.</p>
+      <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--mid-gray);">A receipt will be sent to your email.</p>
+      <button class="btn-gold" style="margin-top:1.5rem;" onclick="closeDonate()">Close</button>
+    </div>
+  </div>
+</div>
+<!-- UPLOAD MODAL -->
+<div class="modal-overlay" id="uploadModal">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeUpload()">&#x2715;</button>
+      <h2>Upload Event Photos</h2>
+      <p>Add photos directly to the gallery</p>
+    </div>
+    <div class="modal-body" id="uploadFormBody">
+      <div id="upload-auth">
+        <p style="color:var(--mid-gray);font-size:0.875rem;margin-bottom:1.25rem;line-height:1.65;">Enter the admin password to upload photos to the gallery.</p>
+        <div class="form-group">
+          <label>Admin Password</label>
+          <input type="password" id="upload-pwd" placeholder="Enter password" onkeydown="if(event.key==='Enter')verifyUploadPassword()">
+        </div>
+        <div id="upload-pwd-error" style="color:var(--crimson);font-size:13px;display:none;margin-bottom:0.75rem;">Incorrect password. Please try again.</div>
+        <button class="btn-primary" onclick="verifyUploadPassword()" style="width:100%;padding:13px;">Continue &rarr;</button>
+      </div>
+      <div id="upload-form" style="display:none;">
+        <div class="form-group">
+          <label>Event Name / Caption *</label>
+          <input type="text" id="upload-caption" placeholder="e.g. IWD 2025 Celebration">
+        </div>
+        <div class="form-group">
+          <label>Select Photos</label>
+          <div class="upload-area" id="upload-area" onclick="document.getElementById('upload-file-input').click()">
+            <div class="upload-icon">&#x1F4F7;</div>
+            <p>Click to select photos<br><small>JPG, PNG, WEBP &middot; up to 10MB each</small></p>
+          </div>
+          <input type="file" id="upload-file-input" multiple accept="image/*" style="display:none" onchange="handleFileSelect(this.files)">
+        </div>
+        <div class="upload-previews" id="upload-previews"></div>
+        <div class="upload-progress-wrap" id="upload-progress" style="display:none;">
+          <div class="upload-progress-bar-bg"><div class="upload-progress-bar" id="upload-progress-bar"></div></div>
+          <p id="upload-progress-text" style="font-size:12px;color:var(--mid-gray);margin-top:6px;text-align:center;">Uploading…</p>
+        </div>
+        <button class="btn-primary" onclick="submitPhotos()" id="upload-submit-btn" style="width:100%;margin-top:1.5rem;padding:13px;" disabled>&#x2B06; Upload to Gallery &rarr;</button>
+      </div>
+    </div>
+    <div class="success-msg" id="uploadSuccess" style="display:none;">
+      <div class="check-circle">&#x2713;</div>
+      <h3>Photos Added! &#x1F4F7;</h3>
+      <p>Your photos are now live in the gallery.</p>
+      <button class="btn-primary" style="margin-top:1.5rem;" onclick="closeUpload()">View Gallery</button>
+    </div>
+  </div>
+</div>
+<script>
+// ═══════════════════════════════════════════════════════════
+// STRIPE — MEMBERSHIP
+// Dashboard → Payment Links → create two links, paste below
+// Set "After payment" redirect to: https://nwgnca.org/?payment=success
+// ═══════════════════════════════════════════════════════════
+const STRIPE_PAYMENT_LINKS = {
+  'General Membership':  'YOUR_STRIPE_GENERAL_LINK',
+  'Lifetime Membership': 'YOUR_STRIPE_LIFETIME_LINK'
+};
+
+// ═══════════════════════════════════════════════════════════
+// STRIPE — DONATION
+// Dashboard → Payment Links → create one link, set pricing to
+// "Customer chooses price", paste URL below
+// ═══════════════════════════════════════════════════════════
+const STRIPE_DONATION_LINK = 'YOUR_STRIPE_DONATION_LINK';
+
+// ═══════════════════════════════════════════════════════════
+// FORMSPREE — member data capture (emails you on each signup)
+// formspree.io → New Form → copy 8-char ID, paste below
+// ═══════════════════════════════════════════════════════════
+const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
+
+// ═══════════════════════════════════════════════════════════
+// CLOUDINARY — photo uploads
+// 1. cloudinary.com → free account
+// 2. Settings → Upload → Add upload preset (set to Unsigned)
+// 3. Paste your Cloud Name and Upload Preset below
+// ═══════════════════════════════════════════════════════════
+const CLOUDINARY_CONFIG = {
+  cloudName:    'YOUR_CLOUDINARY_CLOUD_NAME',
+  uploadPreset: 'YOUR_CLOUDINARY_PRESET'
+};
+
+// ═══════════════════════════════════════════════════════════
+// ADMIN PASSWORD — for the photo upload feature
+// Change this to something private before deploying
+// ═══════════════════════════════════════════════════════════
+const UPLOAD_PASSWORD = 'nwgn2025';
+
+// ─── NAV ─────────────────────────────────────────────────
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// ─── TABS ────────────────────────────────────────────────
+function switchTab(tab, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+
+// ─── MEMBERSHIP ──────────────────────────────────────────
+let selTierName = 'General Membership', selTierPrice = 25;
+
+function openMembership(e) {
+  e && e.preventDefault();
+  document.getElementById('membershipModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMembership() {
+  document.getElementById('membershipModal').classList.remove('open');
+  document.body.style.overflow = '';
+  document.getElementById('membershipFormBody').style.display = 'block';
+  document.getElementById('membershipSuccess').style.display = 'none';
+  const btn = document.getElementById('membershipSubmitBtn');
+  if (btn) { btn.disabled = false; btn.innerHTML = '&#x1F4B3; Proceed to Secure Payment &rarr;'; }
+}
+
+function selectTier(el, name, price) {
+  document.querySelectorAll('#membershipFormBody .tier').forEach(t => t.classList.remove('selected'));
+  el.classList.add('selected');
+  selTierName = name; selTierPrice = price;
+  const suffix = name === 'Lifetime Membership' ? ' (one-time)' : '/year';
+  document.getElementById('selected-plan-name').textContent = name + ' – $' + price + suffix;
+}
+
+async function handleMembership(e) {
+  e.preventDefault();
+  const btn = document.getElementById('membershipSubmitBtn');
+  btn.disabled = true; btn.textContent = 'Processing…';
+
+  const memberData = {
+    'Full Name':  document.getElementById('mem-fullname').value,
+    'Email':      document.getElementById('mem-email').value,
+    'Phone':      document.getElementById('mem-phone').value,
+    'Address':    document.getElementById('mem-street').value + ', ' +
+                  document.getElementById('mem-city').value + ', ' +
+                  document.getElementById('mem-state').value + ' ' +
+                  document.getElementById('mem-zip').value,
+    'Membership': selTierName,
+    'Amount':     '$' + selTierPrice,
+    '_subject':   'New NWGN-CA Membership – ' + selTierName
+  };
+
+  if (FORMSPREE_ID && !FORMSPREE_ID.includes('YOUR_')) {
+    try {
+      await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(memberData)
+      });
+    } catch (err) { console.warn('Formspree error:', err); }
+  }
+
+  const stripeLink = STRIPE_PAYMENT_LINKS[selTierName];
+  if (stripeLink && !stripeLink.includes('YOUR_')) {
+    window.location.href = stripeLink + '?prefilled_email=' + encodeURIComponent(memberData['Email']);
+  } else {
+    document.getElementById('membershipFormBody').style.display = 'none';
+    document.getElementById('membershipSuccess').style.display = 'block';
+  }
+}
+
+// ─── DONATION ────────────────────────────────────────────
+let selDonateAmt = '25';
+
+function openDonate(e) {
+  e && e.preventDefault();
+  document.getElementById('donateModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDonate() {
+  document.getElementById('donateModal').classList.remove('open');
+  document.body.style.overflow = '';
+  document.getElementById('donateFormBody').style.display = 'block';
+  document.getElementById('donateSuccess').style.display = 'none';
+}
+
+function selectDonate(el, amount) {
+  document.querySelectorAll('#donateAmounts .tier').forEach(t => t.classList.remove('selected'));
+  el.classList.add('selected'); selDonateAmt = amount;
+  document.getElementById('customAmountField').style.display = (amount === 'custom') ? 'block' : 'none';
+}
+
+async function proceedDonate() {
+  const amt = selDonateAmt === 'custom' ? document.getElementById('customAmount').value : selDonateAmt;
+  if (!amt || Number(amt) < 1) { alert('Please enter a valid donation amount.'); return; }
+
+  const name  = document.getElementById('donate-name').value.trim();
+  const email = document.getElementById('donate-email').value.trim();
+  if (!name)  { document.getElementById('donate-name').focus();  return; }
+  if (!email) { document.getElementById('donate-email').focus(); return; }
+
+  if (FORMSPREE_ID && !FORMSPREE_ID.includes('YOUR_')) {
+    try {
+      await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ 'Full Name': name, 'Email': email, 'Donation Amount': '$' + amt, '_subject': 'New NWGN-CA Donation – $' + amt })
+      });
+    } catch (err) { console.warn('Formspree error:', err); }
+  }
+
+  if (STRIPE_DONATION_LINK && !STRIPE_DONATION_LINK.includes('YOUR_')) {
+    window.location.href = STRIPE_DONATION_LINK + '?prefilled_email=' + encodeURIComponent(email);
+  } else {
+    document.getElementById('donateFormBody').style.display = 'none';
+    document.getElementById('donateSuccess').style.display = 'block';
+  }
+}
+
+// ─── GALLERY AUTO-UPDATE ─────────────────────────────────
+const GALLERY_KEY = 'nwgnca_gallery_v1';
+
+function loadUploadedPhotos() {
+  const photos = JSON.parse(localStorage.getItem(GALLERY_KEY) || '[]');
+  const grid = document.getElementById('gallery-grid');
+  const placeholder = document.getElementById('gallery-placeholder');
+  photos.forEach(function(photo) {
+    grid.insertBefore(makeGalleryItem(photo), placeholder);
+  });
+}
+
+function makeGalleryItem(photo) {
+  const div = document.createElement('div');
+  div.className = 'gallery-item';
+  div.style.background = '#e8ddd0';
+  div.innerHTML =
+    '<img src="' + photo.url + '" alt="' + escHtml(photo.caption) + '" style="width:100%;height:100%;object-fit:cover;">' +
+    '<div class="gallery-overlay"><span>' + escHtml(photo.caption) + '</span></div>';
+  return div;
+}
+
+function addToGallery(url, caption) {
+  const photos = JSON.parse(localStorage.getItem(GALLERY_KEY) || '[]');
+  const photo = { url: url, caption: caption, addedAt: Date.now() };
+  photos.unshift(photo);
+  localStorage.setItem(GALLERY_KEY, JSON.stringify(photos));
+  const grid = document.getElementById('gallery-grid');
+  const placeholder = document.getElementById('gallery-placeholder');
+  grid.insertBefore(makeGalleryItem(photo), placeholder);
+}
+
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ─── UPLOAD MODAL ────────────────────────────────────────
+let selectedFiles = [];
+
+function openUpload(e) {
+  e && e.preventDefault();
+  document.getElementById('uploadModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeUpload() {
+  document.getElementById('uploadModal').classList.remove('open');
+  document.body.style.overflow = '';
+  document.getElementById('upload-auth').style.display = 'block';
+  document.getElementById('upload-form').style.display = 'none';
+  document.getElementById('uploadFormBody').style.display = 'block';
+  document.getElementById('uploadSuccess').style.display = 'none';
+  document.getElementById('upload-pwd').value = '';
+  document.getElementById('upload-pwd-error').style.display = 'none';
+  document.getElementById('upload-caption').value = '';
+  document.getElementById('upload-previews').innerHTML = '';
+  document.getElementById('upload-progress').style.display = 'none';
+  document.getElementById('upload-submit-btn').disabled = true;
+  document.getElementById('upload-file-input').value = '';
+  selectedFiles = [];
+}
+
+function verifyUploadPassword() {
+  const pwd = document.getElementById('upload-pwd').value;
+  if (pwd === UPLOAD_PASSWORD) {
+    document.getElementById('upload-auth').style.display = 'none';
+    document.getElementById('upload-form').style.display = 'block';
+    document.getElementById('upload-pwd-error').style.display = 'none';
+  } else {
+    document.getElementById('upload-pwd-error').style.display = 'block';
+    document.getElementById('upload-pwd').value = '';
+    document.getElementById('upload-pwd').focus();
+  }
+}
+
+function handleFileSelect(files) {
+  selectedFiles = Array.from(files);
+  const preview = document.getElementById('upload-previews');
+  preview.innerHTML = '';
+  selectedFiles.forEach(function(file) {
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+      const img = document.createElement('img');
+      img.src = ev.target.result;
+      preview.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+  });
+  document.getElementById('upload-submit-btn').disabled = selectedFiles.length === 0;
+}
+
+async function submitPhotos() {
+  const caption = document.getElementById('upload-caption').value.trim() || 'Event Photo';
+  if (selectedFiles.length === 0) return;
+
+  const btn = document.getElementById('upload-submit-btn');
+  btn.disabled = true;
+  document.getElementById('upload-progress').style.display = 'block';
+
+  const bar  = document.getElementById('upload-progress-bar');
+  const text = document.getElementById('upload-progress-text');
+  let uploaded = 0;
+
+  for (let i = 0; i < selectedFiles.length; i++) {
+    text.textContent = 'Uploading photo ' + (i + 1) + ' of ' + selectedFiles.length + '…';
+    const file = selectedFiles[i];
+
+    if (CLOUDINARY_CONFIG.cloudName && !CLOUDINARY_CONFIG.cloudName.includes('YOUR_')) {
+      try {
+        const fd = new FormData();
+        fd.append('file', file);
+        fd.append('upload_preset', CLOUDINARY_CONFIG.uploadPreset);
+        const res  = await fetch('https://api.cloudinary.com/v1_1/' + CLOUDINARY_CONFIG.cloudName + '/image/upload', { method: 'POST', body: fd });
+        const data = await res.json();
+        addToGallery(data.secure_url, caption);
+      } catch (err) {
+        console.warn('Cloudinary upload failed, using local preview:', err);
+        const localUrl = await readAsDataURL(file);
+        addToGallery(localUrl, caption);
+      }
+    } else {
+      const localUrl = await readAsDataURL(file);
+      addToGallery(localUrl, caption);
+    }
+
+    uploaded++;
+    bar.style.width = Math.round((uploaded / selectedFiles.length) * 100) + '%';
+  }
+
+  document.getElementById('uploadFormBody').style.display = 'none';
+  document.getElementById('uploadSuccess').style.display = 'block';
+}
+
+function readAsDataURL(file) {
+  return new Promise(function(resolve) {
+    const reader = new FileReader();
+    reader.onload = function(ev) { resolve(ev.target.result); };
+    reader.readAsDataURL(file);
+  });
+}
+
+// ─── CONTACT FORM ────────────────────────────────────────
+function handleContact(e) {
+  e.preventDefault();
+  alert('Thank you for reaching out!\n\nWe will reply within 2 business days.\nYou can also email us directly at nwgnca2012@gmail.com');
+  e.target.reset();
+}
+
+// ─── STRIPE RETURN DETECTION ─────────────────────────────
+(function checkStripeReturn() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('payment') === 'success') {
+    window.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('membershipFormBody').style.display = 'none';
+      document.getElementById('membershipSuccess').style.display = 'block';
+      document.getElementById('membershipModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+  if (params.get('donation') === 'success') {
+    window.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('donateFormBody').style.display = 'none';
+      document.getElementById('donateSuccess').style.display = 'block';
+      document.getElementById('donateModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+})();
+
+// ─── INIT ────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+  loadUploadedPhotos();
+});
+
+// CLOSE MODAL ON BACKDROP CLICK
+document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
+  overlay.addEventListener('click', function(e) {
+    if (e.target === this) { this.classList.remove('open'); document.body.style.overflow = ''; }
+  });
+});
+
+// CLOSE NAV ON LINK CLICK (MOBILE)
+document.querySelectorAll('.nav-links a').forEach(function(a) {
+  a.addEventListener('click', function() { document.getElementById('navLinks').classList.remove('open'); });
+});
+</script>
+</body>
+</html>
