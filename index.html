@@ -123,10 +123,11 @@
   .event-tag.upcoming { background: rgba(192,57,43,0.08); color: var(--crimson); }
   /* GALLERY */
   #gallery { background: white; }
-  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 190px; gap: 12px; margin-top: 2.5rem; }
-  .gallery-item { border-radius: 12px; overflow: hidden; position: relative; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 200px; gap: 12px; margin-top: 2.5rem; }
+  .gallery-item { border-radius: 12px; overflow: hidden; position: relative; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; background: var(--light-gray); }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-  .gallery-item:nth-child(4) { grid-column: span 2; }
+  .gallery-item:nth-child(6) { grid-column: span 2; }
   .gallery-item:hover { transform: scale(1.02); box-shadow: 0 16px 40px rgba(0,0,0,0.15); }
   .gallery-ph { display: flex; flex-direction: column; align-items: center; gap: 6px; opacity: 0.5; }
   .gallery-ph .emoji { font-size: 2.5rem; }
@@ -528,34 +529,22 @@
     <div class="section-divider"></div>
     <p style="color:var(--mid-gray);max-width:560px;line-height:1.7;">Glimpses from our events, celebrations, and community gatherings over the years.</p>
     <div class="gallery-grid" id="gallery-grid">
-      <div class="gallery-item" style="background:linear-gradient(135deg,#fdebd0,#f0b27a);">
-        <div class="gallery-ph"><div class="emoji">&#x1F338;</div><small>IWD 2024</small></div>
-        <div class="gallery-overlay"><span>International Women's Day 2024</span></div>
-      </div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,#d5f5e3,#76d7c4);">
-        <div class="gallery-ph"><div class="emoji">&#x1F6B6;&#x200D;&#x2640;&#xFE0F;</div><small>Walk-A-Thon 2022</small></div>
-        <div class="gallery-overlay"><span>Walk-A-Thon 2022</span></div>
-      </div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,#d6eaf8,#7fb3d3);">
-        <div class="gallery-ph"><div class="emoji">&#x1F4BB;</div><small>IWD 2022 Virtual</small></div>
-        <div class="gallery-overlay"><span>IWD Virtual 2022</span></div>
-      </div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,#fef9e7,#f7dc6f);">
-        <div class="gallery-ph"><div class="emoji">&#x1F91D;</div><small>Networking</small></div>
-        <div class="gallery-overlay"><span>Community Networking</span></div>
-      </div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,#f9ebf0,#f1948a);">
-        <div class="gallery-ph"><div class="emoji">&#x1F469;&#x200D;&#x1F4BC;</div><small>Leadership 2021</small></div>
-        <div class="gallery-overlay"><span>Leadership Training 2021</span></div>
-      </div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,#e8daef,#a569bd);">
-        <div class="gallery-ph"><div class="emoji">&#x1F30D;</div><small>IWD 2021</small></div>
-        <div class="gallery-overlay"><span>IWD 2021</span></div>
-      </div>
-      <div class="gallery-item" style="background:linear-gradient(135deg,#d1f2eb,#45b39d);">
-        <div class="gallery-ph"><div class="emoji">&#x1F389;</div><small>Community</small></div>
-        <div class="gallery-overlay"><span>Community Gathering</span></div>
-      </div>
+      <div class="gallery-item"><img src="gallery/photo-1.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
+      <div class="gallery-item"><img src="gallery/photo-25.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
+      <div class="gallery-item"><img src="gallery/photo-50.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
+      <div class="gallery-item"><img src="gallery/photo-75.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
+      <div class="gallery-item"><img src="gallery/photo-100.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
+      <div class="gallery-item"><img src="gallery/photo-125.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
+      <div class="gallery-item"><img src="gallery/photo-150.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
+      <div class="gallery-item"><img src="gallery/photo-175.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
+      <div class="gallery-item"><img src="gallery/photo-200.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
+      <div class="gallery-item"><img src="gallery/photo-225.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
+      <div class="gallery-item"><img src="gallery/photo-250.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
+      <div class="gallery-item"><img src="gallery/photo-275.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
+      <div class="gallery-item"><img src="gallery/photo-300.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
+      <div class="gallery-item"><img src="gallery/photo-325.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
+      <div class="gallery-item"><img src="gallery/photo-350.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
+      <div class="gallery-item"><img src="gallery/photo-400.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
       <div class="gallery-item" id="gallery-placeholder" style="background:var(--light-gray);border:2px dashed var(--border);">
         <div class="gallery-ph"><div class="emoji">&#x1F4F7;</div><small>More coming soon</small></div>
         <div class="gallery-overlay"><span>More photos coming soon</span></div>
