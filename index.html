@@ -194,6 +194,14 @@
   footer ul li a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 13px; transition: color 0.2s; }
   footer ul li a:hover { color: var(--gold); }
   .footer-bottom { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; font-size: 12px; flex-wrap: wrap; gap: 0.5rem; }
+  .footer-legal a { color: rgba(255,255,255,0.75); text-decoration: none; }
+  .footer-legal a:hover { color: var(--gold); }
+  .legal-body h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--charcoal); margin: 1.25rem 0 0.4rem; }
+  .legal-body h3:first-child { margin-top: 0; }
+  .legal-body p, .legal-body li { font-size: 0.85rem; color: var(--mid-gray); line-height: 1.65; }
+  .legal-body ul { margin: 0.25rem 0 0.5rem 1.1rem; }
+  .legal-body li { margin-bottom: 0.3rem; }
+  .legal-body a { color: var(--crimson); }
   /* MODALS */
   .modal-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.65); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 1rem; }
   .modal-overlay.open { display: flex; }
@@ -713,7 +721,7 @@
   </div>
   <div class="footer-bottom">
     <span>&copy; 2025 NWGN California Chapter. All rights reserved.</span>
-    <span>Non-Profit 501(c)(3) &middot; San Francisco Bay Area, CA</span>
+    <span class="footer-legal"><a href="#" onclick="openPrivacy(event)">Privacy Policy</a> &middot; Non-Profit 501(c)(3) &middot; San Francisco Bay Area, CA</span>
   </div>
 </footer>
 <!-- MEMBERSHIP MODAL -->
@@ -862,6 +870,71 @@
       <h3>Reservation received! &#x1F48E;</h3>
       <p>Thank you! We'll verify your Lifetime membership and email your free ticket confirmation shortly.</p>
       <button class="btn-primary" style="margin-top:1.5rem;" onclick="closeTicket()">Close</button>
+    </div>
+  </div>
+</div>
+<!-- PRIVACY POLICY MODAL -->
+<div class="modal-overlay" id="privacyModal">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closePrivacy()">&#x2715;</button>
+      <h2>Privacy Policy</h2>
+      <p>Effective June 8, 2026</p>
+    </div>
+    <div class="modal-body legal-body">
+      <p>The Nepalese Women's Global Network &ndash; California Chapter ("NWGN-CA," "we," "us," or "our") is a 501(c)(3) non-profit organization based in the San Francisco Bay Area. This Privacy Policy explains how we collect, use, and protect the information you provide through our website.</p>
+
+      <h3>Information We Collect</h3>
+      <ul>
+        <li><strong>Membership registration:</strong> your full name, email address, phone number, and mailing address.</li>
+        <li><strong>Donations:</strong> your name and email address, along with the donation amount.</li>
+        <li><strong>Event sign-ups &amp; ticket requests:</strong> your name and email address, and the event you're interested in.</li>
+        <li><strong>Contact form:</strong> any information you choose to include in your message.</li>
+        <li><strong>Photos:</strong> images submitted for our event gallery.</li>
+      </ul>
+
+      <h3>How We Use Your Information</h3>
+      <ul>
+        <li>To process and manage memberships and donations.</li>
+        <li>To send you event announcements, updates, and confirmations you have requested.</li>
+        <li>To respond to your inquiries and provide member benefits (such as Lifetime member event tickets).</li>
+        <li>To operate, maintain, and improve our programs and website.</li>
+      </ul>
+
+      <h3>Payment Processing</h3>
+      <p>Payments for memberships and donations are processed securely by <strong>Stripe</strong>. We do not collect or store your full card number, CVC, or banking details on our servers &mdash; that information is handled directly by Stripe under its own <a href="https://stripe.com/privacy" target="_blank" rel="noopener">privacy policy</a>.</p>
+
+      <h3>Service Providers</h3>
+      <p>We use trusted third-party services to run the site, and share only the information needed for each:</p>
+      <ul>
+        <li><strong>Stripe</strong> &mdash; payment processing.</li>
+        <li><strong>Formspree</strong> &mdash; secure handling of form submissions (membership, donation, contact, and event forms).</li>
+        <li><strong>Cloudinary</strong> &mdash; hosting of event gallery photos.</li>
+      </ul>
+      <p>We do <strong>not</strong> sell, rent, or trade your personal information to anyone.</p>
+
+      <h3>Cookies</h3>
+      <p>Our website uses minimal cookies necessary for basic functionality. Third-party providers (such as Stripe) may set their own cookies during checkout. You can control cookies through your browser settings.</p>
+
+      <h3>Data Retention</h3>
+      <p>We keep member and donor records for as long as needed to support our operations and meet legal or tax obligations as a non-profit, after which the information is securely deleted.</p>
+
+      <h3>Your Choices &amp; Rights</h3>
+      <ul>
+        <li>You may unsubscribe from our emails at any time using the link in any message or by contacting us.</li>
+        <li>You may request that we access, correct, or delete your personal information.</li>
+      </ul>
+
+      <h3>Children's Privacy</h3>
+      <p>Our website is intended for adults. We do not knowingly collect personal information from children under 13.</p>
+
+      <h3>Changes to This Policy</h3>
+      <p>We may update this Privacy Policy from time to time. Material changes will be reflected by the "Effective" date above.</p>
+
+      <h3>Contact Us</h3>
+      <p>Questions about this policy? Reach us at <a href="mailto:nwgnca2012@gmail.com">nwgnca2012@gmail.com</a> &middot; 925.518.1875 &middot; 1437 El Camino Real, Burlingame, CA 94010.</p>
+
+      <button class="btn-primary" style="width:100%;text-align:center;margin-top:1.5rem;" onclick="closePrivacy()">Close</button>
     </div>
   </div>
 </div>
@@ -1255,6 +1328,15 @@ function closeTicket() {
   document.getElementById('ticketSuccess').style.display = 'none';
   const btn = document.getElementById('ticketSubmitBtn');
   if (btn) { btn.disabled = false; btn.innerHTML = '&#x1F3AB; Reserve My Free Tickets &rarr;'; }
+}
+function openPrivacy(e) {
+  if (e) e.preventDefault();
+  document.getElementById('privacyModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePrivacy() {
+  document.getElementById('privacyModal').classList.remove('open');
+  document.body.style.overflow = '';
 }
 async function handleTicketClaim(e) {
   e.preventDefault();
