@@ -265,6 +265,7 @@
   .check-circle { width: 68px; height: 68px; border-radius: 50%; background: linear-gradient(135deg, #27ae60, #2ecc71); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: white; margin: 0 auto 1.25rem; }
   .success-msg h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 0.75rem; }
   .success-msg p { color: var(--mid-gray); font-size: 0.9rem; margin-bottom: 0.5rem; }
+  .success-logo { width: 92px; height: 92px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.25rem; display: block; box-shadow: 0 8px 24px rgba(0,0,0,0.14); border: 3px solid var(--cream); }
   .admin-note { color: var(--mid-gray); font-size: 0.85rem; margin-top: 1.25rem; padding: 1rem 1.1rem; background: white; border-radius: 9px; border: 1px solid var(--border); }
   /* RESPONSIVE */
   @media (max-width: 900px) {
@@ -857,9 +858,9 @@
       </form>
     </div>
     <div class="success-msg" id="membershipSuccess">
-      <div class="check-circle">&#x2713;</div>
-      <h3>Welcome to NWGN-CA! &#x1F338;</h3>
-      <p>Your membership application has been received.</p>
+      <img class="success-logo" src="logo.jpg" alt="NWGN-CA logo">
+      <h3>Thank You for Joining NWGN-CA! &#x1F338;</h3>
+      <p>Your membership application has been received &mdash; welcome to our community.</p>
       <p>A confirmation email will be sent to you shortly, and our team will follow up within 2 business days.</p>
       <p style="margin-top:0.75rem;font-size:0.85rem;color:var(--crimson);">Please complete your payment to activate your membership.</p>
       <button class="btn-primary" style="margin-top:1.5rem;" onclick="closeMembership()">Close</button>
