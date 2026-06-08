@@ -242,10 +242,6 @@
   .lifetime-perk strong { color: var(--crimson); display: block; margin-bottom: 4px; font-size: 0.9rem; }
   .lifetime-perk ul { margin: 0.4rem 0 0; padding-left: 1.1rem; color: var(--charcoal); font-size: 0.82rem; line-height: 1.6; }
   /* Lifetime free-ticket banner in events */
-  .lifetime-ticket-banner { max-width: 760px; margin: 1.5rem auto 0; background: linear-gradient(135deg, rgba(212,160,23,0.1), rgba(192,57,43,0.06)); border: 1px solid rgba(212,160,23,0.35); border-radius: 14px; padding: 1.25rem 1.5rem; text-align: center; }
-  .lifetime-ticket-banner h4 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--crimson); margin-bottom: 0.35rem; }
-  .lifetime-ticket-banner p { color: var(--mid-gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.9rem; }
-  .lifetime-ticket-banner .btn-secondary { font-size: 13px; padding: 10px 22px; }
   .pay-methods { display: flex; gap: 0.6rem; margin-top: 0.6rem; flex-wrap: wrap; }
   .pay-badge { background: white; border: 1px solid var(--border); border-radius: 6px; padding: 5px 12px; font-size: 12px; font-weight: 600; color: var(--charcoal); }
   .success-msg { display: none; text-align: center; padding: 2.5rem 2rem; }
@@ -340,7 +336,7 @@
       <li><a href="#" class="nav-donate" onclick="openDonate(event)">Donate</a></li>
       <li class="nav-action-item"><a href="#" class="nav-cta" onclick="openMembership(event)">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        Join Us
+        Membership
       </a></li>
     </ul>
   </div>
@@ -538,11 +534,6 @@
           <input type="email" id="event-email" placeholder="your@email.com" required>
           <button type="submit" class="btn-primary">Notify Me &rarr;</button>
         </form>
-      </div>
-      <div class="lifetime-ticket-banner">
-        <h4>&#x1F48E; Lifetime members attend free</h4>
-        <p>Lifetime members get free tickets to every NWGN-CA event. Already a Lifetime member? Claim your free tickets for an upcoming event and we'll reserve your spot.</p>
-        <a href="#" class="btn-secondary" onclick="openTicket(event)">&#x1F3AB; Claim Free Event Tickets</a>
       </div>
       <div class="upcoming-success" id="upcoming-success" style="display:none;">
         <div class="check-circle">&#x2713;</div>
@@ -778,7 +769,7 @@
         <ul>
           <li><strong>Free tickets to every future NWGN-CA event</strong> &mdash; for life, no annual renewal.</li>
           <li>Priority RSVP and reserved seating at signature events (IWD celebrations, galas, workshops).</li>
-          <li>Just claim your free tickets from the Events section whenever a new event is announced.</li>
+          <li>We'll email you your free ticket whenever a new event is announced &mdash; no action needed.</li>
         </ul>
       </div>
       <form id="membershipForm" onsubmit="handleMembership(event)">
@@ -810,7 +801,7 @@
           <strong>Selected plan: <span id="selected-plan-name">General Membership &ndash; $25/year</span></strong>
           <div style="margin-top:0.5rem;font-size:12px;color:var(--mid-gray);">&#x1F512; 256-bit SSL encryption &middot; All major cards accepted</div>
         </div>
-        <button type="submit" class="btn-primary" style="width:100%;text-align:center;margin-top:1.5rem;font-size:15px;padding:14px;" id="membershipSubmitBtn">&#x1F4B3; Proceed to Secure Payment &rarr;</button>
+        <button type="submit" class="btn-primary" style="width:100%;text-align:center;margin-top:1.5rem;font-size:15px;padding:14px;" id="membershipSubmitBtn">Join Now &rarr;</button>
       </form>
     </div>
     <div class="success-msg" id="membershipSuccess">
@@ -1080,7 +1071,7 @@ function closeMembership() {
   document.getElementById('membershipFormBody').style.display = 'block';
   document.getElementById('membershipSuccess').style.display = 'none';
   const btn = document.getElementById('membershipSubmitBtn');
-  if (btn) { btn.disabled = false; btn.innerHTML = '&#x1F4B3; Proceed to Secure Payment &rarr;'; }
+  if (btn) { btn.disabled = false; btn.innerHTML = 'Join Now &rarr;'; }
 }
 
 function selectTier(el, name, price) {
