@@ -112,8 +112,6 @@
   /* vertical stick from the bar down to each card */
   .org-tier.branched > .member-card::after { content: ''; position: absolute; top: -32px; left: 50%; transform: translateX(-50%); width: 2px; height: 32px; background: var(--border); }
   @media (max-width: 640px) { .org-tier.branched { padding-top: 0; } .org-tier.branched::before, .org-tier.branched > .member-card::before, .org-tier.branched > .member-card::after { display: none; } }
-  /* executive members: clean centered grid of leaves under the connector */
-  .org-tier.org-leaves { margin-top: 14px; max-width: 1000px; gap: 1.5rem; }
   /* PRESIDENTS */
   #presidents { background: white; }
   .presidents-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; }
@@ -389,8 +387,8 @@
         </div>
       </div>
       <div class="org-link"></div>
-      <!-- Tier 4: Executive Members -->
-      <div class="org-tier org-leaves">
+      <!-- Tier 4: Executive Members (row 1) -->
+      <div class="org-tier branched">
         <div class="member-card">
           <div class="member-avatar" style="background:linear-gradient(135deg,#8e44ad,#6c3483);">SG</div>
           <h4>Soakshya GC</h4><span>Executive Member</span>
@@ -407,6 +405,10 @@
           <div class="member-avatar" style="background:linear-gradient(135deg,#c0392b,#e74c3c);">IJ</div>
           <h4>Ira Joshi</h4><span>Executive Member</span>
         </div>
+      </div>
+      <div class="org-link"></div>
+      <!-- Tier 4: Executive Members (row 2) -->
+      <div class="org-tier branched">
         <div class="member-card">
           <div class="member-avatar" style="background:linear-gradient(135deg,#2c3e50,#34495e);">RS</div>
           <h4>Ram Devi Palikhe Shrestha</h4><span>Executive Member</span>
