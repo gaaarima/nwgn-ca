@@ -92,7 +92,8 @@
   .members-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
   .member-card { background: white; border-radius: 14px; padding: 1.5rem 1.25rem; text-align: center; border: 1px solid var(--border); transition: all 0.25s; }
   .member-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); border-color: var(--crimson); }
-  .member-avatar { width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 0.75rem; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: white; }
+  .member-avatar { width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 0.75rem; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: white; overflow: hidden; }
+  .member-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
   .member-card h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
   .member-card span { font-size: 12px; color: var(--mid-gray); }
   /* Org tree */
@@ -362,7 +363,7 @@
       <!-- Tier 1: President -->
       <div class="org-tier">
         <div class="member-card">
-          <div class="member-avatar" style="background:linear-gradient(135deg,#c0392b,#8B0000);">ST</div>
+          <div class="member-avatar"><img src="recovered-images/board/sheela-thapa.png" alt="Sheela Thapa"></div>
           <h4>Sheela Thapa</h4><span>President</span>
         </div>
       </div>
@@ -370,7 +371,7 @@
       <!-- Tier 2: Vice President -->
       <div class="org-tier">
         <div class="member-card">
-          <div class="member-avatar" style="background:linear-gradient(135deg,#D4A017,#c0392b);">TP</div>
+          <div class="member-avatar"><img src="recovered-images/board/tara-chalise.png" alt="Tara Poudel Chalise"></div>
           <h4>Tara Poudel Chalise</h4><span>Vice President</span>
         </div>
       </div>
@@ -378,11 +379,11 @@
       <!-- Tier 3: General Secretary & Treasurer -->
       <div class="org-tier branched">
         <div class="member-card">
-          <div class="member-avatar" style="background:linear-gradient(135deg,#2980b9,#1a5276);">SD</div>
+          <div class="member-avatar"><img src="recovered-images/board/sobe-dhital.png" alt="Sobe Dhital"></div>
           <h4>Sobe Dhital</h4><span>General Secretary</span>
         </div>
         <div class="member-card">
-          <div class="member-avatar" style="background:linear-gradient(135deg,#27ae60,#1e8449);">RK</div>
+          <div class="member-avatar"><img src="recovered-images/board/Rishta-Karki.png" alt="Rishta Karki"></div>
           <h4>Rishta Karki</h4><span>Treasurer</span>
         </div>
       </div>
@@ -390,19 +391,19 @@
       <!-- Tier 4: Executive Members (row 1) -->
       <div class="org-tier branched">
         <div class="member-card">
-          <div class="member-avatar" style="background:linear-gradient(135deg,#8e44ad,#6c3483);">SG</div>
+          <div class="member-avatar"><img src="recovered-images/board/Soakshya-GC.jpg" alt="Soakshya GC"></div>
           <h4>Soakshya GC</h4><span>Executive Member</span>
         </div>
         <div class="member-card">
-          <div class="member-avatar" style="background:linear-gradient(135deg,#e67e22,#ca6f1e);">AS</div>
+          <div class="member-avatar"><img src="recovered-images/board/Ashmita-Sapkota.jpg" alt="Ashmita Sapkota"></div>
           <h4>Ashmita Sapkota</h4><span>Executive Member</span>
         </div>
         <div class="member-card">
-          <div class="member-avatar" style="background:linear-gradient(135deg,#16a085,#1abc9c);">BP</div>
+          <div class="member-avatar"><img src="recovered-images/board/Bandana-Parajuli--scaled.jpg" alt="Bandana Parajuli"></div>
           <h4>Bandana Parajuli</h4><span>Executive Member</span>
         </div>
         <div class="member-card">
-          <div class="member-avatar" style="background:linear-gradient(135deg,#c0392b,#e74c3c);">IJ</div>
+          <div class="member-avatar"><img src="recovered-images/board/Ira-Joshi-scaled.jpg" alt="Ira Joshi"></div>
           <h4>Ira Joshi</h4><span>Executive Member</span>
         </div>
       </div>
@@ -410,11 +411,11 @@
       <!-- Tier 4: Executive Members (row 2) -->
       <div class="org-tier branched">
         <div class="member-card">
-          <div class="member-avatar" style="background:linear-gradient(135deg,#2c3e50,#34495e);">RS</div>
+          <div class="member-avatar"><img src="recovered-images/board/Ram-Devi-Palikhe-.jpg" alt="Ram Devi Palikhe Shrestha"></div>
           <h4>Ram Devi Palikhe Shrestha</h4><span>Executive Member</span>
         </div>
         <div class="member-card">
-          <div class="member-avatar" style="background:linear-gradient(135deg,#8e44ad,#9b59b6);">RR</div>
+          <div class="member-avatar"><img src="recovered-images/board/Rita-Raut-.jpg" alt="Rita Raut"></div>
           <h4>Rita Raut</h4><span>Executive Member</span>
         </div>
         <div class="member-card">
@@ -422,7 +423,7 @@
           <h4>Preeti Karki</h4><span>Executive Member</span>
         </div>
         <div class="member-card">
-          <div class="member-avatar" style="background:linear-gradient(135deg,#1a5276,#2980b9);">KB</div>
+          <div class="member-avatar"><img src="recovered-images/board/Kranti-Aryal.jpg" alt="Kranti Aryal Bhandari"></div>
           <h4>Kranti Aryal Bhandari</h4><span>Executive Member</span>
         </div>
       </div>
