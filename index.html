@@ -37,7 +37,7 @@
   .nav-links a:hover { color: var(--crimson); }
   .nav-donate { background: var(--gold) !important; color: var(--charcoal) !important; font-weight: 800 !important; padding: 0 26px !important; margin-left: 12px; }
   .nav-donate:hover { background: var(--amber) !important; color: var(--charcoal) !important; }
-  .nav-action-item { margin-left: 8px; border-left: 1px solid var(--border); padding-left: 8px; }
+  .nav-action-item { margin-left: 8px; padding-left: 8px; }
   .nav-cta { color: var(--charcoal) !important; gap: 6px; }
   .nav-cta svg { stroke-width: 2; }
   .nav-cta:hover { color: var(--crimson) !important; }
@@ -241,6 +241,17 @@
   .modal-header p { opacity: 0.85; font-size: 0.8rem; }
   .modal-close { position: absolute; top: 0.85rem; right: 0.85rem; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.2); border: none; cursor: pointer; color: white; font-size: 14px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
   .modal-close:hover { background: rgba(255,255,255,0.35); }
+  .modal-close.dark { background: rgba(0,0,0,0.06); color: var(--charcoal); }
+  .modal-close.dark:hover { background: rgba(0,0,0,0.12); }
+  /* Contact thank-you modal */
+  .contact-thanks { max-width: 480px; overflow: hidden; }
+  .contact-thanks-body { position: relative; text-align: center; padding: 3rem 2rem 2.5rem; }
+  .contact-thanks-body::before { content: ''; position: absolute; inset: 0; background: url('logo.jpg') center 58% / 62% no-repeat; opacity: 0.07; pointer-events: none; }
+  .contact-thanks-logo { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.5rem; display: block; box-shadow: 0 8px 24px rgba(0,0,0,0.14); border: 3px solid var(--cream); position: relative; }
+  .contact-thanks h2 { font-family: 'Playfair Display', serif; font-size: 2.1rem; font-weight: 900; color: var(--charcoal); line-height: 1.15; margin-bottom: 1rem; position: relative; }
+  .contact-thanks p { color: var(--mid-gray); line-height: 1.7; margin-bottom: 0.4rem; position: relative; }
+  .contact-thanks a { color: var(--crimson); font-weight: 600; }
+  .contact-thanks .btn-primary { margin-top: 1.75rem; position: relative; }
   .modal-body { padding: 1.25rem 1.75rem 1.5rem; overflow-y: auto; flex: 1; }
   .success-msg { overflow-y: auto; flex: 1; }
   .modal-body > p:first-child { font-size: 0.85rem !important; margin-bottom: 0.85rem !important; }
@@ -1055,6 +1066,19 @@
     </div>
   </div>
 </div>
+<!-- CONTACT THANK-YOU MODAL -->
+<div class="modal-overlay" id="contactModal">
+  <div class="modal contact-thanks">
+    <button class="modal-close dark" onclick="closeContact()">&#x2715;</button>
+    <div class="contact-thanks-body">
+      <img class="contact-thanks-logo" src="logo.jpg" alt="NWGN-CA logo">
+      <h2>Thank you for reaching out!</h2>
+      <p>We'll get back to you within 2 business days.</p>
+      <p>You can also email us directly at<br><a href="mailto:nwgnca2012@gmail.com">nwgnca2012@gmail.com</a></p>
+      <button class="btn-primary" onclick="closeContact()">Close</button>
+    </div>
+  </div>
+</div>
 <script>
 // ═══════════════════════════════════════════════════════════
 // STRIPE — MEMBERSHIP
@@ -1445,8 +1469,13 @@ async function handleTicketClaim(e) {
 // ─── CONTACT FORM ────────────────────────────────────────
 function handleContact(e) {
   e.preventDefault();
-  alert('Thank you for reaching out!\n\nWe will reply within 2 business days.\nYou can also email us directly at nwgnca2012@gmail.com');
   e.target.reset();
+  document.getElementById('contactModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeContact() {
+  document.getElementById('contactModal').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 // ─── STRIPE RETURN DETECTION ─────────────────────────────
