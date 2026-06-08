@@ -215,6 +215,16 @@
   .tier .tier-desc { font-size: 10.5px; color: var(--mid-gray); margin-top: 1px; }
   .form-sep { font-weight: 700; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mid-gray); margin: 0.9rem 0 0.6rem; border-top: 1px solid var(--border); padding-top: 0.9rem; }
   .payment-note { background: #f9f5ed; border-radius: 9px; padding: 0.75rem 0.9rem; border: 1px solid var(--border); margin-top: 0.75rem; font-size: 0.8rem; color: var(--mid-gray); line-height: 1.45; }
+  /* Lifetime perk callout */
+  .lifetime-perk { display: none; background: linear-gradient(135deg, rgba(212,160,23,0.12), rgba(192,57,43,0.08)); border: 1px solid rgba(212,160,23,0.4); border-radius: 10px; padding: 0.85rem 1rem; margin: 0 0 1rem; }
+  .lifetime-perk.show { display: block; }
+  .lifetime-perk strong { color: var(--crimson); display: block; margin-bottom: 4px; font-size: 0.9rem; }
+  .lifetime-perk ul { margin: 0.4rem 0 0; padding-left: 1.1rem; color: var(--charcoal); font-size: 0.82rem; line-height: 1.6; }
+  /* Lifetime free-ticket banner in events */
+  .lifetime-ticket-banner { max-width: 760px; margin: 1.5rem auto 0; background: linear-gradient(135deg, rgba(212,160,23,0.1), rgba(192,57,43,0.06)); border: 1px solid rgba(212,160,23,0.35); border-radius: 14px; padding: 1.25rem 1.5rem; text-align: center; }
+  .lifetime-ticket-banner h4 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--crimson); margin-bottom: 0.35rem; }
+  .lifetime-ticket-banner p { color: var(--mid-gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.9rem; }
+  .lifetime-ticket-banner .btn-secondary { font-size: 13px; padding: 10px 22px; }
   .pay-methods { display: flex; gap: 0.6rem; margin-top: 0.6rem; flex-wrap: wrap; }
   .pay-badge { background: white; border: 1px solid var(--border); border-radius: 6px; padding: 5px 12px; font-size: 12px; font-weight: 600; color: var(--charcoal); }
   .success-msg { display: none; text-align: center; padding: 2.5rem 2rem; }
@@ -494,6 +504,11 @@
           <button type="submit" class="btn-primary">Notify Me &rarr;</button>
         </form>
       </div>
+      <div class="lifetime-ticket-banner">
+        <h4>&#x1F48E; Lifetime members attend free</h4>
+        <p>Lifetime members get free tickets to every NWGN-CA event. Already a Lifetime member? Claim your free tickets for an upcoming event and we'll reserve your spot.</p>
+        <a href="#" class="btn-secondary" onclick="openTicket(event)">&#x1F3AB; Claim Free Event Tickets</a>
+      </div>
       <div class="upcoming-success" id="upcoming-success" style="display:none;">
         <div class="check-circle">&#x2713;</div>
         <h3>You're on the list!</h3>
@@ -722,6 +737,15 @@
           <div class="tier-desc">&#x1F3AB; Free tickets to all future events</div>
         </button>
       </div>
+      <div class="lifetime-perk" id="lifetime-perk">
+        <strong>&#x1F48E; Lifetime Member Benefit</strong>
+        As a Lifetime member you receive:
+        <ul>
+          <li><strong>Free tickets to every future NWGN-CA event</strong> &mdash; for life, no annual renewal.</li>
+          <li>Priority RSVP and reserved seating at signature events (IWD celebrations, galas, workshops).</li>
+          <li>Just claim your free tickets from the Events section whenever a new event is announced.</li>
+        </ul>
+      </div>
       <form id="membershipForm" onsubmit="handleMembership(event)">
         <div class="form-sep">Personal Information</div>
         <div class="form-group"><label>Full Name *</label><input type="text" id="mem-fullname" placeholder="Sita Sharma" required></div>
@@ -808,6 +832,35 @@
       <p>Your generous donation is making a difference for Nepalese women in California.</p>
       <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--mid-gray);">A receipt will be sent to your email.</p>
       <button class="btn-gold" style="margin-top:1.5rem;" onclick="closeDonate()">Close</button>
+    </div>
+  </div>
+</div>
+<!-- LIFETIME TICKET CLAIM MODAL -->
+<div class="modal-overlay" id="ticketModal">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeTicket()">&#x2715;</button>
+      <h2>Claim Free Event Tickets</h2>
+      <p>A Lifetime member benefit &#x1F48E;</p>
+    </div>
+    <div class="modal-body" id="ticketFormBody">
+      <p style="color:var(--mid-gray);line-height:1.7;margin-bottom:1.25rem;font-size:0.9rem;">Lifetime members attend all NWGN-CA events for free. Tell us which event you'd like to attend and how many tickets you need, and we'll confirm your reservation by email.</p>
+      <form id="ticketForm" onsubmit="handleTicketClaim(event)">
+        <div class="form-group"><label>Full Name *</label><input type="text" id="tk-name" placeholder="Sita Sharma" required></div>
+        <div class="form-group"><label>Email Address *</label><input type="email" id="tk-email" placeholder="you@example.com" required></div>
+        <div class="form-row">
+          <div class="form-group"><label>Event *</label><input type="text" id="tk-event" placeholder="e.g. IWD 2026 Celebration" required></div>
+          <div class="form-group"><label>Number of Tickets *</label><input type="number" id="tk-qty" value="1" min="1" max="6" required></div>
+        </div>
+        <div class="payment-note" style="margin-top:0.5rem;">&#x2705; Lifetime members only. We'll verify your membership and email your free ticket confirmation. Not a Lifetime member yet? <a href="#" onclick="closeTicket();openMembership(event);return false;" style="color:var(--crimson);font-weight:600;">Become one &rarr;</a></div>
+        <button type="submit" class="btn-primary" style="width:100%;text-align:center;margin-top:1.5rem;font-size:15px;padding:14px;" id="ticketSubmitBtn">&#x1F3AB; Reserve My Free Tickets &rarr;</button>
+      </form>
+    </div>
+    <div class="success-msg" id="ticketSuccess" style="display:none;">
+      <div class="check-circle">&#x2713;</div>
+      <h3>Reservation received! &#x1F48E;</h3>
+      <p>Thank you! We'll verify your Lifetime membership and email your free ticket confirmation shortly.</p>
+      <button class="btn-primary" style="margin-top:1.5rem;" onclick="closeTicket()">Close</button>
     </div>
   </div>
 </div>
@@ -936,6 +989,7 @@ function selectTier(el, name, price) {
   selTierName = name; selTierPrice = price;
   const suffix = name === 'Lifetime Membership' ? ' (one-time)' : '/year';
   document.getElementById('selected-plan-name').textContent = name + ' – $' + price + suffix;
+  document.getElementById('lifetime-perk').classList.toggle('show', name === 'Lifetime Membership');
 }
 
 async function handleMembership(e) {
@@ -1185,6 +1239,48 @@ async function handleEventSubscribe(e) {
 
   document.getElementById('upcoming-notice').style.display = 'none';
   document.getElementById('upcoming-success').style.display = 'block';
+}
+
+// ─── LIFETIME FREE TICKET CLAIM ──────────────────────────
+function openTicket(e) {
+  if (e) e.preventDefault();
+  document.getElementById('ticketModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeTicket() {
+  document.getElementById('ticketModal').classList.remove('open');
+  document.body.style.overflow = '';
+  document.getElementById('ticketFormBody').style.display = 'block';
+  document.getElementById('ticketSuccess').style.display = 'none';
+  const btn = document.getElementById('ticketSubmitBtn');
+  if (btn) { btn.disabled = false; btn.innerHTML = '&#x1F3AB; Reserve My Free Tickets &rarr;'; }
+}
+async function handleTicketClaim(e) {
+  e.preventDefault();
+  const btn = document.getElementById('ticketSubmitBtn');
+  btn.disabled = true; btn.textContent = 'Reserving…';
+
+  const claim = {
+    'Full Name':  document.getElementById('tk-name').value,
+    'Email':      document.getElementById('tk-email').value,
+    'Event':      document.getElementById('tk-event').value,
+    'Tickets':    document.getElementById('tk-qty').value,
+    'Benefit':    'Lifetime member free event tickets',
+    '_subject':   'Lifetime Member Free Ticket Claim – ' + document.getElementById('tk-event').value
+  };
+
+  if (FORMSPREE_ID && !FORMSPREE_ID.includes('YOUR_')) {
+    try {
+      await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(claim)
+      });
+    } catch (err) { console.warn('Formspree error:', err); }
+  }
+
+  document.getElementById('ticketFormBody').style.display = 'none';
+  document.getElementById('ticketSuccess').style.display = 'block';
 }
 
 // ─── CONTACT FORM ────────────────────────────────────────
