@@ -113,7 +113,7 @@
   .org-tier.branched > .member-card:last-child::before { left: auto; right: 50%; width: calc(50% + 0.75rem + 1px); border-top-right-radius: 6px; }
   /* vertical stick from the bar down to each card */
   .org-tier.branched > .member-card::after { content: ''; position: absolute; top: -32px; left: 50%; transform: translateX(-50%); width: 2px; height: 32px; background: var(--border); }
-  @media (max-width: 640px) { .org-tier.branched { padding-top: 0; } .org-tier.branched::before, .org-tier.branched > .member-card::before, .org-tier.branched > .member-card::after { display: none; } }
+  @media (max-width: 940px) { .org-tier.branched { padding-top: 0; } .org-tier.branched::before, .org-tier.branched > .member-card::before, .org-tier.branched > .member-card::after { display: none; } }
   /* PRESIDENTS */
   #presidents { background: white; }
   .presidents-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; }
@@ -217,6 +217,7 @@
   .success-msg { overflow-y: auto; flex: 1; }
   .modal-body > p:first-child { font-size: 0.85rem !important; margin-bottom: 0.85rem !important; }
   .tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem; margin-bottom: 1rem; }
+  #donateAmounts { grid-template-columns: repeat(3, 1fr); }
   .tier { border: 2px solid var(--border); border-radius: 10px; padding: 0.7rem 0.5rem; cursor: pointer; transition: all 0.2s; text-align: center; background: none; width: 100%; font-family:'DM Sans',sans-serif; }
   .tier:hover, .tier.selected { border-color: var(--crimson); background: rgba(192,57,43,0.04); }
   .tier .price { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--crimson); font-weight: 700; line-height: 1.1; }
@@ -282,11 +283,25 @@
     .nav-links.open { display: flex; }
     .hamburger { display: flex; }
     .tier-grid { grid-template-columns: 1fr; }
+    #donateAmounts { grid-template-columns: repeat(2, 1fr); }
     .modal-body { padding: 1.5rem; }
     .modal-header { padding: 1.5rem; }
     .footer-inner { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
     .hero-stats { gap: 1.5rem; }
+  }
+  @media (max-width: 480px) {
+    section { padding: 3.5rem 1.25rem; }
+    .hero-content { padding: 2.5rem 1.25rem; }
+    nav { padding: 0 1.25rem; }
+    .donate-banner { padding: 3rem 1.25rem; }
+    h1.hero-title { font-size: clamp(2rem, 9vw, 2.6rem); }
+    .hero-sub { font-size: 1rem; }
+    .hero-actions .btn-primary, .hero-actions .btn-gold, .hero-actions .btn-secondary { width: 100%; text-align: center; }
+    .hero-stats { gap: 1.25rem 2rem; }
+    .donate-banner h2 { font-size: 1.9rem; }
+    .upcoming-notice h3, .upcoming-success h3 { font-size: 1.9rem; }
+    .upcoming-notice > p, .upcoming-success > p { font-size: 1.05rem; }
   }
 </style>
 </head>
@@ -734,7 +749,7 @@
     </div>
     <div class="modal-body" id="membershipFormBody">
       <p style="color:var(--mid-gray);font-size:0.875rem;margin-bottom:1.25rem;line-height:1.65;">Choose your membership tier and fill in your details. Your membership helps support Nepalese women across California.</p>
-      <div class="tier-grid" style="grid-template-columns:1fr 1fr;">
+      <div class="tier-grid">
         <button class="tier selected" onclick="selectTier(this,'General Membership',25)">
           <div class="tier-name">General Membership</div>
           <div class="price">$25<span style="font-size:0.9rem;font-weight:400">/yr</span></div>
@@ -807,7 +822,7 @@
     </div>
     <div class="modal-body" id="donateFormBody">
       <p style="color:var(--mid-gray);line-height:1.7;margin-bottom:1.5rem;">NWGN-CA is a 501(c)(3) non-profit. Your donation supports scholarships, crisis support, leadership training, and community events for Nepalese women.</p>
-      <div class="tier-grid" style="grid-template-columns:repeat(3,1fr);" id="donateAmounts">
+      <div class="tier-grid" id="donateAmounts">
         <button class="tier selected" onclick="selectDonate(this,'25')"><div class="price">$25</div><div class="tier-desc">Supporter</div></button>
         <button class="tier" onclick="selectDonate(this,'50')"><div class="price">$50</div><div class="tier-desc">Friend</div></button>
         <button class="tier" onclick="selectDonate(this,'100')"><div class="price">$100</div><div class="tier-desc">Champion</div></button>
