@@ -170,8 +170,7 @@
   .car-dot { width: 9px; height: 9px; border-radius: 50%; border: none; padding: 0; background: rgba(255,255,255,0.45); cursor: pointer; transition: background 0.25s, width 0.25s; }
   .car-dot.active { background: var(--gold); width: 26px; border-radius: 5px; }
   /* --- albums --- */
-  .albums-heading { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 3rem 0 0.35rem; color: var(--charcoal); }
-  .albums-sub { color: var(--mid-gray); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .albums-heading { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 3rem 0 1.5rem; color: var(--charcoal); }
   .album-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
   .album-card { border: none; padding: 0; background: none; text-align: left; cursor: pointer; font: inherit; border-radius: 14px; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; }
   .album-card:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(0,0,0,0.13); }
@@ -647,7 +646,6 @@
       <div class="car-dots" id="car-dots"></div>
     </div>
     <h3 class="albums-heading">Albums</h3>
-    <p class="albums-sub">Tap an album to flip through the full set.</p>
     <div class="album-grid" id="album-grid"></div>
   </div>
 </section>
