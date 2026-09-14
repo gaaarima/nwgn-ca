@@ -155,19 +155,62 @@
   .plan-card .btn-primary, .plan-card .btn-gold { width: 100%; text-align: center; }
   @media (max-width: 700px) { .membership-plans { grid-template-columns: 1fr; } }
   #gallery { background: white; }
-  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 200px; gap: 12px; margin-top: 2.5rem; }
-  .gallery-item { border-radius: 12px; overflow: hidden; position: relative; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; background: var(--light-gray); }
-  .gallery-item img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
-  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-  .gallery-item:nth-child(6) { grid-column: span 2; }
-  .gallery-item:hover { transform: scale(1.02); box-shadow: 0 16px 40px rgba(0,0,0,0.15); }
-  .gallery-ph { display: flex; flex-direction: column; align-items: center; gap: 6px; opacity: 0.5; }
-  .gallery-ph .emoji { font-size: 2.5rem; }
-  .gallery-ph small { font-size: 11px; color: var(--mid-gray); letter-spacing: 0.05em; font-family:'DM Sans',sans-serif; }
-  .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); opacity: 0; transition: 0.3s; display: flex; align-items: flex-end; padding: 0.75rem; }
-  .gallery-item:hover .gallery-overlay { opacity: 1; }
-  .gallery-overlay span { color: white; font-size: 12px; font-weight: 500; }
-  .gallery-note { text-align: center; margin-top: 1.5rem; padding: 1.25rem; background: var(--cream); border-radius: 12px; border: 1px dashed var(--border); color: var(--mid-gray); font-size: 0.875rem; }
+  /* --- featured carousel --- */
+  .carousel { position: relative; margin-top: 2.5rem; border-radius: 20px; overflow: hidden; background: var(--charcoal); aspect-ratio: 2.3 / 1; }
+  .carousel-track { display: flex; height: 100%; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+  .car-slide { flex: 0 0 100%; position: relative; height: 100%; }
+  .car-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .car-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 3.5rem 2rem 1.75rem; background: linear-gradient(to top, rgba(0,0,0,0.78), transparent); color: white; }
+  .car-cap strong { display: block; font-family: 'Playfair Display', serif; font-size: clamp(1.25rem, 2.6vw, 1.9rem); margin-bottom: 3px; }
+  .car-cap span { font-size: 0.85rem; opacity: 0.85; letter-spacing: 0.04em; }
+  .car-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: none; background: rgba(255,255,255,0.9); color: var(--charcoal); font-size: 1.5rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, transform 0.2s; z-index: 2; }
+  .car-btn:hover { background: white; transform: translateY(-50%) scale(1.08); }
+  .car-btn.prev { left: 16px; } .car-btn.next { right: 16px; }
+  .car-dots { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 2; }
+  .car-dot { width: 9px; height: 9px; border-radius: 50%; border: none; padding: 0; background: rgba(255,255,255,0.45); cursor: pointer; transition: background 0.25s, width 0.25s; }
+  .car-dot.active { background: var(--gold); width: 26px; border-radius: 5px; }
+  /* --- albums --- */
+  .albums-heading { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 3rem 0 0.35rem; color: var(--charcoal); }
+  .albums-sub { color: var(--mid-gray); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .album-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
+  .album-card { border: none; padding: 0; background: none; text-align: left; cursor: pointer; font: inherit; border-radius: 14px; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; }
+  .album-card:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(0,0,0,0.13); }
+  .album-cover { position: relative; aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; background: var(--light-gray); }
+  .album-cover img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.45s ease; }
+  .album-card:hover .album-cover img { transform: scale(1.06); }
+  /* stacked-paper edge so a cover reads as an album, not a single photo */
+  .album-cover::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.55), transparent 55%); }
+  .album-count { position: absolute; top: 10px; right: 10px; z-index: 2; background: rgba(0,0,0,0.6); color: white; font-size: 11px; font-weight: 600; padding: 4px 9px; border-radius: 100px; backdrop-filter: blur(4px); }
+  .album-label { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 0.9rem 1rem; color: white; }
+  .album-label strong { display: block; font-size: 1rem; font-weight: 600; margin-bottom: 2px; }
+  .album-label span { font-size: 12px; opacity: 0.85; }
+  /* --- lightbox --- */
+  .lightbox { position: fixed; inset: 0; background: rgba(12,10,10,0.94); z-index: 300; display: none; flex-direction: column; }
+  .lightbox.open { display: flex; }
+  .lb-bar { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; color: white; flex-shrink: 0; gap: 1rem; }
+  .lb-title strong { display: block; font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+  .lb-title span { font-size: 12px; opacity: 0.7; }
+  .lb-close { background: rgba(255,255,255,0.14); border: none; color: white; width: 38px; height: 38px; border-radius: 50%; font-size: 1.1rem; cursor: pointer; flex-shrink: 0; }
+  .lb-close:hover { background: rgba(255,255,255,0.28); }
+  .lb-stage { flex: 1; position: relative; display: flex; align-items: center; justify-content: center; min-height: 0; padding: 0 1rem 1rem; }
+  .lb-stage img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; }
+  .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px; border-radius: 50%; border: none; background: rgba(255,255,255,0.16); color: white; font-size: 1.6rem; line-height: 1; cursor: pointer; }
+  .lb-nav:hover { background: rgba(255,255,255,0.3); }
+  .lb-nav.prev { left: 14px; } .lb-nav.next { right: 14px; }
+  .lb-strip { display: flex; gap: 8px; overflow-x: auto; padding: 0 1.25rem 1.25rem; flex-shrink: 0; }
+  .lb-thumb { flex: 0 0 62px; height: 46px; border-radius: 6px; overflow: hidden; border: 2px solid transparent; cursor: pointer; padding: 0; background: none; opacity: 0.55; transition: opacity 0.2s, border-color 0.2s; }
+  .lb-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .lb-thumb.active { border-color: var(--gold); opacity: 1; }
+  @media (max-width: 700px) {
+    .carousel { aspect-ratio: 4 / 3; margin-top: 1.75rem; border-radius: 14px; }
+    .car-btn { width: 36px; height: 36px; font-size: 1.2rem; }
+    .car-btn.prev { left: 9px; } .car-btn.next { right: 9px; }
+    .car-cap { padding: 3rem 1.1rem 1.5rem; }
+    .album-grid { grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .album-label { padding: 0.65rem 0.7rem; }
+    .album-label strong { font-size: 0.85rem; }
+    .albums-heading { margin-top: 2.25rem; }
+  }
   /* DONATE BANNER */
   .donate-banner { background-color: #ffffff; background-image: radial-gradient(circle at 20% 80%, rgba(192,57,43,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(212,160,23,0.12) 0%, transparent 50%); color: var(--charcoal); text-align: center; padding: 4rem 2rem; position: relative; overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .donate-banner::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 10% 50%, rgba(255,255,255,0.05) 0%, transparent 40%), radial-gradient(circle at 90% 50%, rgba(255,255,255,0.05) 0%, transparent 40%); }
@@ -268,9 +311,6 @@
     .contact-grid { grid-template-columns: 1fr; }
     .footer-inner { grid-template-columns: 1fr 1fr; }
     .presidents-grid { grid-template-columns: 1fr; }
-    .gallery-grid { grid-template-columns: repeat(2,1fr); grid-auto-rows: 160px; }
-    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
-    .gallery-item:nth-child(4) { grid-column: span 2; }
   }
   /* UPCOMING EVENTS NOTICE */
   .upcoming-notice, .upcoming-success { grid-column: 1 / -1; text-align: center; padding: 2rem 1rem; max-width: 760px; margin: 0 auto; }
@@ -383,7 +423,7 @@
 <section id="about">
   <div class="section-inner">
     <div class="about-banner">
-      <img src="about-banner.jpg" alt="NWGN-CA members and community gathered at an International Women's Day celebration">
+      <img src="about-banner.jpg" alt="NWGN-CA members and community gathered at the 2023 chapter handover celebration">
     </div>
     <div class="about-card">
       <h3>Our Purpose</h3>
@@ -600,30 +640,30 @@
     <h2 class="section-title">Our Moments</h2>
     <div class="section-divider"></div>
     <p style="color:var(--mid-gray);max-width:560px;line-height:1.7;">Glimpses from our events, celebrations, and community gatherings over the years.</p>
-    <div class="gallery-grid" id="gallery-grid">
-      <div class="gallery-item"><img src="gallery/photo-1.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
-      <div class="gallery-item"><img src="gallery/photo-25.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
-      <div class="gallery-item"><img src="gallery/photo-50.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
-      <div class="gallery-item"><img src="gallery/photo-75.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
-      <div class="gallery-item"><img src="gallery/photo-100.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
-      <div class="gallery-item"><img src="gallery/photo-125.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
-      <div class="gallery-item"><img src="gallery/photo-150.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
-      <div class="gallery-item"><img src="gallery/photo-175.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
-      <div class="gallery-item"><img src="gallery/photo-200.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
-      <div class="gallery-item"><img src="gallery/photo-225.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
-      <div class="gallery-item"><img src="gallery/photo-250.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
-      <div class="gallery-item"><img src="gallery/photo-275.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
-      <div class="gallery-item"><img src="gallery/photo-300.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
-      <div class="gallery-item"><img src="gallery/photo-325.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
-      <div class="gallery-item"><img src="gallery/photo-350.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
-      <div class="gallery-item"><img src="gallery/photo-400.jpg" alt="NWGN-CA Event"><div class="gallery-overlay"><span>NWGN-CA Community Event</span></div></div>
-      <div class="gallery-item" id="gallery-placeholder" style="background:var(--light-gray);border:2px dashed var(--border);">
-        <div class="gallery-ph"><div class="emoji">&#x1F4F7;</div><small>More coming soon</small></div>
-        <div class="gallery-overlay"><span>More photos coming soon</span></div>
-      </div>
+    <div class="carousel" id="carousel">
+      <div class="carousel-track" id="carousel-track"></div>
+      <button class="car-btn prev" onclick="carGo(-1)" aria-label="Previous photo">&#8249;</button>
+      <button class="car-btn next" onclick="carGo(1)" aria-label="Next photo">&#8250;</button>
+      <div class="car-dots" id="car-dots"></div>
     </div>
+    <h3 class="albums-heading">Albums</h3>
+    <p class="albums-sub">Tap an album to flip through the full set.</p>
+    <div class="album-grid" id="album-grid"></div>
   </div>
 </section>
+<!-- PHOTO LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lb-bar">
+    <div class="lb-title"><strong id="lb-album"></strong><span id="lb-counter"></span></div>
+    <button class="lb-close" onclick="closeLightbox()" aria-label="Close">&#x2715;</button>
+  </div>
+  <div class="lb-stage">
+    <button class="lb-nav prev" onclick="lbGo(-1)" aria-label="Previous">&#8249;</button>
+    <img id="lb-img" src="" alt="">
+    <button class="lb-nav next" onclick="lbGo(1)" aria-label="Next">&#8250;</button>
+  </div>
+  <div class="lb-strip" id="lb-strip"></div>
+</div>
 <!-- MEMBERSHIP -->
 <section id="membership">
   <div class="section-inner">
@@ -1227,40 +1267,147 @@ async function proceedDonate() {
   }
 }
 
-// ─── GALLERY AUTO-UPDATE ─────────────────────────────────
+// ═══════════════════════════════════════════════════════════
+// GALLERY — featured carousel + albums + lightbox
+// To add photos: drop files in gallery/albums/ and add their
+// paths to the matching album's `photos` array below.
+// ═══════════════════════════════════════════════════════════
+const CAROUSEL = [
+  { src: 'gallery/albums/walkathon-1.jpg',    title: 'Walk-A-Thon 2022',              meta: 'September 10, 2022 · Bay Area' },
+  { src: 'gallery/albums/iwd2024-2.jpg',      title: "International Women's Day 2024", meta: 'March 9, 2024 · San Francisco, CA' },
+  { src: 'gallery/albums/handover2023-2.jpg', title: 'Chapter Handover 2023',          meta: 'January 2023 · Bay Area' }
+];
+
+const ALBUMS = [
+  { id: 'chapter', title: 'Chapter Gallery', meta: 'NWGN-CA celebration',
+    photos: ['gallery/photo-1.jpg','gallery/photo-25.jpg','gallery/photo-50.jpg','gallery/photo-75.jpg',
+             'gallery/photo-100.jpg','gallery/photo-125.jpg','gallery/photo-150.jpg','gallery/photo-175.jpg',
+             'gallery/photo-200.jpg','gallery/photo-225.jpg','gallery/photo-250.jpg','gallery/photo-275.jpg',
+             'gallery/photo-300.jpg','gallery/photo-325.jpg','gallery/photo-350.jpg','gallery/photo-400.jpg'] },
+  { id: 'iwd2024', title: "International Women's Day 2024", meta: 'March 9, 2024',
+    photos: ['gallery/albums/iwd2024-2.jpg','gallery/albums/iwd2024-1.jpg','gallery/albums/iwd2024-3.jpg',
+             'gallery/albums/iwd2024-4.jpg','gallery/albums/iwd2024-5.jpg'] },
+  { id: 'handover2023', title: 'Chapter Handover 2023', meta: 'January 2023',
+    photos: ['gallery/albums/handover2023-1.jpg','gallery/albums/handover2023-2.jpg','gallery/albums/handover2023-3.jpg'] },
+  { id: 'walkathon', title: 'Walk-A-Thon 2022', meta: 'September 10, 2022',
+    photos: ['gallery/albums/walkathon-1.jpg'] },
+  { id: 'leadership', title: 'Leadership Training', meta: '2021 & 2022',
+    photos: ['gallery/albums/leadership-1.jpg','gallery/albums/leadership-2.jpg'] }
+];
+
 const GALLERY_KEY = 'nwgnca_gallery_v1';
-
-function loadUploadedPhotos() {
-  const photos = JSON.parse(localStorage.getItem(GALLERY_KEY) || '[]');
-  const grid = document.getElementById('gallery-grid');
-  const placeholder = document.getElementById('gallery-placeholder');
-  photos.forEach(function(photo) {
-    grid.insertBefore(makeGalleryItem(photo), placeholder);
-  });
-}
-
-function makeGalleryItem(photo) {
-  const div = document.createElement('div');
-  div.className = 'gallery-item';
-  div.style.background = '#e8ddd0';
-  div.innerHTML =
-    '<img src="' + photo.url + '" alt="' + escHtml(photo.caption) + '" style="width:100%;height:100%;object-fit:cover;">' +
-    '<div class="gallery-overlay"><span>' + escHtml(photo.caption) + '</span></div>';
-  return div;
-}
-
-function addToGallery(url, caption) {
-  const photos = JSON.parse(localStorage.getItem(GALLERY_KEY) || '[]');
-  const photo = { url: url, caption: caption, addedAt: Date.now() };
-  photos.unshift(photo);
-  localStorage.setItem(GALLERY_KEY, JSON.stringify(photos));
-  const grid = document.getElementById('gallery-grid');
-  const placeholder = document.getElementById('gallery-placeholder');
-  grid.insertBefore(makeGalleryItem(photo), placeholder);
-}
 
 function escHtml(str) {
   return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ─── carousel ────────────────────────────────────────────
+let carIdx = 0, carTimer = null;
+
+function buildCarousel() {
+  const track = document.getElementById('carousel-track');
+  const dots  = document.getElementById('car-dots');
+  if (!track) return;
+  track.innerHTML = CAROUSEL.map(function(s) {
+    return '<div class="car-slide"><img src="' + s.src + '" alt="' + escHtml(s.title) + '">' +
+           '<div class="car-cap"><strong>' + escHtml(s.title) + '</strong><span>' + escHtml(s.meta) + '</span></div></div>';
+  }).join('');
+  dots.innerHTML = CAROUSEL.map(function(_, i) {
+    return '<button class="car-dot' + (i === 0 ? ' active' : '') + '" onclick="carShow(' + i + ')" aria-label="Photo ' + (i+1) + '"></button>';
+  }).join('');
+  carShow(0);
+  carAuto();
+  const car = document.getElementById('carousel');
+  car.addEventListener('mouseenter', function() { clearInterval(carTimer); });
+  car.addEventListener('mouseleave', carAuto);
+}
+
+function carShow(i) {
+  carIdx = (i + CAROUSEL.length) % CAROUSEL.length;
+  document.getElementById('carousel-track').style.transform = 'translateX(-' + (carIdx * 100) + '%)';
+  document.querySelectorAll('.car-dot').forEach(function(d, n) { d.classList.toggle('active', n === carIdx); });
+}
+
+function carGo(step) { carShow(carIdx + step); carAuto(); }
+function carAuto() { clearInterval(carTimer); carTimer = setInterval(function() { carShow(carIdx + 1); }, 6000); }
+
+// ─── albums ──────────────────────────────────────────────
+function allAlbums() {
+  const uploaded = JSON.parse(localStorage.getItem(GALLERY_KEY) || '[]');
+  if (!uploaded.length) return ALBUMS;
+  return [{ id: 'recent', title: 'Recent Additions', meta: 'Newly uploaded',
+            photos: uploaded.map(function(p) { return p.url; }) }].concat(ALBUMS);
+}
+
+function buildAlbums() {
+  const grid = document.getElementById('album-grid');
+  if (!grid) return;
+  grid.innerHTML = allAlbums().map(function(al, i) {
+    return '<button class="album-card" onclick="openAlbum(' + i + ')">' +
+             '<div class="album-cover">' +
+               '<img src="' + al.photos[0] + '" alt="' + escHtml(al.title) + '">' +
+               '<span class="album-count">' + al.photos.length + ' photo' + (al.photos.length === 1 ? '' : 's') + '</span>' +
+               '<div class="album-label"><strong>' + escHtml(al.title) + '</strong><span>' + escHtml(al.meta) + '</span></div>' +
+             '</div>' +
+           '</button>';
+  }).join('');
+}
+
+// ─── lightbox ────────────────────────────────────────────
+let lbAlbum = null, lbIdx = 0;
+
+function openAlbum(i) {
+  lbAlbum = allAlbums()[i];
+  lbIdx = 0;
+  document.getElementById('lb-album').textContent = lbAlbum.title;
+  document.getElementById('lb-strip').innerHTML = lbAlbum.photos.map(function(src, n) {
+    return '<button class="lb-thumb" onclick="lbShow(' + n + ')"><img src="' + src + '" alt=""></button>';
+  }).join('');
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  lbShow(0);
+}
+
+function lbShow(n) {
+  if (!lbAlbum) return;
+  lbIdx = (n + lbAlbum.photos.length) % lbAlbum.photos.length;
+  document.getElementById('lb-img').src = lbAlbum.photos[lbIdx];
+  document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' of ' + lbAlbum.photos.length + ' · ' + lbAlbum.meta;
+  document.querySelectorAll('.lb-thumb').forEach(function(t, k) { t.classList.toggle('active', k === lbIdx); });
+  const single = lbAlbum.photos.length < 2;
+  document.querySelectorAll('.lb-nav').forEach(function(b) { b.style.display = single ? 'none' : ''; });
+  document.getElementById('lb-strip').style.display = single ? 'none' : '';
+}
+
+function lbGo(step) { lbShow(lbIdx + step); }
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+  lbAlbum = null;
+}
+
+// clicking the dark area around the photo closes the lightbox
+document.querySelector('.lb-stage').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+
+// keyboard: arrows page through the open album, Esc closes it
+document.addEventListener('keydown', function(e) {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape')     closeLightbox();
+  if (e.key === 'ArrowLeft')  lbGo(-1);
+  if (e.key === 'ArrowRight') lbGo(1);
+});
+
+// uploaded photos land in a "Recent Additions" album
+function loadUploadedPhotos() { buildCarousel(); buildAlbums(); }
+
+function addToGallery(url, caption) {
+  const photos = JSON.parse(localStorage.getItem(GALLERY_KEY) || '[]');
+  photos.unshift({ url: url, caption: caption, addedAt: Date.now() });
+  localStorage.setItem(GALLERY_KEY, JSON.stringify(photos));
+  buildAlbums();
 }
 
 // ─── UPLOAD MODAL ────────────────────────────────────────
