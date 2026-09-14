@@ -90,40 +90,23 @@
   .mission-list li::before { content: '✦'; color: var(--crimson); flex-shrink: 0; margin-top: 2px; }
   /* MEMBERS */
   #members { background: var(--cream); }
-  .members-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .member-card { background: white; border-radius: 14px; padding: 1.5rem 1.25rem; text-align: center; border: 1px solid var(--border); transition: all 0.25s; }
-  .member-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); border-color: var(--crimson); }
-  .member-avatar { width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 0.75rem; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: white; overflow: hidden; }
-  .member-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
-  .member-card h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
-  .member-card span { font-size: 12px; color: var(--mid-gray); }
-  /* Org tree */
-  .org-tree { margin-top: 3rem; display: flex; flex-direction: column; align-items: center; }
-  .org-tier { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.25rem; }
-  .org-tree .member-card { width: 200px; flex: 0 0 auto; }
-  .org-link { width: 2px; height: 34px; background: linear-gradient(to bottom, var(--crimson), var(--gold)); }
-  /* tier whose members each branch off a shared horizontal bar */
-  .org-tier.branched { position: relative; padding-top: 64px; gap: 1.5rem; }
-  /* vertical line dropping from the parent down to the horizontal bar */
-  .org-tier.branched::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 2px; height: 32px; background: var(--gold); }
-  .org-tier.branched > .member-card { position: relative; }
-  /* horizontal bar segment above each card (trimmed so it never overshoots the outer sticks) */
-  .org-tier.branched > .member-card::before { content: ''; position: absolute; top: -32px; left: calc(-0.75rem - 1px); width: calc(100% + 1.5rem + 2px); height: 2px; background: var(--border); }
-  .org-tier.branched > .member-card:first-child::before { left: 50%; width: calc(50% + 0.75rem + 1px); border-top-left-radius: 6px; }
-  .org-tier.branched > .member-card:last-child::before { left: auto; right: 50%; width: calc(50% + 0.75rem + 1px); border-top-right-radius: 6px; }
-  /* vertical stick from the bar down to each card */
-  .org-tier.branched > .member-card::after { content: ''; position: absolute; top: -32px; left: 50%; transform: translateX(-50%); width: 2px; height: 32px; background: var(--border); }
-  @media (max-width: 940px) { .org-tier.branched { padding-top: 0; } .org-tier.branched::before, .org-tier.branched > .member-card::before, .org-tier.branched > .member-card::after { display: none; } }
-  /* Phones: board becomes a compact list (image rectangle + name/role), not big cards */
+  /* Board roster: flat, non-hierarchical grid — every member gets an identical card */
+  .board-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 2.75rem 2rem; margin-top: 2.75rem; }
+  .board-card { text-align: center; }
+  .board-photo { position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; background: var(--light-gray); margin-bottom: 1.1rem; }
+  /* favour the upper half of the frame so faces survive the square crop */
+  .board-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; transition: transform 0.45s ease; }
+  .board-card:hover .board-photo img { transform: scale(1.04); }
+  .board-photo .initials { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 700; color: white; }
+  .board-name { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 1.15rem; font-weight: 600; color: var(--charcoal); margin: 0 0 0.7rem; padding-bottom: 6px; position: relative; }
+  .board-name::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; border-radius: 3px; background: var(--gold); }
+  .board-role { display: block; font-size: 0.95rem; color: var(--mid-gray); line-height: 1.5; }
+  .board-affil { display: block; font-size: 0.875rem; color: var(--mid-gray); line-height: 1.55; margin-top: 0.4rem; }
   @media (max-width: 640px) {
-    .org-tree { margin-top: 1.75rem; width: 100%; gap: 0.6rem; align-items: stretch; }
-    .org-link { display: none; }
-    .org-tier, .org-tier.branched { width: 100%; gap: 0.6rem; padding-top: 0; }
-    .org-tree .member-card { width: 100%; display: grid; grid-template-columns: 54px 1fr; column-gap: 0.85rem; align-items: center; text-align: left; padding: 0.65rem 0.85rem; }
-    .org-tree .member-card .member-avatar { grid-row: 1 / 3; grid-column: 1; width: 54px; height: 54px; border-radius: 10px; margin: 0; font-size: 1.05rem; }
-    .org-tree .member-card .member-avatar img { border-radius: 10px; }
-    .org-tree .member-card h4 { grid-column: 2; align-self: end; margin: 0 0 1px; }
-    .org-tree .member-card span { grid-column: 2; align-self: start; }
+    .board-grid { grid-template-columns: 1fr 1fr; gap: 1.9rem 1.1rem; margin-top: 1.75rem; }
+    .board-name { font-size: 1rem; margin-bottom: 0.55rem; }
+    .board-role { font-size: 0.85rem; }
+    .board-photo { margin-bottom: 0.9rem; }
   }
   /* PRESIDENTS */
   #presidents { background: white; }
@@ -429,77 +412,69 @@
     <h2 class="section-title">Current Board Members</h2>
     <div class="section-divider"></div>
     <p style="color:var(--mid-gray);line-height:1.7;">Our dedicated board members guide NWGN-CA's programs, events, and mission. We welcome volunteers and new members to join our growing community.</p>
-    <div class="org-tree">
-      <!-- Tier 1: President -->
-      <div class="org-tier">
-        <div class="member-card">
-          <div class="member-avatar"><img src="recovered-images/board/sheela-thapa.png" alt="Sheela Thapa"></div>
-          <h4>Sheela Thapa</h4><span>President</span>
-        </div>
+    <div class="board-grid">
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/sheela-thapa.png" alt="Sheela Thapa"></div>
+        <h4 class="board-name">Sheela Thapa</h4>
+        <span class="board-role">President</span>
       </div>
-      <div class="org-link"></div>
-      <!-- Tier 2: Vice President -->
-      <div class="org-tier">
-        <div class="member-card">
-          <div class="member-avatar"><img src="recovered-images/board/tara-chalise.png" alt="Tara Poudel Chalise"></div>
-          <h4>Tara Poudel Chalise</h4><span>Vice President</span>
-        </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/tara-chalise.png" alt="Tara Poudel Chalise"></div>
+        <h4 class="board-name">Tara Poudel Chalise</h4>
+        <span class="board-role">Vice President</span>
       </div>
-      <div class="org-link"></div>
-      <!-- Tier 3: General Secretary & Treasurer -->
-      <div class="org-tier branched">
-        <div class="member-card">
-          <div class="member-avatar"><img src="recovered-images/board/sobe-dhital.png" alt="Sobe Dhital"></div>
-          <h4>Sobe Dhital</h4><span>General Secretary</span>
-        </div>
-        <div class="member-card">
-          <div class="member-avatar"><img src="recovered-images/board/Rishta-Karki.png" alt="Rishta Karki"></div>
-          <h4>Rishta Karki</h4><span>Treasurer</span>
-        </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/sobe-dhital.png" alt="Sobe Dhital"></div>
+        <h4 class="board-name">Sobe Dhital</h4>
+        <span class="board-role">General Secretary</span>
       </div>
-      <div class="org-link"></div>
-      <!-- Tier 4: Executive Members (row 1) -->
-      <div class="org-tier branched">
-        <div class="member-card">
-          <div class="member-avatar"><img src="recovered-images/board/Soakshya-GC.jpg" alt="Soakshya GC"></div>
-          <h4>Soakshya GC</h4><span>Executive Member</span>
-        </div>
-        <div class="member-card">
-          <div class="member-avatar"><img src="recovered-images/board/Ashmita-Sapkota.jpg" alt="Ashmita Sapkota"></div>
-          <h4>Ashmita Sapkota</h4><span>Executive Member</span>
-        </div>
-        <div class="member-card">
-          <div class="member-avatar"><img src="recovered-images/board/Bandana-Parajuli--scaled.jpg" alt="Bandana Parajuli"></div>
-          <h4>Bandana Parajuli</h4><span>Executive Member</span>
-        </div>
-        <div class="member-card">
-          <div class="member-avatar"><img src="recovered-images/board/Ira-Joshi-scaled.jpg" alt="Ira Joshi"></div>
-          <h4>Ira Joshi</h4><span>Executive Member</span>
-        </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/Rishta-Karki.png" alt="Rishta Karki"></div>
+        <h4 class="board-name">Rishta Karki</h4>
+        <span class="board-role">Treasurer</span>
       </div>
-      <div class="org-link"></div>
-      <!-- Tier 4: Executive Members (row 2) -->
-      <div class="org-tier branched">
-        <div class="member-card">
-          <div class="member-avatar"><img src="recovered-images/board/Ram-Devi-Palikhe-.jpg" alt="Ram Devi Palikhe Shrestha"></div>
-          <h4>Ram Devi Palikhe Shrestha</h4><span>Executive Member</span>
-        </div>
-        <div class="member-card">
-          <div class="member-avatar"><img src="recovered-images/board/Rita-Raut-.jpg" alt="Rita Raut"></div>
-          <h4>Rita Raut</h4><span>Executive Member</span>
-        </div>
-        <div class="member-card">
-          <div class="member-avatar" style="background:linear-gradient(135deg,#d35400,#e67e22);">PK</div>
-          <h4>Preeti Karki</h4><span>Executive Member</span>
-        </div>
-        <div class="member-card">
-          <div class="member-avatar"><img src="recovered-images/board/Kranti-Aryal.jpg" alt="Kranti Aryal Bhandari"></div>
-          <h4>Kranti Aryal Bhandari</h4><span>Executive Member</span>
-        </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/Soakshya-GC.jpg" alt="Soakshya GC"></div>
+        <h4 class="board-name">Soakshya GC</h4>
+        <span class="board-role">Executive Member</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/Ashmita-Sapkota.jpg" alt="Ashmita Sapkota"></div>
+        <h4 class="board-name">Ashmita Sapkota</h4>
+        <span class="board-role">Executive Member</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/Bandana-Parajuli--scaled.jpg" alt="Bandana Parajuli"></div>
+        <h4 class="board-name">Bandana Parajuli</h4>
+        <span class="board-role">Executive Member</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/Ira-Joshi-scaled.jpg" alt="Ira Joshi"></div>
+        <h4 class="board-name">Ira Joshi</h4>
+        <span class="board-role">Executive Member</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/Ram-Devi-Palikhe-.jpg" alt="Ram Devi Palikhe Shrestha"></div>
+        <h4 class="board-name">Ram Devi Palikhe Shrestha</h4>
+        <span class="board-role">Executive Member</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/Rita-Raut-.jpg" alt="Rita Raut"></div>
+        <h4 class="board-name">Rita Raut</h4>
+        <span class="board-role">Executive Member</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo" style="background:linear-gradient(135deg,#d35400,#e67e22);"><span class="initials">PK</span></div>
+        <h4 class="board-name">Preeti Karki</h4>
+        <span class="board-role">Executive Member</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/Kranti-Aryal.jpg" alt="Kranti Aryal Bhandari"></div>
+        <h4 class="board-name">Kranti Aryal Bhandari</h4>
+        <span class="board-role">Executive Member</span>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 <!-- PAST PRESIDENTS -->
 <section id="presidents">
   <div class="section-inner">
