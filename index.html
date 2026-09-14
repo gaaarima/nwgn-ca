@@ -738,13 +738,13 @@
         <h3>Send Us a Message</h3>
         <form onsubmit="handleContact(event)">
           <div class="form-row">
-            <div class="form-group"><label>First Name</label><input type="text" placeholder="Sita" required></div>
-            <div class="form-group"><label>Last Name</label><input type="text" placeholder="Sharma" required></div>
+            <div class="form-group"><label>First Name</label><input type="text" id="contact-first" placeholder="Sita" required></div>
+            <div class="form-group"><label>Last Name</label><input type="text" id="contact-last" placeholder="Sharma" required></div>
           </div>
-          <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@example.com" required></div>
+          <div class="form-group"><label>Email Address</label><input type="email" id="contact-email" placeholder="you@example.com" required></div>
           <div class="form-group">
             <label>Subject</label>
-            <select>
+            <select id="contact-subject">
               <option>General Inquiry</option>
               <option>Membership Question</option>
               <option>Volunteer Opportunity</option>
@@ -753,8 +753,8 @@
               <option>Other</option>
             </select>
           </div>
-          <div class="form-group"><label>Message</label><textarea placeholder="How can we help you?"></textarea></div>
-          <button type="submit" class="btn-primary" style="width:100%;text-align:center;margin-top:0.5rem;">Send Message &rarr;</button>
+          <div class="form-group"><label>Message</label><textarea id="contact-message" placeholder="How can we help you?" required></textarea></div>
+          <button type="submit" class="btn-primary" id="contactSubmitBtn" style="width:100%;text-align:center;margin-top:0.5rem;">Send Message &rarr;</button>
         </form>
       </div>
     </div>
@@ -1467,9 +1467,33 @@ async function handleTicketClaim(e) {
 }
 
 // ─── CONTACT FORM ────────────────────────────────────────
-function handleContact(e) {
+async function handleContact(e) {
   e.preventDefault();
+  const btn = document.getElementById('contactSubmitBtn');
+  btn.disabled = true; btn.textContent = 'Sending\u2026';
+
+  const subject = document.getElementById('contact-subject').value;
+  const enquiry = {
+    'First Name': document.getElementById('contact-first').value,
+    'Last Name':  document.getElementById('contact-last').value,
+    'Email':      document.getElementById('contact-email').value,
+    'Subject':    subject,
+    'Message':    document.getElementById('contact-message').value,
+    '_subject':   'NWGN-CA Contact Form \u2013 ' + subject
+  };
+
+  if (FORMSPREE_ID && !FORMSPREE_ID.includes('YOUR_')) {
+    try {
+      await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(enquiry)
+      });
+    } catch (err) { console.warn('Formspree error:', err); }
+  }
+
   e.target.reset();
+  btn.disabled = false; btn.innerHTML = 'Send Message &rarr;';
   document.getElementById('contactModal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
