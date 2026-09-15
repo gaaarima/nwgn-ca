@@ -86,6 +86,8 @@
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
   /* SECTION COMMON */
   section { padding: 5rem 2rem; }
+  /* fixed nav overlaps anchor targets; offset the native jump */
+  section[id], footer[id] { scroll-margin-top: 90px; }
   .section-inner { max-width: 1200px; margin: auto; }
   .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--crimson); margin-bottom: 0.75rem; }
   h2.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; color: var(--charcoal); margin-bottom: 1rem; }
@@ -352,6 +354,26 @@
   .success-msg p { color: var(--mid-gray); font-size: 0.9rem; margin-bottom: 0.5rem; }
   .success-logo { width: 92px; height: 92px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.25rem; display: block; box-shadow: 0 8px 24px rgba(0,0,0,0.14); border: 3px solid var(--cream); }
   .admin-note { color: var(--mid-gray); font-size: 0.85rem; margin-top: 1.25rem; padding: 1rem 1.1rem; background: white; border-radius: 9px; border: 1px solid var(--border); }
+  /* --- mobile accordion: each topic collapses to a tappable bar --- */
+  .sec-head { display: none; }
+  @media (max-width: 700px) {
+    #about, #members, #presidents, #events, #gallery, #membership, #contact { padding-top: 0; padding-bottom: 0; }
+    .sec-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%;
+      padding: 1.25rem 0; background: none; border: none; border-bottom: 1px solid var(--border);
+      font: inherit; text-align: left; color: var(--charcoal); cursor: pointer; }
+    .sec-head span { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; line-height: 1.25; }
+    .sec-head svg { flex-shrink: 0; color: var(--crimson); transition: transform 0.3s ease; }
+    .sec-open .sec-head svg { transform: rotate(180deg); }
+    .sec-open .sec-head { border-bottom-color: transparent; }
+    .sec-body { display: none; padding-bottom: 2rem; }
+    .sec-open .sec-body { display: block; animation: secIn 0.28s ease both; }
+    @keyframes secIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+    /* the bar already names the topic, so the in-body heading would just repeat it */
+    .sec-body > .section-title, .sec-body > .section-divider, .sec-body > .section-label,
+    .sec-body .about-text > .section-title, .sec-body .about-text > .section-divider { display: none; }
+    /* last section before the donate banner shouldn't leave a dangling border */
+    #contact .sec-head { border-bottom: none; }
+  }
   /* RESPONSIVE */
   @media (max-width: 900px) {
     .contact-grid { grid-template-columns: 1fr; }
@@ -1828,9 +1850,73 @@ function closeContact() {
   }
 })();
 
+// ═══════════════════════════════════════════════════════════
+// MOBILE ACCORDION — collapses each topic into a tappable bar
+// so the single-page site is scannable on a phone. The wrapper
+// is built on every viewport; CSS only reveals it under 700px.
+// ═══════════════════════════════════════════════════════════
+const ACCORDION_SECTIONS = ['about','members','presidents','events','gallery','membership','contact'];
+const ACCORDION_BREAKPOINT = 700;
+
+function setupAccordions() {
+  ACCORDION_SECTIONS.forEach(function(id) {
+    const sec = document.getElementById(id);
+    if (!sec) return;
+    const inner = sec.querySelector('.section-inner');
+    if (!inner || inner.querySelector('.sec-head')) return;
+
+    const titleEl = inner.querySelector('.section-title');
+    const label = titleEl ? titleEl.textContent.trim() : id;
+
+    const body = document.createElement('div');
+    body.className = 'sec-body';
+    body.id = id + '-body';
+    while (inner.firstChild) body.appendChild(inner.firstChild);
+
+    const head = document.createElement('button');
+    head.type = 'button';
+    head.className = 'sec-head';
+    head.setAttribute('aria-expanded', 'false');
+    head.setAttribute('aria-controls', body.id);
+    head.innerHTML = '<span>' + escHtml(label) + '</span>' +
+      '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+      'stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
+    head.addEventListener('click', function() { toggleSection(sec); });
+
+    inner.appendChild(head);
+    inner.appendChild(body);
+  });
+}
+
+function toggleSection(sec, force) {
+  const open = (force === undefined) ? !sec.classList.contains('sec-open') : force;
+  sec.classList.toggle('sec-open', open);
+  const head = sec.querySelector('.sec-head');
+  if (head) head.setAttribute('aria-expanded', open ? 'true' : 'false');
+  return open;
+}
+
+// a nav link to a collapsed topic must open it, or the jump lands on a closed bar
+function revealSection(hash) {
+  if (window.innerWidth > ACCORDION_BREAKPOINT) return;
+  const id = String(hash || '').replace('#', '');
+  if (ACCORDION_SECTIONS.indexOf(id) === -1) return;
+  const sec = document.getElementById(id);
+  if (!sec) return;
+  toggleSection(sec, true);
+  // the browser's own anchor jump handles scrolling; scroll-margin-top clears the nav
+}
+
 // ─── INIT ────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function() {
+  setupAccordions();
   loadUploadedPhotos();
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function() { revealSection(a.getAttribute('href')); });
+  });
+  if (location.hash) revealSection(location.hash);
+  // back/forward between anchors should expand the topic too
+  window.addEventListener('hashchange', function() { revealSection(location.hash); });
 });
 
 // NAV transparent → opaque on scroll
