@@ -7,35 +7,41 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>NWGN-CA | Nepalese Women Global Network / California Chapter</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --crimson: #d4607a;
-    --deep-red: #b84060;
-    --gold: #2e7d52;
-    --amber: #4caf7d;
-    --cream: #fff5f7;
-    --warm-white: #fff5f7;
-    --charcoal: #2a2a2a;
-    --mid-gray: #666;
-    --light-gray: #fce8ed;
-    --border: #f0c8d4;
-    --section-bg: #fff0f3;
+    --crimson: #8B2E52;
+    --deep-red: #6D1F3E;
+    --gold: #1E5C3A;
+    --amber: #2E8055;
+    --cream: #FBF8F4;
+    --warm-white: #FBF8F4;
+    --charcoal: #1C1C1C;
+    --mid-gray: #5A5A5A;
+    --light-gray: #F3EDE5;
+    --border: #E5D9CE;
+    --champagne: #C8A96A;
+    --hero-dark: #0B1A12;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--charcoal); overflow-x: hidden; }
   /* NAV */
-  nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--warm-white); border-bottom: 1px solid var(--border); padding: 0 2rem; }
+  nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(11,26,18,0.55); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 0 2rem; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transition: background 0.4s, border-color 0.4s; }
+  nav.scrolled { background: var(--warm-white); border-bottom: 1px solid var(--border); }
+  nav.scrolled .nav-links a, nav.scrolled .nav-logo span, nav.scrolled .nav-logo small { color: var(--charcoal) !important; }
+  nav.scrolled .nav-links a:hover { color: var(--crimson) !important; }
   .nav-inner { max-width: 1280px; margin: auto; display: flex; align-items: center; justify-content: space-between; height: 78px; }
   .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
   .logo-emblem { width: 56px; height: 56px; object-fit: contain; flex-shrink: 0; }
-  .logo-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 18px; color: var(--deep-red); line-height: 1.1; letter-spacing: 0.02em; }
-  .logo-text span { font-size: 11px; color: var(--mid-gray); letter-spacing: 0.06em; text-transform: uppercase; }
+  .logo-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 18px; color: white; line-height: 1.1; letter-spacing: 0.02em; transition: color 0.4s; }
+  .logo-text span { font-size: 11px; color: rgba(255,255,255,0.65); letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.4s; }
+  nav.scrolled .logo-text strong { color: var(--deep-red); }
+  nav.scrolled .logo-text span { color: var(--mid-gray); }
   .nav-links { display: flex; align-items: center; gap: 0; list-style: none; height: 78px; }
   .nav-links li { display: flex; align-items: center; height: 100%; }
-  .nav-links a { text-decoration: none; color: var(--charcoal); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0 16px; transition: color 0.2s; display: flex; align-items: center; height: 100%; }
-  .nav-links a:hover { color: var(--crimson); }
+  .nav-links a { text-decoration: none; color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0 16px; transition: color 0.2s; display: flex; align-items: center; height: 100%; }
+  .nav-links a:hover { color: var(--champagne); }
   .nav-donate { background: var(--gold) !important; color: white !important; font-weight: 800 !important; padding: 0 26px !important; margin-left: 12px; }
   .nav-donate:hover { background: var(--amber) !important; color: white !important; }
   .nav-action-item { margin-left: 8px; padding-left: 8px; }
@@ -44,34 +50,38 @@
   .nav-cta:hover { color: var(--crimson) !important; }
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background:none; border:none; }
   .hamburger span { width: 24px; height: 2px; background: var(--charcoal); border-radius: 2px; transition: 0.3s; display:block; }
-  /* HERO */
-  #home { min-height: 100vh; padding-top: 68px; background: var(--warm-white); position: relative; overflow: hidden; display: flex; align-items: center; }
-  .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(circle at 10% 90%, rgba(212,96,122,0.06) 0%, transparent 40%), radial-gradient(circle at 90% 10%, rgba(46,125,82,0.07) 0%, transparent 40%); pointer-events: none; }
+  /* HERO — full-bleed magazine cover */
+  #home { min-height: 100vh; padding-top: 0; position: relative; overflow: hidden; display: flex; align-items: stretch; }
+  .hero-bg { display: none; }
   .hero-circle { display: none; }
-  .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; width: 100%; }
-  .hero-photo { border-radius: 20px; overflow: hidden; height: 500px; box-shadow: 0 24px 64px rgba(0,0,0,0.12); }
-  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
-  @media (max-width: 900px) {
-    .hero-inner { grid-template-columns: 1fr; }
-    .hero-photo { height: 260px; order: -1; }
+  .hero-photo-bg { position: absolute; inset: 0; z-index: 0; }
+  .hero-photo-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
+  .hero-overlay { position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(105deg,
+      rgba(11,26,18,0.93) 0%,
+      rgba(11,26,18,0.82) 38%,
+      rgba(11,26,18,0.40) 62%,
+      rgba(11,26,18,0.05) 100%
+    );
   }
-  @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
-  .hero-content { max-width: 1200px; margin: auto; padding: 4rem 2rem; position: relative; z-index: 1; }
-  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(212,96,122,0.1); color: var(--crimson); border: 1px solid rgba(212,96,122,0.2); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5rem; animation: fadeUp 0.8s ease both; }
-  h1.hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.05; color: var(--charcoal); margin-bottom: 1.5rem; animation: fadeUp 0.8s 0.1s ease both; }
-  h1.hero-title em { color: var(--crimson); font-style: italic; }
-  .hero-sub { font-size: 1.1rem; color: var(--mid-gray); max-width: 540px; line-height: 1.7; margin-bottom: 2.5rem; animation: fadeUp 0.8s 0.2s ease both; }
+  .hero-inner { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+  .hero-photo { display: none; }
+  .hero-content { max-width: 1280px; margin: auto; padding: 9rem 3rem 5rem; position: relative; z-index: 2; width: 100%; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(200,169,106,0.18); color: var(--champagne); border: 1px solid rgba(200,169,106,0.4); padding: 7px 16px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; animation: fadeUp 0.8s ease both; }
+  h1.hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.4rem, 7vw, 6.2rem); line-height: 1.0; color: #fff; font-weight: 600; margin-bottom: 1.75rem; animation: fadeUp 0.8s 0.1s ease both; letter-spacing: -0.01em; }
+  h1.hero-title em { color: var(--champagne); font-style: italic; font-weight: 400; }
+  .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.72); max-width: 480px; line-height: 1.75; margin-bottom: 2.5rem; animation: fadeUp 0.8s 0.2s ease both; }
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.8s 0.3s ease both; }
   .btn-primary { padding: 13px 26px; border-radius: 10px; background: var(--crimson); color: white; font-weight: 600; font-size: 14px; text-decoration: none; border: 2px solid var(--crimson); transition: all 0.25s; cursor: pointer; display: inline-block; font-family:'DM Sans',sans-serif; }
   .btn-primary:hover { background: var(--deep-red); border-color: var(--deep-red); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,96,122,0.3); }
-  .btn-secondary { padding: 13px 26px; border-radius: 10px; background: transparent; color: var(--charcoal); font-weight: 600; font-size: 14px; text-decoration: none; border: 2px solid var(--border); transition: all 0.25s; cursor: pointer; display: inline-block; font-family:'DM Sans',sans-serif; }
-  .btn-secondary:hover { border-color: var(--charcoal); transform: translateY(-2px); }
+  .btn-secondary { padding: 13px 26px; border-radius: 10px; background: rgba(255,255,255,0.1); color: white; font-weight: 600; font-size: 14px; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.4); transition: all 0.25s; cursor: pointer; display: inline-block; font-family:'DM Sans',sans-serif; backdrop-filter: blur(4px); }
+  .btn-secondary:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.7); transform: translateY(-2px); }
   .btn-gold { padding: 13px 26px; border-radius: 10px; background: var(--gold); color: white; font-weight: 700; font-size: 14px; text-decoration: none; border: 2px solid var(--gold); transition: all 0.25s; cursor: pointer; display: inline-block; font-family:'DM Sans',sans-serif; }
   .btn-gold:hover { background: var(--amber); border-color: var(--amber); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(46,125,82,0.4); }
-  .hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; flex-wrap: wrap; animation: fadeUp 0.8s 0.4s ease both; }
-  .stat { border-left: 3px solid var(--crimson); padding-left: 1rem; }
-  .stat strong { display: block; font-family: 'Playfair Display', serif; font-size: 1.9rem; color: var(--crimson); }
-  .stat span { font-size: 13px; color: var(--mid-gray); }
+  .hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; flex-wrap: wrap; animation: fadeUp 0.8s 0.4s ease both; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.14); }
+  .stat { border-left: 2px solid var(--champagne); padding-left: 1rem; }
+  .stat strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 2.1rem; color: var(--champagne); font-weight: 600; line-height: 1; }
+  .stat span { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: rgba(255,255,255,0.52); font-weight: 600; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
   /* SECTION COMMON */
   section { padding: 5rem 2rem; }
@@ -406,40 +416,29 @@
 </nav>
 <!-- HERO -->
 <section id="home">
-  <div class="hero-bg"></div>
+  <div class="hero-photo-bg">
+    <img src="hero-banner.jpg" alt="NWGN CA Chapter 2025 group photo">
+  </div>
+  <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-inner">
-      <div>
-        <div class="hero-badge">&#10031; Established 2012 &middot; San Francisco Bay Area &middot; Non-Profit 501(c)(3)</div>
-        <h1 class="hero-title">
-          Empowering<br><em>Nepalese Women</em><br>in California
-        </h1>
-        <p class="hero-sub">
-          A women-led non-profit dedicated to supporting Nepalese women through financial assistance, emotional support, education, advocacy, and community connection across the Bay Area.
-        </p>
-        <div class="hero-actions">
-          <a href="#about" class="btn-primary">Our Mission</a>
-          <a href="#membership" class="btn-gold">&#10022; Become a Member</a>
-          <a href="#events" class="btn-secondary">Upcoming Events &rarr;</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat"><strong>2012</strong><span>Founded</span></div>
-          <div class="stat"><strong>12+</strong><span>Years of Service</span></div>
-          <div class="stat"><strong>Bay Area</strong><span>California</span></div>
-          <div class="stat"><strong>100+</strong><span>Members</span></div>
-        </div>
-        <div class="hero-community" style="margin-top:2rem;padding:1.25rem 1.5rem;background:rgba(212,96,122,0.04);border-left:3px solid var(--crimson);border-radius:0 12px 12px 0;animation:fadeUp 0.8s 0.5s ease both;">
-          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--crimson);margin-bottom:0.75rem;">Support to Community</div>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
-            <li style="display:flex;gap:8px;font-size:0.875rem;color:var(--mid-gray);line-height:1.5;"><span style="color:var(--crimson);flex-shrink:0;">✦</span>CPR training provided free of cost to 100+ people</li>
-            <li style="display:flex;gap:8px;font-size:0.875rem;color:var(--mid-gray);line-height:1.5;"><span style="color:var(--crimson);flex-shrink:0;">✦</span>Supported school supplies &amp; clothes for poor school going children</li>
-            <li style="display:flex;gap:8px;font-size:0.875rem;color:var(--mid-gray);line-height:1.5;"><span style="color:var(--crimson);flex-shrink:0;">✦</span>Donated to Nepal&rsquo;s PMO Disaster Relief fund post Aug 26, 2026 flood</li>
-            <li style="display:flex;gap:8px;font-size:0.875rem;color:var(--mid-gray);line-height:1.5;"><span style="color:var(--crimson);flex-shrink:0;">✦</span>Created women networking &amp; support channels</li>
-          </ul>
-        </div>
+    <div style="max-width:600px;">
+      <div class="hero-badge">&#10031; Established 2012 &middot; San Francisco Bay Area &middot; Non-Profit 501(c)(3)</div>
+      <h1 class="hero-title">
+        Empowering<br><em>Nepalese Women</em><br>in California
+      </h1>
+      <p class="hero-sub">
+        A women-led non-profit dedicated to supporting Nepalese women through financial assistance, emotional support, education, advocacy, and community connection across the Bay Area.
+      </p>
+      <div class="hero-actions">
+        <a href="#about" class="btn-primary">Our Mission</a>
+        <a href="#membership" class="btn-gold">&#10022; Become a Member</a>
+        <a href="#events" class="btn-secondary">Upcoming Events &rarr;</a>
       </div>
-      <div class="hero-photo">
-        <img src="hero-banner.jpg" alt="NWGN CA Chapter 2025 group photo">
+      <div class="hero-stats">
+        <div class="stat"><strong>2012</strong><span>Founded</span></div>
+        <div class="stat"><strong>12+</strong><span>Years of Service</span></div>
+        <div class="stat"><strong>Bay Area</strong><span>California</span></div>
+        <div class="stat"><strong>100+</strong><span>Members</span></div>
       </div>
     </div>
   </div>
@@ -1731,6 +1730,14 @@ function closeContact() {
 document.addEventListener('DOMContentLoaded', function() {
   loadUploadedPhotos();
 });
+
+// NAV transparent → opaque on scroll
+(function() {
+  var nav = document.querySelector('nav');
+  function updateNav() { nav.classList.toggle('scrolled', window.scrollY > 80); }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+})();
 
 // CLOSE MODAL ON BACKDROP CLICK
 document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
