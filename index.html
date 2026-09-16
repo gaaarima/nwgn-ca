@@ -91,14 +91,38 @@
   h1.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; color: var(--charcoal); margin-bottom: 1rem; }
   .section-divider { width: 60px; height: 3px; background: linear-gradient(to right, var(--crimson), var(--gold)); border-radius: 2px; margin-bottom: 1.5rem; }
   /* ABOUT */
-  #about { background: white; }
+  #about { background: var(--warm-white); }
   /* About reads top-to-bottom: community banner, purpose card, then the narrative */
-  .about-banner { width: 100%; aspect-ratio: 2.6 / 1; border-radius: 20px; overflow: hidden; background: var(--light-gray); margin-bottom: 3rem; }
-  .about-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; display: block; }
-  .about-card { background: linear-gradient(135deg, var(--crimson), var(--deep-red)); border-radius: 20px; color: white; padding: 4.5rem 3rem; text-align: center; position: relative; overflow: hidden; margin-bottom: 3.5rem; }
-  .about-card::before { content: ''; position: absolute; bottom: -50px; right: -50px; width: 200px; height: 200px; background: rgba(255,255,255,0.06); border-radius: 50%; }
-  .about-card h3 { font-family: 'Playfair Display', serif; font-size: clamp(2.3rem, 4.5vw, 3.2rem); margin-bottom: 1.5rem; }
-  .about-card p { opacity: 0.92; line-height: 1.7; font-size: clamp(1.2rem, 2vw, 1.45rem); max-width: 820px; margin: 0 auto; position: relative; }
+  /* About redesign */
+  .about-split { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 5rem; }
+  .about-img-wrap { position: relative; }
+  .about-img-wrap img { width: 100%; height: 420px; object-fit: cover; object-position: center 40%; border-radius: 24px; display: block; box-shadow: 0 32px 72px rgba(0,0,0,0.13); }
+  .about-img-badge { position: absolute; bottom: -20px; left: 28px; background: var(--crimson); color: white; padding: 14px 22px; border-radius: 14px; box-shadow: 0 8px 24px rgba(139,46,82,0.35); }
+  .about-img-badge strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; line-height: 1; }
+  .about-img-badge span { font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; opacity: 0.85; }
+  .about-story h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 4vw, 3.4rem); color: var(--charcoal); line-height: 1.1; margin-bottom: 1.25rem; font-weight: 600; }
+  .about-story h2 em { color: var(--crimson); font-style: italic; }
+  .about-story p { color: var(--mid-gray); line-height: 1.8; font-size: 1rem; margin-bottom: 1rem; }
+  .about-pull { background: linear-gradient(135deg, var(--crimson), var(--deep-red)); border-radius: 24px; color: white; padding: 4rem 3.5rem; text-align: center; position: relative; overflow: hidden; margin-bottom: 4rem; }
+  .about-pull::before { content: '\201C'; position: absolute; top: -10px; left: 28px; font-family: 'Cormorant Garamond', serif; font-size: 10rem; color: rgba(255,255,255,0.08); line-height: 1; }
+  .about-pull blockquote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.7rem, 3vw, 2.4rem); font-style: italic; font-weight: 400; line-height: 1.4; max-width: 800px; margin: 0 auto; position: relative; }
+  .about-pull cite { display: block; margin-top: 1.25rem; font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; font-style: normal; }
+  .mission-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .mission-card { background: var(--light-gray); border-radius: 18px; padding: 1.75rem 1.5rem; border: 1px solid var(--border); transition: all 0.25s; }
+  .mission-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.07); border-color: var(--crimson); }
+  .mission-icon { font-size: 1.75rem; margin-bottom: 0.9rem; }
+  .mission-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--charcoal); margin-bottom: 0.4rem; }
+  .mission-card p { font-size: 0.875rem; color: var(--mid-gray); line-height: 1.6; margin: 0; }
+  .about-banner { display: none; }
+  .about-card { display: none; }
+  .about-text { display: none; }
+  @media (max-width: 900px) {
+    .about-split { grid-template-columns: 1fr; gap: 2rem; }
+    .about-img-wrap img { height: 260px; }
+    .mission-grid { grid-template-columns: repeat(2,1fr); }
+    .about-pull { padding: 2.5rem 1.75rem; border-radius: 16px; }
+  }
+  @media (max-width: 540px) { .mission-grid { grid-template-columns: 1fr; } }
   /* full-width section, so cap the measure rather than letting lines run to 1200px */
   .about-text p { color: var(--mid-gray); line-height: 1.8; margin-bottom: 1.25rem; max-width: 900px; }
   .mission-list { list-style: none; margin-top: 1.5rem; columns: 2; column-gap: 3rem; }
@@ -445,28 +469,71 @@
 </section>
 <!-- ABOUT -->
 <section id="about">
-  <div class="section-inner">
-    <div class="about-banner">
-      <img src="about-banner.jpg" alt="NWGN-CA members and community gathered at the 2023 chapter handover celebration">
+  <div class="section-inner" style="padding:5rem 2rem;">
+    <!-- Two-column story -->
+    <div class="about-split">
+      <div class="about-img-wrap">
+        <img src="about-banner.jpg" alt="NWGN-CA members gathered at the 2023 chapter handover">
+        <div class="about-img-badge">
+          <strong>2012</strong>
+          <span>Est. Bay Area, CA</span>
+        </div>
+      </div>
+      <div class="about-story">
+        <div class="section-label">Who We Are</div>
+        <h2>A Community Built on<br><em>Sisterhood &amp; Strength</em></h2>
+        <div class="section-divider"></div>
+        <p>The NWGN California Chapter is a women-led non-profit established in 2012, dedicated to supporting the growth and development of Nepalese women across the San Francisco Bay Area and beyond.</p>
+        <p>We provide financial assistance, emotional support, and social resources — helping Nepalese women achieve self-reliance, build lasting connections, and make their mark in society.</p>
+        <p>We collaborate with national and international organizations that share our vision, and actively advocate for the rights and interests of Nepali women everywhere.</p>
+      </div>
     </div>
-    <div class="about-card">
-      <h3>Our Purpose</h3>
-      <p>We believe the dreams and goals of Nepali women are worth pursuing. Through networking, education, and advocacy, we empower Nepali women to achieve success and self-reliance in California and beyond.</p>
+
+    <!-- Pull quote -->
+    <div class="about-pull">
+      <blockquote>
+        We believe the dreams and goals of Nepali women are worth pursuing — and we exist to make sure nothing stands in the way.
+        <cite>— NWGN California Chapter</cite>
+      </blockquote>
     </div>
-    <div class="about-text">
-      <h1 class="section-title">About Us</h1>
-      <div class="section-divider"></div>
-      <p>The NWGN California Chapter is a non-profit, women-led organization established in 2012, dedicated to supporting the growth and development of Nepalese women in the San Francisco Bay Area and beyond.</p>
-      <p>We provide a range of support &mdash; including financial assistance, emotional support, and social resources &mdash; to help Nepalese women grow, achieve self-reliance, and make their mark in society.</p>
-      <p>We collaborate with national and international organizations that share our vision, and actively represent and advocate for the interests of Nepali women and women in general.</p>
-      <ul class="mission-list">
-        <li>Foster a supportive global network of friendship and understanding between Nepali women</li>
-        <li>Collaborate with national and international organizations with similar missions</li>
-        <li>Represent and advocate for the interests of Nepali women and women in general</li>
-        <li>Provide leadership training and opportunities within the organization</li>
-        <li>Promote citizenship and civic involvement in the community</li>
-        <li>Support women in crisis through peer support, counseling, and resource pooling</li>
-      </ul>
+
+    <!-- Mission pillars -->
+    <div style="text-align:center;margin-bottom:2.5rem;">
+      <div class="section-label">What We Stand For</div>
+      <h2 class="section-title" style="margin-bottom:0.5rem;">Our Mission Pillars</h2>
+      <div class="section-divider" style="margin:0.75rem auto 0;"></div>
+    </div>
+    <div class="mission-grid">
+      <div class="mission-card">
+        <div class="mission-icon">🌐</div>
+        <h4>Global Sisterhood</h4>
+        <p>Foster a supportive global network of friendship and understanding between Nepali women near and far.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-icon">🤝</div>
+        <h4>Collaboration</h4>
+        <p>Partner with national and international organizations that share our vision for women's empowerment.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-icon">📣</div>
+        <h4>Advocacy</h4>
+        <p>Represent and advocate for the rights and interests of Nepali women and women in general.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-icon">🏅</div>
+        <h4>Leadership</h4>
+        <p>Provide leadership training and opportunities, growing the next generation of Nepali women leaders.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-icon">🗳️</div>
+        <h4>Civic Engagement</h4>
+        <p>Promote citizenship and active civic involvement within the Nepalese-American community.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-icon">💛</div>
+        <h4>Crisis Support</h4>
+        <p>Support women in crisis through peer support, counseling referrals, and community resource pooling.</p>
+      </div>
     </div>
   </div>
 </section>
