@@ -573,16 +573,25 @@
       <button class="tab-btn" onclick="switchTab('past',this)">&#x1F4DA; Past Events</button>
     </div>
     <div class="tab-panel active" id="tab-upcoming">
-      <div class="upcoming-notice" id="upcoming-notice">
+      <div class="event-card">
+        <div class="event-banner" style="background:linear-gradient(135deg,#fdebd0,#EDC150);">&#x1F91D;</div>
+        <div class="event-body">
+          <div class="event-date">2027 &middot; Bay Area</div>
+          <h3>Handover to New Team 2027</h3>
+          <p>A milestone celebration marking the official handover of leadership to the incoming NWGN-CA board team for 2027. Join us to honor outgoing leaders and welcome the new chapter.</p>
+          <span class="event-tag upcoming">Upcoming</span>
+        </div>
+      </div>
+      <div class="upcoming-notice" id="upcoming-notice" style="grid-column:1/-1;">
         <div class="upcoming-notice-icon">&#x1F4C5;</div>
-        <h3>New Events Coming Soon</h3>
-        <p>We're planning our next gatherings &mdash; IWD celebrations, networking mixers, and leadership workshops. Add your email below and we'll let you know first.</p>
+        <h3>More Events Coming Soon</h3>
+        <p>Add your email below and we'll let you know as soon as new events are announced.</p>
         <form class="upcoming-form" onsubmit="handleEventSubscribe(event)">
           <input type="email" id="event-email" placeholder="your@email.com" required>
           <button type="submit" class="btn-primary">Notify Me &rarr;</button>
         </form>
       </div>
-      <div class="upcoming-success" id="upcoming-success" style="display:none;">
+      <div class="upcoming-success" id="upcoming-success" style="display:none;grid-column:1/-1;">
         <div class="check-circle">&#x2713;</div>
         <h3>You're on the list!</h3>
         <p>We'll email you as soon as our next event is announced.</p>
