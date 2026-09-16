@@ -10,22 +10,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --crimson: #c0392b;
-    --deep-red: #8B0000;
-    --gold: #EDC150;
-    --amber: #F2CE76;
-    --cream: #ffffff;
-    --warm-white: #ffffff;
-    --charcoal: #1a1a1a;
-    --mid-gray: #555;
-    --light-gray: #f0ebe2;
-    --border: #e2d8cc;
+    --crimson: #b5351e;
+    --deep-red: #8B2010;
+    --gold: #D4A843;
+    --amber: #ECC87A;
+    --cream: #fdf9f5;
+    --warm-white: #fdf9f5;
+    --charcoal: #2d2d2d;
+    --mid-gray: #6b6b6b;
+    --light-gray: #f5f0ea;
+    --border: #e8ddd3;
+    --section-bg: #faf6f1;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--charcoal); overflow-x: hidden; }
   /* NAV */
-  nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: white; border-bottom: 1px solid var(--border); padding: 0 2rem; }
+  nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--warm-white); border-bottom: 1px solid var(--border); padding: 0 2rem; }
   .nav-inner { max-width: 1280px; margin: auto; display: flex; align-items: center; justify-content: space-between; height: 78px; }
   .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
   .logo-emblem { width: 56px; height: 56px; object-fit: contain; flex-shrink: 0; }
@@ -49,7 +50,7 @@
   .hero-circle { position: absolute; right: -100px; top: 50%; transform: translateY(-50%); width: 600px; height: 600px; opacity: 0.06; background: conic-gradient(from 0deg, var(--crimson), var(--gold), var(--crimson)); border-radius: 50%; animation: spin 30s linear infinite; }
   .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; width: 100%; }
   .hero-photo { border-radius: 20px; overflow: hidden; height: 480px; box-shadow: 0 24px 64px rgba(0,0,0,0.15); }
-  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
   @media (max-width: 900px) {
     .hero-inner { grid-template-columns: 1fr; }
     .hero-photo { height: 260px; order: -1; }
@@ -119,7 +120,7 @@
   }
   /* PRESIDENTS */
   #presidents { background: white; }
-  .presidents-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .presidents-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; margin-top: 2rem; }
   .president-row { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.75rem; padding: 1.5rem 1rem; background: var(--light-gray); border-radius: 16px; border: 1px solid var(--border); transition: all 0.25s; }
   .president-row:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.07); border-color: var(--crimson); }
   .pres-initial { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--crimson), var(--deep-red)); color: white; font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -1330,9 +1331,12 @@ async function proceedDonate() {
 // paths to the matching album's `photos` array below.
 // ═══════════════════════════════════════════════════════════
 const CAROUSEL = [
-  { src: 'gallery/albums/walkathon-1.jpg',    title: 'Walk-A-Thon 2022',              meta: 'September 10, 2022 · Bay Area' },
-  { src: 'gallery/albums/iwd2024-2.jpg',      title: "International Women's Day 2024", meta: 'March 9, 2024 · San Francisco, CA' },
-  { src: 'gallery/albums/handover2023-2.jpg', title: 'Chapter Handover 2023',          meta: 'January 2023 · Bay Area' }
+  { src: 'Events/2026%20Teej%20Special/p1.jpg',                           title: '2026 Teej Special: Thrive, Connect & Dance', meta: '2026 · Bay Area' },
+  { src: 'Events/International%20Women%27s%20Day%202026/w1.jpg',          title: "International Women's Day 2026: Walk-a-Thon", meta: 'March 2026 · Bay Area' },
+  { src: 'Events/CPR%20Training/cpr1.jpg',                                title: 'CPR Training',                               meta: 'December 2025 · Bay Area' },
+  { src: 'Events/International%20Women%27s%20Day%202025/wd1.jpg',         title: "International Women's Day 2025",             meta: 'March 2025 · Bay Area' },
+  { src: 'Events/2026%20Teej%20Special/p3.jpg',                           title: '2026 Teej Special',                          meta: '2026 · Bay Area' },
+  { src: 'Events/International%20Women%27s%20Day%202026/w4.jpg',          title: "IWD Walk-a-Thon 2026",                       meta: 'March 2026 · Bay Area' }
 ];
 
 const ALBUMS = [
