@@ -112,14 +112,13 @@
   }
   /* PRESIDENTS */
   #presidents { background: white; }
-  .presidents-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; }
-  .pres-timeline { position: relative; padding-left: 2rem; }
-  .pres-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--crimson), var(--gold)); }
-  .president-item { position: relative; margin-bottom: 2.5rem; padding-left: 1.5rem; }
-  .president-item::before { content: ''; position: absolute; left: -2rem; top: 8px; width: 14px; height: 14px; border-radius: 50%; background: var(--crimson); border: 3px solid white; box-shadow: 0 0 0 2px var(--crimson); margin-left: -6px; }
-  .year-badge { display: inline-block; background: var(--crimson); color: white; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; padding: 3px 10px; border-radius: 100px; margin-bottom: 0.5rem; }
-  .president-item h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 4px; }
-  .president-item p { font-size: 0.875rem; color: var(--mid-gray); }
+  .presidents-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; max-width: 560px; }
+  .president-row { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; background: white; border-radius: 12px; border: 1px solid var(--border); }
+  .pres-initial { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--crimson), var(--deep-red)); color: white; font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .president-row h4 { font-family: 'Playfair Display', serif; font-size: 1rem; margin: 0 0 2px; }
+  .president-row span { font-size: 12px; color: var(--mid-gray); }
+  .founder-row { border-color: var(--gold); background: linear-gradient(to right, rgba(237,193,80,0.08), white); }
+  .founder-row .pres-initial { background: linear-gradient(135deg, #c09b17, var(--gold)); }
   /* EVENTS */
   #events { background: var(--cream); }
   .events-tabs { display: flex; gap: 1rem; margin-bottom: 2.5rem; }
@@ -313,7 +312,6 @@
   @media (max-width: 900px) {
     .contact-grid { grid-template-columns: 1fr; }
     .footer-inner { grid-template-columns: 1fr 1fr; }
-    .presidents-grid { grid-template-columns: 1fr; }
   }
   /* UPCOMING EVENTS NOTICE */
   .upcoming-notice, .upcoming-success { grid-column: 1 / -1; text-align: center; padding: 2rem 1rem; max-width: 760px; margin: 0 auto; }
@@ -524,43 +522,28 @@
     <h2 class="section-title">Past Presidents</h2>
     <div class="section-divider"></div>
     <p style="color:var(--mid-gray);max-width:560px;line-height:1.7;margin-bottom:0.5rem;">We honor the dedicated women who have led the NWGN California Chapter since its founding in 2012.</p>
-    <div class="presidents-grid">
-      <div class="pres-timeline">
-        <div class="president-item">
-          <div class="year-badge">2023 &ndash; Present</div>
-          <h4>Current President</h4>
-          <p>Serving with dedication and vision for the NWGN-CA Chapter community.</p>
-        </div>
-        <div class="president-item">
-          <div class="year-badge">2021 &ndash; 2022</div>
-          <h4>Former President</h4>
-          <p>Led the organization through virtual programming and expanded digital outreach.</p>
-        </div>
-        <div class="president-item">
-          <div class="year-badge">2019 &ndash; 2020</div>
-          <h4>Former President</h4>
-          <p>Expanded community outreach and Bay Area partnerships significantly.</p>
-        </div>
+    <div class="presidents-list">
+      <div class="president-row">
+        <div class="pres-initial">LK</div>
+        <div><h4>Laxmi Kharel</h4><span>Past President</span></div>
       </div>
-      <div class="pres-timeline">
-        <div class="president-item">
-          <div class="year-badge">2017 &ndash; 2018</div>
-          <h4>Former President</h4>
-          <p>Strengthened financial support programs and scholarship initiatives.</p>
-        </div>
-        <div class="president-item">
-          <div class="year-badge">2015 &ndash; 2016</div>
-          <h4>Former President</h4>
-          <p>Grew membership and established signature annual events and traditions.</p>
-        </div>
-        <div class="president-item">
-          <div class="year-badge">2012 &ndash; 2014</div>
-          <h4>Founding President</h4>
-          <p>Established the NWGN California Chapter in the San Francisco Bay Area.</p>
-        </div>
+      <div class="president-row">
+        <div class="pres-initial">BS</div>
+        <div><h4>Bishnu Subedi</h4><span>Past President</span></div>
+      </div>
+      <div class="president-row">
+        <div class="pres-initial">GD</div>
+        <div><h4>Geeta Dongol</h4><span>Past President</span></div>
+      </div>
+      <div class="president-row">
+        <div class="pres-initial">GS</div>
+        <div><h4>Geeta Shrestha</h4><span>Past President</span></div>
+      </div>
+      <div class="president-row founder-row">
+        <div class="pres-initial">BG</div>
+        <div><h4>Bishnu Gurung &ldquo;Ekata&rdquo;</h4><span>Founder President</span></div>
       </div>
     </div>
-    <p class="admin-note" style="margin-top:1.5rem;">&#x1F4CB; <strong>Admin note:</strong> Please update with actual past presidents' full names and accurate terms of service.</p>
   </div>
 </section>
 <!-- EVENTS -->
