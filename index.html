@@ -577,6 +577,7 @@
     <div class="events-tabs">
       <button class="tab-btn active" onclick="switchTab('upcoming',this)">&#x1F5D3; Upcoming Events</button>
       <button class="tab-btn" onclick="switchTab('past',this)">&#x1F4DA; Past Events</button>
+      <button class="tab-btn" onclick="switchTab('community',this)">&#x1F917; Support to Community</button>
     </div>
     <div class="tab-panel active" id="tab-upcoming">
       <div class="event-card">
@@ -687,6 +688,33 @@
           <h3>International Women's Day 2021</h3>
           <p>111th International Women's Day celebration via Zoom, continuing the cherished tradition of honoring women's contributions globally.</p>
           <span class="event-tag">Past Event</span>
+        </div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-community" style="display:none;">
+      <div style="grid-column:1/-1;max-width:780px;">
+        <p style="font-size:1rem;color:var(--mid-gray);line-height:1.7;margin-bottom:2rem;">Beyond events, NWGN-CA actively gives back to the community — locally and in Nepal — through programs that create lasting impact.</p>
+        <div style="display:flex;flex-direction:column;gap:1.25rem;">
+          <div style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem;background:var(--light-gray);border-radius:16px;border:1px solid var(--border);">
+            <div style="width:44px;height:44px;border-radius:12px;background:var(--crimson);color:white;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🩺</div>
+            <div><h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--charcoal);margin-bottom:4px;">Free CPR Training</h4><p style="font-size:0.9rem;color:var(--mid-gray);line-height:1.6;">CPR training provided free of cost to 100+ deserving people, equipping the community with life-saving skills.</p></div>
+          </div>
+          <div style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem;background:var(--light-gray);border-radius:16px;border:1px solid var(--border);">
+            <div style="width:44px;height:44px;border-radius:12px;background:var(--crimson);color:white;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🎒</div>
+            <div><h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--charcoal);margin-bottom:4px;">Education Support</h4><p style="font-size:0.9rem;color:var(--mid-gray);line-height:1.6;">Supported school supplies &amp; clothes for poor school-going children, ensuring no child misses education due to financial hardship.</p></div>
+          </div>
+          <div style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem;background:var(--light-gray);border-radius:16px;border:1px solid var(--border);">
+            <div style="width:44px;height:44px;border-radius:12px;background:var(--crimson);color:white;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🇳🇵</div>
+            <div><h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--charcoal);margin-bottom:4px;">Disaster Relief — Nepal Floods 2026</h4><p style="font-size:0.9rem;color:var(--mid-gray);line-height:1.6;">Donated to Nepal's PMO Disaster Relief Fund following the devastating Aug 26, 2026 floods, standing in solidarity with those affected.</p></div>
+          </div>
+          <div style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem;background:var(--light-gray);border-radius:16px;border:1px solid var(--border);">
+            <div style="width:44px;height:44px;border-radius:12px;background:var(--gold);color:white;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🤝</div>
+            <div><h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--charcoal);margin-bottom:4px;">Women Networking &amp; Support Channels</h4><p style="font-size:0.9rem;color:var(--mid-gray);line-height:1.6;">Created dedicated networking and support channels that Nepalese women can leverage for career growth, mentorship, and community connection.</p></div>
+          </div>
+          <div style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem;background:var(--light-gray);border-radius:16px;border:1px solid var(--border);">
+            <div style="width:44px;height:44px;border-radius:12px;background:var(--gold);color:white;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🧠</div>
+            <div><h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--charcoal);margin-bottom:4px;">Mental Health Awareness Sessions</h4><p style="font-size:0.9rem;color:var(--mid-gray);line-height:1.6;">Hosted mental health awareness sessions to destigmatize conversations around well-being and provide resources to those in need.</p></div>
+          </div>
         </div>
       </div>
     </div>
@@ -1200,9 +1228,11 @@ function toggleMenu() {
 // ─── TABS ────────────────────────────────────────────────
 function switchTab(tab, btn) {
   document.querySelectorAll('#events .tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('#events .tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('#events .tab-panel').forEach(p => { p.classList.remove('active'); p.style.display = ''; });
   btn.classList.add('active');
-  document.getElementById('tab-' + tab).classList.add('active');
+  var panel = document.getElementById('tab-' + tab);
+  panel.classList.add('active');
+  if (tab === 'community') panel.style.display = 'block';
 }
 
 // ─── MEMBERSHIP ──────────────────────────────────────────
