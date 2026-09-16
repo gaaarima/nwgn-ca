@@ -42,8 +42,9 @@
   .nav-links li { display: flex; align-items: center; height: 100%; }
   .nav-links a { text-decoration: none; color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0 16px; transition: color 0.2s; display: flex; align-items: center; height: 100%; }
   .nav-links a:hover { color: var(--champagne); }
-  .nav-donate { background: var(--gold) !important; color: white !important; font-weight: 800 !important; padding: 0 26px !important; margin-left: 12px; }
-  .nav-donate:hover { background: var(--amber) !important; color: white !important; }
+  .nav-donate { background: linear-gradient(135deg, #f5c842 0%, #e8a010 50%, #f5c842 100%) !important; background-size: 200% 200% !important; color: #3a1a00 !important; font-weight: 800 !important; padding: 0 26px !important; margin-left: 12px; box-shadow: 0 0 14px rgba(245,200,66,0.55), inset 0 1px 0 rgba(255,255,255,0.35) !important; animation: shimmer-donate 2.5s ease-in-out infinite; border-radius: 0 !important; letter-spacing: 0.06em; }
+  .nav-donate:hover { background: linear-gradient(135deg, #ffd84a 0%, #f0b020 50%, #ffd84a 100%) !important; box-shadow: 0 0 22px rgba(245,200,66,0.8), inset 0 1px 0 rgba(255,255,255,0.45) !important; transform: translateY(-1px); color: #2a1000 !important; }
+  @keyframes shimmer-donate { 0%,100% { background-position: 0% 50%; box-shadow: 0 0 14px rgba(245,200,66,0.55); } 50% { background-position: 100% 50%; box-shadow: 0 0 24px rgba(245,200,66,0.85); } }
   .nav-action-item { margin-left: 8px; padding-left: 8px; }
   .nav-cta { color: var(--charcoal) !important; gap: 6px; }
   .nav-cta svg { stroke-width: 2; }
