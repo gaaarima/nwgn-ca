@@ -90,7 +90,7 @@
   .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--crimson); margin-bottom: 0.75rem; }
   h2.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; color: var(--charcoal); margin-bottom: 1rem; }
   h1.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; color: var(--charcoal); margin-bottom: 1rem; }
-  .section-divider { width: 60px; height: 3px; background: linear-gradient(to right, var(--crimson), var(--gold)); border-radius: 2px; margin-bottom: 1.5rem; }
+  .section-divider { width: 60px; height: 3px; background: var(--crimson); border-radius: 2px; margin-bottom: 1.5rem; }
   /* ABOUT */
   #about { background: var(--warm-white); }
   /* About reads top-to-bottom: community banner, purpose card, then the narrative */
@@ -135,7 +135,7 @@
     .mission-list { columns: 1; }
   }
   /* MEMBERS */
-  #members { background: var(--cream); }
+  #members { background: var(--warm-white); }
   /* Board roster: flat, non-hierarchical grid — every member gets an identical card */
   .board-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 2.75rem 2rem; margin-top: 2.75rem; }
   .board-card { text-align: center; }
@@ -154,7 +154,7 @@
     .board-photo { margin-bottom: 0.9rem; }
   }
   /* PRESIDENTS */
-  #presidents { background: white; }
+  #presidents { background: var(--light-gray); }
   .presidents-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; margin-top: 2rem; }
   .president-row { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.75rem; padding: 1.5rem 1rem; background: var(--light-gray); border-radius: 16px; border: 1px solid var(--border); transition: all 0.25s; }
   .president-row:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.07); border-color: var(--crimson); }
@@ -164,8 +164,8 @@
   .founder-row { border-color: var(--gold); background: linear-gradient(135deg, rgba(46,125,82,0.12), rgba(46,125,82,0.04)); }
   .founder-row .pres-initial { background: linear-gradient(135deg, #1a6640, var(--gold)); }
   /* EVENTS */
-  #events { background: var(--cream); }
-  .events-tabs { display: flex; gap: 1rem; margin-bottom: 2.5rem; }
+  #events { background: var(--warm-white); }
+  .events-tabs { display: flex; gap: 0.75rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
   .tab-btn { padding: 10px 22px; border-radius: 100px; font-weight: 600; font-size: 14px; border: 2px solid var(--border); background: white; cursor: pointer; transition: all 0.2s; color: var(--mid-gray); font-family:'DM Sans',sans-serif; }
   .tab-btn.active { background: var(--crimson); color: white; border-color: var(--crimson); }
   .tab-panel { display: none; }
@@ -185,13 +185,13 @@
   /* LIGHTBOX */
   /* GALLERY */
   /* MEMBERSHIP SECTION */
-  #membership { background: white; }
+  #membership { background: var(--warm-white); }
   .membership-intro { color: var(--mid-gray); line-height: 1.7; max-width: 760px; margin-bottom: 2.5rem; }
   .membership-plans { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 880px; }
   .plan-card { background: var(--cream); border: 1px solid var(--border); border-radius: 18px; padding: 2.25rem 1.75rem; display: flex; flex-direction: column; position: relative; transition: all 0.25s; }
   .plan-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
   .plan-card.featured { border: 2px solid var(--gold); background: linear-gradient(180deg, rgba(46,125,82,0.08), var(--cream)); }
-  .plan-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--charcoal); font-size: 11px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; padding: 5px 16px; border-radius: 100px; white-space: nowrap; }
+  .plan-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: white; font-size: 11px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; padding: 5px 16px; border-radius: 100px; white-space: nowrap; }
   .plan-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--charcoal); margin-bottom: 0.5rem; }
   .plan-price { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--crimson); line-height: 1.1; }
   .plan-price span { font-size: 1rem; font-weight: 400; color: var(--mid-gray); }
@@ -201,7 +201,7 @@
   .plan-features li::before { content: '\2713'; position: absolute; left: 0; color: var(--crimson); font-weight: 700; }
   .plan-card .btn-primary, .plan-card .btn-gold { width: 100%; text-align: center; }
   @media (max-width: 700px) { .membership-plans { grid-template-columns: 1fr; } }
-  #gallery { background: white; }
+  #gallery { background: var(--light-gray); }
   /* --- featured carousel --- */
   .carousel { position: relative; margin-top: 2.5rem; border-radius: 20px; overflow: hidden; background: var(--charcoal); aspect-ratio: 2.3 / 1; }
   .carousel-track { display: flex; height: 100%; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
@@ -258,13 +258,13 @@
     .albums-heading { margin-top: 2.25rem; }
   }
   /* DONATE BANNER */
-  .donate-banner { background-color: #ffffff; background-image: radial-gradient(circle at 20% 80%, rgba(212,96,122,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(46,125,82,0.12) 0%, transparent 50%); color: var(--charcoal); text-align: center; padding: 4rem 2rem; position: relative; overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .donate-banner { background: linear-gradient(135deg, var(--crimson) 0%, var(--deep-red) 60%, #4a1030 100%); color: white; text-align: center; padding: 5rem 2rem; position: relative; overflow: hidden; }
   .donate-banner::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 10% 50%, rgba(255,255,255,0.05) 0%, transparent 40%), radial-gradient(circle at 90% 50%, rgba(255,255,255,0.05) 0%, transparent 40%); }
-  .donate-banner h2 { font-family: 'Playfair Display', serif; font-size: 2.4rem; margin-bottom: 1rem; position: relative; }
-  .donate-banner p { color: var(--mid-gray); max-width: 500px; margin: 0 auto 2rem; line-height: 1.7; position: relative; }
-  .donate-banner .btn-gold { position: relative; font-size: 1rem; padding: 14px 32px; }
+  .donate-banner h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; position: relative; color: white; font-weight: 600; }
+  .donate-banner p { color: rgba(255,255,255,0.78); max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.75; position: relative; font-size: 1.05rem; }
+  .donate-banner .btn-gold { position: relative; font-size: 1rem; padding: 14px 36px; background: linear-gradient(135deg,#f5c842,#e8a010) !important; color: #2a1000 !important; border-color: transparent !important; box-shadow: 0 8px 28px rgba(0,0,0,0.25); }
   /* CONTACT */
-  #contact { background: var(--cream); }
+  #contact { background: var(--light-gray); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; }
   .contact-info h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 2rem; }
   .contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
@@ -384,8 +384,10 @@
   .gallery-upload-trigger { text-align: center; margin-top: 1.5rem; padding: 1.25rem; background: var(--cream); border-radius: 12px; border: 1px dashed var(--border); }
   .gallery-upload-trigger p { color: var(--mid-gray); font-size: 0.875rem; margin-bottom: 0.75rem; }
   @media (max-width: 680px) {
-    .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; background: var(--cream); border-bottom: 1px solid var(--border); flex-direction: column; padding: 1rem; gap: 4px; }
+    .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; background: var(--warm-white); border-bottom: 1px solid var(--border); flex-direction: column; padding: 1rem; gap: 4px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
     .nav-links.open { display: flex; }
+    .nav-links.open a { color: var(--charcoal) !important; }
+    .nav-links.open a:hover { color: var(--crimson) !important; }
     .hamburger { display: flex; }
     .tier-grid { grid-template-columns: 1fr; }
     #donateAmounts { grid-template-columns: repeat(2, 1fr); }
@@ -537,6 +539,7 @@
 <!-- MEMBERS -->
 <section id="members">
   <div class="section-inner">
+    <div class="section-label">Leadership</div>
     <h2 class="section-title">Current Board Members</h2>
     <div class="section-divider"></div>
     <p style="color:var(--mid-gray);line-height:1.7;">Our dedicated board members guide NWGN-CA's programs, events, and mission. We welcome volunteers and new members to join our growing community.</p>
@@ -606,6 +609,7 @@
 <!-- PAST PRESIDENTS -->
 <section id="presidents">
   <div class="section-inner">
+    <div class="section-label">Our Legacy</div>
     <h2 class="section-title">Past Presidents</h2>
     <div class="section-divider"></div>
     <p style="color:var(--mid-gray);max-width:560px;line-height:1.7;margin-bottom:0.5rem;">We honor the dedicated women who have led the NWGN California Chapter since its founding in 2012.</p>
@@ -636,7 +640,8 @@
 <!-- EVENTS -->
 <section id="events">
   <div class="section-inner">
-    <h2 class="section-title">Events</h2>
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Events &amp; Initiatives</h2>
     <div class="section-divider"></div>
     <div class="events-tabs">
       <button class="tab-btn" onclick="switchTab('upcoming',this)">&#x1F5D3; Upcoming Events</button>
@@ -787,6 +792,7 @@
 <!-- GALLERY -->
 <section id="gallery">
   <div class="section-inner">
+    <div class="section-label">Photo Gallery</div>
     <h2 class="section-title">Our Moments</h2>
     <div class="section-divider"></div>
     <p style="color:var(--mid-gray);max-width:560px;line-height:1.7;">Glimpses from our events, celebrations, and community gatherings over the years.</p>
@@ -816,7 +822,8 @@
 <!-- MEMBERSHIP -->
 <section id="membership">
   <div class="section-inner">
-    <h2 class="section-title">Membership</h2>
+    <div class="section-label">Join Us</div>
+    <h2 class="section-title">Become a Member</h2>
     <div class="section-divider"></div>
     <p class="membership-intro">Becoming a member of NWGN-CA connects you with a supportive community of Nepalese women across California and directly funds our programs &mdash; financial assistance, counseling, scholarships, leadership training, and community events. Choose the membership that's right for you below.</p>
     <div class="membership-plans">
@@ -860,6 +867,7 @@
 <section id="contact">
   <div class="section-inner">
     <div class="section-label">Get In Touch</div>
+    <div class="section-label">Reach Out</div>
     <h2 class="section-title">Contact Us</h2>
     <div class="section-divider"></div>
     <div class="contact-grid">
@@ -931,9 +939,9 @@
       <strong>NWGN &ndash; California Chapter</strong>
       <p>A non-profit, women-led organization dedicated to empowering Nepalese women in California through education, advocacy, and community support since 2012.</p>
       <div class="social-links">
-        <a href="https://www.facebook.com/nwgncachapter2012/" target="_blank" title="Facebook">f</a>
-        <a href="#" title="Instagram">&#x1F4F8;</a>
-        <a href="mailto:nwgnca2012@gmail.com" title="Email">&#x2709;</a>
+        <a href="https://www.facebook.com/nwgncachapter2012/" target="_blank" title="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" title="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="mailto:nwgnca2012@gmail.com" title="Email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
       </div>
     </div>
     <div>
