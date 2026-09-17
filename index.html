@@ -368,9 +368,8 @@
     .sec-body { display: none; padding-bottom: 2rem; }
     .sec-open .sec-body { display: block; animation: secIn 0.28s ease both; }
     @keyframes secIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
-    /* the bar already names the topic, so the in-body heading would just repeat it */
-    .sec-body > .section-title, .sec-body > .section-divider, .sec-body > .section-label,
-    .sec-body .about-text > .section-title, .sec-body .about-text > .section-divider { display: none; }
+    /* the bar already names the topic, so the heading it borrowed would just repeat it */
+    .sec-body .sec-dup { display: none; }
     /* last section before the donate banner shouldn't leave a dangling border */
     #contact .sec-head { border-bottom: none; }
   }
@@ -489,7 +488,7 @@
   </div>
 </section>
 <!-- ABOUT -->
-<section id="about">
+<section id="about" data-accordion-label="About Us">
   <div class="section-inner" style="padding:5rem 2rem;">
     <!-- Two-column story -->
     <div class="about-split">
@@ -1865,8 +1864,20 @@ function setupAccordions() {
     const inner = sec.querySelector('.section-inner');
     if (!inner || inner.querySelector('.sec-head')) return;
 
+    // data-accordion-label overrides sections whose first heading isn't the topic name
+    const override = sec.getAttribute('data-accordion-label');
     const titleEl = inner.querySelector('.section-title');
-    const label = titleEl ? titleEl.textContent.trim() : id;
+    const label = override || (titleEl ? titleEl.textContent.trim() : id);
+
+    // when the bar borrows the section's own heading, mark that heading block
+    // (eyebrow label(s) above it, divider below) so mobile doesn't show it twice
+    if (!override && titleEl) {
+      titleEl.classList.add('sec-dup');
+      let prev = titleEl.previousElementSibling;
+      while (prev && prev.classList.contains('section-label')) { prev.classList.add('sec-dup'); prev = prev.previousElementSibling; }
+      const next = titleEl.nextElementSibling;
+      if (next && next.classList.contains('section-divider')) next.classList.add('sec-dup');
+    }
 
     const body = document.createElement('div');
     body.className = 'sec-body';
