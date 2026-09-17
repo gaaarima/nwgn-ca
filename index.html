@@ -89,7 +89,6 @@
   /* fixed nav overlaps anchor targets; offset the native jump */
   section[id], footer[id] { scroll-margin-top: 90px; }
   .section-inner { max-width: 1200px; margin: auto; }
-  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--crimson); margin-bottom: 0.75rem; }
   h2.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; color: var(--charcoal); margin-bottom: 1rem; }
   h1.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; color: var(--charcoal); margin-bottom: 1rem; }
   .section-divider { width: 60px; height: 3px; background: var(--crimson); border-radius: 2px; margin-bottom: 1.5rem; }
@@ -113,7 +112,7 @@
   .mission-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
   .mission-card { background: var(--light-gray); border-radius: 18px; padding: 1.75rem 1.5rem; border: 1px solid var(--border); transition: all 0.25s; }
   .mission-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.07); border-color: var(--crimson); }
-  .mission-icon { font-size: 1.75rem; margin-bottom: 0.9rem; }
+  .mission-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(139,46,82,0.08); color: var(--crimson); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
   .mission-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--charcoal); margin-bottom: 0.4rem; }
   .mission-card p { font-size: 0.875rem; color: var(--mid-gray); line-height: 1.6; margin: 0; }
   .about-banner { display: none; }
@@ -128,13 +127,9 @@
   @media (max-width: 540px) { .mission-grid { grid-template-columns: 1fr; } }
   /* full-width section, so cap the measure rather than letting lines run to 1200px */
   .about-text p { color: var(--mid-gray); line-height: 1.8; margin-bottom: 1.25rem; max-width: 900px; }
-  .mission-list { list-style: none; margin-top: 1.5rem; columns: 2; column-gap: 3rem; }
-  .mission-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; color: var(--mid-gray); line-height: 1.6; font-size: 0.95rem; break-inside: avoid; }
-  .mission-list li::before { content: '✦'; color: var(--crimson); flex-shrink: 0; margin-top: 2px; }
   @media (max-width: 860px) {
     .about-banner { aspect-ratio: 16 / 9; margin-bottom: 2rem; border-radius: 14px; }
     .about-card { padding: 3rem 1.75rem; margin-bottom: 2.5rem; border-radius: 14px; }
-    .mission-list { columns: 1; }
   }
   /* MEMBERS */
   #members { background: var(--warm-white); }
@@ -182,7 +177,7 @@
   .event-tag { display: inline-block; margin-top: 0.75rem; background: var(--light-gray); color: var(--mid-gray); font-size: 11px; padding: 3px 10px; border-radius: 100px; font-weight: 600; }
   .event-tag.upcoming { background: rgba(212,96,122,0.08); color: var(--crimson); }
   .event-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .event-photos-btn { display: inline-flex; align-items: center; gap: 6px; margin-top: 0.75rem; margin-left: 6px; background: rgba(212,96,122,0.08); color: var(--crimson); font-size: 11px; padding: 3px 10px; border-radius: 100px; font-weight: 600; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s; }
+  .event-photos-btn { display: inline-flex; align-items: center; gap: 6px; margin-top: 0.75rem; margin-left: 6px; background: rgba(139,46,82,0.08); color: var(--crimson); font-size: 13px; padding: 8px 16px; border-radius: 100px; font-weight: 600; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s; }
   .event-photos-btn:hover { background: var(--crimson); color: white; }
   /* LIGHTBOX */
   /* GALLERY */
@@ -282,7 +277,7 @@
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   label { display: block; font-size: 12px; font-weight: 600; color: var(--mid-gray); margin-bottom: 5px; letter-spacing: 0.03em; }
   input, textarea, select { width: 100%; padding: 11px 13px; border-radius: 9px; border: 1.5px solid var(--border); background: var(--warm-white); font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--charcoal); transition: border-color 0.2s; }
-  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--crimson); box-shadow: 0 0 0 3px rgba(212,96,122,0.1); }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--crimson); box-shadow: 0 0 0 3px rgba(139,46,82,0.25); }
   textarea { resize: vertical; min-height: 90px; }
   /* FOOTER */
   footer { background: var(--charcoal); color: rgba(255,255,255,0.65); padding: 3rem 2rem 1.5rem; }
@@ -290,7 +285,7 @@
   .footer-brand strong { display: block; font-family: 'Playfair Display', serif; font-size: 1.15rem; color: white; margin-bottom: 0.75rem; }
   .footer-brand p { font-size: 13px; line-height: 1.7; margin-bottom: 1.25rem; }
   .social-links { display: flex; gap: 10px; }
-  .social-links a { width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,0.08); color: white; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 13px; transition: background 0.2s; }
+  .social-links a { width: 44px; height: 44px; border-radius: 8px; background: rgba(255,255,255,0.08); color: white; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 13px; transition: background 0.2s; }
   .social-links a:hover { background: var(--crimson); }
   footer h4 { color: white; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1rem; }
   footer ul { list-style: none; }
@@ -380,7 +375,7 @@
   }
   /* UPCOMING EVENTS NOTICE */
   .upcoming-notice, .upcoming-success { grid-column: 1 / -1; text-align: center; padding: 2rem 1rem; max-width: 760px; margin: 0 auto; }
-  .upcoming-notice-icon { font-size: 4rem; margin-bottom: 1.25rem; }
+  .upcoming-notice-icon { width: 68px; height: 68px; border-radius: 50%; background: rgba(139,46,82,0.08); color: var(--crimson); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
   .upcoming-notice h3, .upcoming-success h3 { font-family: 'Playfair Display', serif; font-size: 2.4rem; margin-bottom: 1rem; color: var(--charcoal); }
   .upcoming-notice > p, .upcoming-success > p { color: var(--mid-gray); max-width: 600px; margin: 0 auto 2rem; line-height: 1.7; font-size: 1.2rem; }
   .upcoming-form { display: flex; gap: 10px; max-width: 560px; margin: 0 auto 1.25rem; }
@@ -431,9 +426,49 @@
     .upcoming-notice h3, .upcoming-success h3 { font-size: 1.9rem; }
     .upcoming-notice > p, .upcoming-success > p { font-size: 1.05rem; }
   }
+
+  /* ================= professional polish: icons, a11y, touch ================= */
+  .icon-inline { vertical-align: -2px; margin-right: 4px; }
+  .event-banner.is-placeholder { background: linear-gradient(135deg, var(--crimson), var(--deep-red)); color: #fff; flex-direction: column; gap: 6px; text-align: center; }
+  .event-banner.is-placeholder strong { font-family: 'Cormorant Garamond', serif; font-size: 2.75rem; font-weight: 600; line-height: 1; }
+  .event-banner.is-placeholder span { font-size: 13px; opacity: 0.88; }
+  .upload-icon svg { color: var(--crimson); }
+  /* brand social: identical tiles so the Facebook and Gmail marks read as one set */
+  .social-links a svg { display: block; }
+  .social-brand { gap: 12px; }
+  .social-brand a { width: 56px; height: 56px; border-radius: 14px; background: #fff !important; border: 1px solid var(--border); box-shadow: 0 1px 2px rgba(28,28,28,0.05); transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
+  .social-brand a:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(28,28,28,0.09); border-color: #d6c6b6; }
+  /* carousel dots: 9px mark, 30x44 hit area */
+  .car-dots { gap: 0; bottom: -3px; }
+  .car-dot, .car-dot.active { width: 30px; height: 44px; border-radius: 0; background: none !important; display: flex; align-items: center; justify-content: center; }
+  .car-dot::before { content: ''; width: 9px; height: 9px; border-radius: 5px; background: rgba(255,255,255,0.55); transition: width 0.25s, background 0.25s; }
+  .car-dot.active::before { width: 24px; background: #fff; }
+  /* keyboard focus — crimson on light surfaces, champagne on dark ones */
+  .skip-link { position: absolute; left: 1rem; top: -64px; z-index: 2000; background: var(--charcoal); color: #fff; padding: 12px 18px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: top 0.2s; }
+  .skip-link:focus { top: 1rem; }
+  #home:focus { outline: none; }
+  a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:not([tabindex="-1"]):focus-visible { outline: 3px solid var(--crimson); outline-offset: 3px; }
+  nav:not(.scrolled) :focus-visible, #home :focus-visible, footer :focus-visible, .lightbox :focus-visible, .carousel :focus-visible,
+  .about-pull :focus-visible, .donate-banner :focus-visible, .modal-header :focus-visible, .skip-link:focus-visible { outline-color: var(--champagne); }
+  .nav-links.open :focus-visible { outline-color: var(--crimson); }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto !important; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+  /* phones: every control at least 44px */
+  @media (max-width: 700px) {
+    .hamburger { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+    .car-btn { width: 44px; height: 44px; }
+    .tab-btn, .event-photos-btn { min-height: 44px; }
+    .lb-close, .lb-nav { width: 44px; height: 44px; }
+    footer ul li a { display: inline-flex; align-items: center; min-height: 44px; }
+    /* email / phone / site links: 45px hit area, layout unchanged (margin cancels padding) */
+    .contact-item a { display: inline-block; padding: 13px 0; margin: -13px 0; }
+  }
 </style>
 </head>
 <body>
+<a class="skip-link" href="#home">Skip to main content</a>
 <!-- NAVIGATION -->
 <nav>
   <div class="nav-inner">
@@ -444,7 +479,7 @@
         <span>California Chapter</span>
       </div>
     </a>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
@@ -459,14 +494,14 @@
   </div>
 </nav>
 <!-- HERO -->
-<section id="home">
+<section id="home" tabindex="-1">
   <div class="hero-photo-bg">
     <img src="hero-banner.jpg" alt="NWGN CA Chapter 2025 group photo">
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div style="max-width:600px;">
-      <div class="hero-badge">&#10031; Established 2012 &middot; San Francisco Bay Area &middot; Non-Profit 501(c)(3)</div>
+      <div class="hero-badge">Established 2012 &middot; San Francisco Bay Area &middot; Non-Profit 501(c)(3)</div>
       <h1 class="hero-title">
         Empowering<br><em>Nepalese Women</em><br>in California
       </h1>
@@ -475,7 +510,7 @@
       </p>
       <div class="hero-actions">
         <a href="#about" class="btn-primary">Our Mission</a>
-        <a href="#membership" class="btn-gold">&#10022; Become a Member</a>
+        <a href="#membership" class="btn-gold">Become a Member</a>
         <a href="#events" class="btn-secondary">Upcoming Events &rarr;</a>
       </div>
       <div class="hero-stats">
@@ -493,14 +528,13 @@
     <!-- Two-column story -->
     <div class="about-split">
       <div class="about-img-wrap">
-        <img src="about-banner.jpg" alt="NWGN-CA members gathered at the 2023 chapter handover">
+        <img src="about-banner.jpg" alt="NWGN-CA members gathered at the 2023 chapter handover" loading="lazy" decoding="async">
         <div class="about-img-badge">
           <strong>2012</strong>
           <span>Est. Bay Area, CA</span>
         </div>
       </div>
       <div class="about-story">
-        <div class="section-label">Who We Are</div>
         <h2>A Community Built on<br><em>Sisterhood &amp; Strength</em></h2>
         <div class="section-divider"></div>
         <p>The NWGN California Chapter is a women-led non-profit established in 2012, dedicated to supporting the growth and development of Nepalese women across the San Francisco Bay Area and beyond.</p>
@@ -519,38 +553,37 @@
 
     <!-- Mission pillars -->
     <div style="text-align:center;margin-bottom:2.5rem;">
-      <div class="section-label">What We Stand For</div>
       <h2 class="section-title" style="margin-bottom:0.5rem;">Our Mission Pillars</h2>
       <div class="section-divider" style="margin:0.75rem auto 0;"></div>
     </div>
     <div class="mission-grid">
       <div class="mission-card">
-        <div class="mission-icon">🌐</div>
+        <div class="mission-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
         <h4>Global Sisterhood</h4>
         <p>Foster a supportive global network of friendship and understanding between Nepali women near and far.</p>
       </div>
       <div class="mission-card">
-        <div class="mission-icon">🤝</div>
+        <div class="mission-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <h4>Collaboration</h4>
         <p>Partner with national and international organizations that share our vision for women's empowerment.</p>
       </div>
       <div class="mission-card">
-        <div class="mission-icon">📣</div>
+        <div class="mission-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
         <h4>Advocacy</h4>
         <p>Represent and advocate for the rights and interests of Nepali women and women in general.</p>
       </div>
       <div class="mission-card">
-        <div class="mission-icon">🏅</div>
+        <div class="mission-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
         <h4>Leadership</h4>
         <p>Provide leadership training and opportunities, growing the next generation of Nepali women leaders.</p>
       </div>
       <div class="mission-card">
-        <div class="mission-icon">🗳️</div>
+        <div class="mission-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></div>
         <h4>Civic Engagement</h4>
         <p>Promote citizenship and active civic involvement within the Nepalese-American community.</p>
       </div>
       <div class="mission-card">
-        <div class="mission-icon">💛</div>
+        <div class="mission-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg></div>
         <h4>Crisis Support</h4>
         <p>Support women in crisis through peer support, counseling referrals, and community resource pooling.</p>
       </div>
@@ -560,58 +593,57 @@
 <!-- MEMBERS -->
 <section id="members">
   <div class="section-inner">
-    <div class="section-label">Leadership</div>
     <h2 class="section-title">Current Board Members</h2>
     <div class="section-divider"></div>
     <p style="color:var(--mid-gray);line-height:1.7;">Our dedicated board members guide NWGN-CA's programs, events, and mission. We welcome volunteers and new members to join our growing community.</p>
     <div class="board-grid">
       <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/sheela-thapa.png" alt="Sheela Thapa"></div>
+        <div class="board-photo"><img src="recovered-images/board/sheela-thapa.png" alt="Sheela Thapa" loading="lazy" decoding="async"></div>
         <h4 class="board-name">Sheela Thapa</h4>
         <span class="board-role">President</span>
       </div>
       <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/tara-chalise.png" alt="Tara Poudel Chalise"></div>
+        <div class="board-photo"><img src="recovered-images/board/tara-chalise.png" alt="Tara Poudel Chalise" loading="lazy" decoding="async"></div>
         <h4 class="board-name">Tara Poudel Chalise</h4>
         <span class="board-role">Vice President</span>
       </div>
       <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/sobe-dhital.png" alt="Sobe Dhital"></div>
+        <div class="board-photo"><img src="recovered-images/board/sobe-dhital.png" alt="Sobe Dhital" loading="lazy" decoding="async"></div>
         <h4 class="board-name">Sobe Dhital</h4>
         <span class="board-role">General Secretary</span>
       </div>
       <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/Rishta-Karki.png" alt="Rishta Karki"></div>
+        <div class="board-photo"><img src="recovered-images/board/Rishta-Karki.png" alt="Rishta Karki" loading="lazy" decoding="async"></div>
         <h4 class="board-name">Rishta Karki</h4>
         <span class="board-role">Treasurer</span>
       </div>
       <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/Soakshya-GC.jpg" alt="Soakshya GC"></div>
+        <div class="board-photo"><img src="recovered-images/board/Soakshya-GC.jpg" alt="Soakshya GC" loading="lazy" decoding="async"></div>
         <h4 class="board-name">Soakshya GC</h4>
         <span class="board-role">Executive Member</span>
       </div>
       <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/Ashmita-Sapkota.jpg" alt="Ashmita Sapkota"></div>
+        <div class="board-photo"><img src="recovered-images/board/Ashmita-Sapkota.jpg" alt="Ashmita Sapkota" loading="lazy" decoding="async"></div>
         <h4 class="board-name">Ashmita Sapkota</h4>
         <span class="board-role">Executive Member</span>
       </div>
       <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/Bandana-Parajuli--scaled.jpg" alt="Bandana Parajuli"></div>
+        <div class="board-photo"><img src="recovered-images/board/Bandana-Parajuli--scaled.jpg" alt="Bandana Parajuli" loading="lazy" decoding="async"></div>
         <h4 class="board-name">Bandana Parajuli</h4>
         <span class="board-role">Executive Member</span>
       </div>
       <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/Ira-Joshi-scaled.jpg" alt="Ira Joshi"></div>
+        <div class="board-photo"><img src="recovered-images/board/Ira-Joshi-scaled.jpg" alt="Ira Joshi" loading="lazy" decoding="async"></div>
         <h4 class="board-name">Ira Joshi</h4>
         <span class="board-role">Executive Member</span>
       </div>
       <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/Ram-Devi-Palikhe-.jpg" alt="Ram Devi Palikhe Shrestha"></div>
+        <div class="board-photo"><img src="recovered-images/board/Ram-Devi-Palikhe-.jpg" alt="Ram Devi Palikhe Shrestha" loading="lazy" decoding="async"></div>
         <h4 class="board-name">Ram Devi Palikhe Shrestha</h4>
         <span class="board-role">Executive Member</span>
       </div>
       <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/Rita-Raut-.jpg" alt="Rita Raut"></div>
+        <div class="board-photo"><img src="recovered-images/board/Rita-Raut-.jpg" alt="Rita Raut" loading="lazy" decoding="async"></div>
         <h4 class="board-name">Rita Raut</h4>
         <span class="board-role">Executive Member</span>
       </div>
@@ -621,7 +653,7 @@
         <span class="board-role">Executive Member</span>
       </div>
       <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/Kranti-Aryal.jpg" alt="Kranti Aryal Bhandari"></div>
+        <div class="board-photo"><img src="recovered-images/board/Kranti-Aryal.jpg" alt="Kranti Aryal Bhandari" loading="lazy" decoding="async"></div>
         <h4 class="board-name">Kranti Aryal Bhandari</h4>
         <span class="board-role">Executive Member</span>
       </div>
@@ -630,7 +662,6 @@
 <!-- PAST PRESIDENTS -->
 <section id="presidents">
   <div class="section-inner">
-    <div class="section-label">Our Legacy</div>
     <h2 class="section-title">Past Presidents</h2>
     <div class="section-divider"></div>
     <p style="color:var(--mid-gray);max-width:560px;line-height:1.7;margin-bottom:0.5rem;">We honor the dedicated women who have led the NWGN California Chapter since its founding in 2012.</p>
@@ -661,17 +692,16 @@
 <!-- EVENTS -->
 <section id="events">
   <div class="section-inner">
-    <div class="section-label">What We Do</div>
     <h2 class="section-title">Events &amp; Initiatives</h2>
     <div class="section-divider"></div>
     <div class="events-tabs">
-      <button class="tab-btn" onclick="switchTab('upcoming',this)">&#x1F5D3; Upcoming Events</button>
-      <button class="tab-btn active" onclick="switchTab('past',this)">&#x1F4DA; Past Events</button>
-      <button class="tab-btn" onclick="switchTab('community',this)">&#x1F917; Support to Community</button>
+      <button class="tab-btn" onclick="switchTab('upcoming',this)">Upcoming Events</button>
+      <button class="tab-btn active" onclick="switchTab('past',this)">Past Events</button>
+      <button class="tab-btn" onclick="switchTab('community',this)">Support to Community</button>
     </div>
     <div class="tab-panel" id="tab-upcoming">
       <div class="event-card">
-        <div class="event-banner" style="background:linear-gradient(135deg,#fdebd0,#2e7d52);">&#x1F91D;</div>
+        <div class="event-banner is-placeholder"><strong>2027</strong><span>Leadership Handover</span></div>
         <div class="event-body">
           <div class="event-date">2027 &middot; Bay Area</div>
           <h3>Handover to New Team 2027</h3>
@@ -680,11 +710,11 @@
         </div>
       </div>
       <div class="upcoming-notice" id="upcoming-notice" style="grid-column:1/-1;">
-        <div class="upcoming-notice-icon">&#x1F4C5;</div>
+        <div class="upcoming-notice-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
         <h3>More Events Coming Soon</h3>
         <p>Add your email below and we'll let you know as soon as new events are announced.</p>
         <form class="upcoming-form" onsubmit="handleEventSubscribe(event)">
-          <input type="email" id="event-email" placeholder="your@email.com" required>
+          <input type="email" id="event-email" autocomplete="email" placeholder="your@email.com" required>
           <button type="submit" class="btn-primary">Notify Me &rarr;</button>
         </form>
       </div>
@@ -696,47 +726,47 @@
     </div>
     <div class="tab-panel active" id="tab-past">
       <div class="event-card">
-        <div class="event-banner"><img src="Events/2026%20Teej%20Special/EventBanner.jpg" alt="2026 Teej Special"></div>
+        <div class="event-banner"><img src="Events/2026%20Teej%20Special/EventBanner.jpg" alt="2026 Teej Special" loading="lazy" decoding="async"></div>
         <div class="event-body">
           <div class="event-date">2026 &middot; Bay Area</div>
           <h3>2026 Teej Special: Thrive, Connect &amp; Dance</h3>
           <p>A vibrant celebration of Teej bringing together Nepalese women to honor tradition, build connections, and dance in community spirit.</p>
           <span class="event-tag">Past Event</span>
-          <button class="event-photos-btn" onclick="openAlbum(0)">&#x1F4F7; View Photos</button>
+          <button class="event-photos-btn" onclick="openAlbum(0)">View Photos</button>
         </div>
       </div>
       <div class="event-card">
-        <div class="event-banner"><img src="Events/International%20Women%27s%20Day%202026/wk_banner.jpg" alt="IWD 2026 Walk-a-Thon"></div>
+        <div class="event-banner"><img src="Events/International%20Women%27s%20Day%202026/wk_banner.jpg" alt="IWD 2026 Walk-a-Thon" loading="lazy" decoding="async"></div>
         <div class="event-body">
           <div class="event-date">2026 &middot; Bay Area</div>
           <h3>International Women's Day 2026: Walk-a-Thon</h3>
           <p>IWD 2026 celebrated with a community Walk-a-Thon, bringing together Nepalese women in a celebration of solidarity, health, and empowerment.</p>
           <span class="event-tag">Past Event</span>
-          <button class="event-photos-btn" onclick="openAlbum(1)">&#x1F4F7; View Photos</button>
+          <button class="event-photos-btn" onclick="openAlbum(1)">View Photos</button>
         </div>
       </div>
       <div class="event-card">
-        <div class="event-banner"><img src="Events/CPR%20Training/cpr_banner.jpg" alt="CPR Training"></div>
+        <div class="event-banner"><img src="Events/CPR%20Training/cpr_banner.jpg" alt="CPR Training" loading="lazy" decoding="async"></div>
         <div class="event-body">
           <div class="event-date">December 2025 &middot; Bay Area</div>
           <h3>CPR Training</h3>
           <p>Life-saving CPR training session empowering NWGN-CA members with essential emergency response skills.</p>
           <span class="event-tag">Past Event</span>
-          <button class="event-photos-btn" onclick="openAlbum(2)">&#x1F4F7; View Photos</button>
+          <button class="event-photos-btn" onclick="openAlbum(2)">View Photos</button>
         </div>
       </div>
       <div class="event-card">
-        <div class="event-banner"><img src="Events/International%20Women%27s%20Day%202025/wd_banner.jpg" alt="IWD 2025"></div>
+        <div class="event-banner"><img src="Events/International%20Women%27s%20Day%202025/wd_banner.jpg" alt="IWD 2025" loading="lazy" decoding="async"></div>
         <div class="event-body">
           <div class="event-date">March 2025 &middot; Bay Area</div>
           <h3>International Women's Day 2025</h3>
           <p>Celebrated International Women's Day 2025, honoring the strength, resilience, and achievements of Nepalese women across California.</p>
           <span class="event-tag">Past Event</span>
-          <button class="event-photos-btn" onclick="openAlbum(3)">&#x1F4F7; View Photos</button>
+          <button class="event-photos-btn" onclick="openAlbum(3)">View Photos</button>
         </div>
       </div>
       <div class="event-card">
-        <div class="event-banner" style="background:linear-gradient(135deg,#fdebd0,#f0b27a);">&#x1F338;</div>
+        <div class="event-banner"><img src="gallery/albums/iwd2024-2.jpg" alt="NWGN-CA board on stage at International Women's Day 2024" loading="lazy" decoding="async"></div>
         <div class="event-body">
           <div class="event-date">March 9, 2024 &middot; San Francisco, CA</div>
           <h3>International Women's Day 2024</h3>
@@ -745,7 +775,7 @@
         </div>
       </div>
       <div class="event-card">
-        <div class="event-banner" style="background:linear-gradient(135deg,#d5f5e3,#76d7c4);">&#x1F6B6;&#x200D;&#x2640;&#xFE0F;</div>
+        <div class="event-banner"><img src="gallery/albums/walkathon-1.jpg" alt="Participants at the 2022 NWGN-CA Walk-A-Thon" loading="lazy" decoding="async"></div>
         <div class="event-body">
           <div class="event-date">September 10, 2022 &middot; Bay Area</div>
           <h3>Walk-A-Thon: Empower Women's Health</h3>
@@ -754,7 +784,7 @@
         </div>
       </div>
       <div class="event-card">
-        <div class="event-banner" style="background:linear-gradient(135deg,#d6eaf8,#7fb3d3);">&#x1F4BB;</div>
+        <div class="event-banner is-placeholder"><strong>2022</strong><span>International Women&rsquo;s Day</span></div>
         <div class="event-body">
           <div class="event-date">March 5, 2022 &middot; Virtual (Zoom)</div>
           <h3>International Women's Day 2022</h3>
@@ -763,7 +793,7 @@
         </div>
       </div>
       <div class="event-card">
-        <div class="event-banner" style="background:linear-gradient(135deg,#f9ebf0,#f1948a);">&#x1F469;&#x200D;&#x1F4BC;</div>
+        <div class="event-banner"><img src="gallery/albums/leadership-1.jpg" alt="Virtual Women in Leadership training, December 2021" loading="lazy" decoding="async"></div>
         <div class="event-body">
           <div class="event-date">December 11, 2021 &middot; Virtual</div>
           <h3>Women In Leadership Training</h3>
@@ -772,7 +802,7 @@
         </div>
       </div>
       <div class="event-card">
-        <div class="event-banner" style="background:linear-gradient(135deg,#fef9e7,#f7dc6f);">&#x1F30D;</div>
+        <div class="event-banner is-placeholder"><strong>2021</strong><span>International Women&rsquo;s Day</span></div>
         <div class="event-body">
           <div class="event-date">March 6, 2021 &middot; Virtual (Zoom)</div>
           <h3>International Women's Day 2021</h3>
@@ -786,23 +816,23 @@
         <p style="font-size:1rem;color:var(--mid-gray);line-height:1.7;margin-bottom:2rem;">Beyond events, NWGN-CA actively gives back to the community — locally and in Nepal — through programs that create lasting impact.</p>
         <div style="display:flex;flex-direction:column;gap:1.25rem;">
           <div style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem;background:var(--light-gray);border-radius:16px;border:1px solid var(--border);">
-            <div style="width:44px;height:44px;border-radius:12px;background:var(--crimson);color:white;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🩺</div>
+            <div style="width:44px;height:44px;border-radius:12px;background:var(--crimson);color:white;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg></div>
             <div><h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--charcoal);margin-bottom:4px;">Free CPR Training</h4><p style="font-size:0.9rem;color:var(--mid-gray);line-height:1.6;">CPR training provided free of cost to 100+ deserving people, equipping the community with life-saving skills.</p></div>
           </div>
           <div style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem;background:var(--light-gray);border-radius:16px;border:1px solid var(--border);">
-            <div style="width:44px;height:44px;border-radius:12px;background:var(--crimson);color:white;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🎒</div>
+            <div style="width:44px;height:44px;border-radius:12px;background:var(--crimson);color:white;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6"/><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
             <div><h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--charcoal);margin-bottom:4px;">Education Support</h4><p style="font-size:0.9rem;color:var(--mid-gray);line-height:1.6;">Supported school supplies &amp; clothes for poor school-going children, ensuring no child misses education due to financial hardship.</p></div>
           </div>
           <div style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem;background:var(--light-gray);border-radius:16px;border:1px solid var(--border);">
-            <div style="width:44px;height:44px;border-radius:12px;background:var(--crimson);color:white;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🇳🇵</div>
+            <div style="width:44px;height:44px;border-radius:12px;background:var(--crimson);color:white;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
             <div><h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--charcoal);margin-bottom:4px;">Disaster Relief — Nepal Floods 2026</h4><p style="font-size:0.9rem;color:var(--mid-gray);line-height:1.6;">Donated to Nepal's PMO Disaster Relief Fund following the devastating Aug 26, 2026 floods, standing in solidarity with those affected.</p></div>
           </div>
           <div style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem;background:var(--light-gray);border-radius:16px;border:1px solid var(--border);">
-            <div style="width:44px;height:44px;border-radius:12px;background:var(--gold);color:white;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🤝</div>
+            <div style="width:44px;height:44px;border-radius:12px;background:var(--gold);color:white;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg></div>
             <div><h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--charcoal);margin-bottom:4px;">Women Networking &amp; Support Channels</h4><p style="font-size:0.9rem;color:var(--mid-gray);line-height:1.6;">Created dedicated networking and support channels that Nepalese women can leverage for career growth, mentorship, and community connection.</p></div>
           </div>
           <div style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem;background:var(--light-gray);border-radius:16px;border:1px solid var(--border);">
-            <div style="width:44px;height:44px;border-radius:12px;background:var(--gold);color:white;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🧠</div>
+            <div style="width:44px;height:44px;border-radius:12px;background:var(--gold);color:white;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></div>
             <div><h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--charcoal);margin-bottom:4px;">Mental Health Awareness Sessions</h4><p style="font-size:0.9rem;color:var(--mid-gray);line-height:1.6;">Hosted mental health awareness sessions to destigmatize conversations around well-being and provide resources to those in need.</p></div>
           </div>
         </div>
@@ -813,7 +843,6 @@
 <!-- GALLERY -->
 <section id="gallery">
   <div class="section-inner">
-    <div class="section-label">Photo Gallery</div>
     <h2 class="section-title">Our Moments</h2>
     <div class="section-divider"></div>
     <p style="color:var(--mid-gray);max-width:560px;line-height:1.7;">Glimpses from our events, celebrations, and community gatherings over the years.</p>
@@ -843,7 +872,6 @@
 <!-- MEMBERSHIP -->
 <section id="membership">
   <div class="section-inner">
-    <div class="section-label">Join Us</div>
     <h2 class="section-title">Become a Member</h2>
     <div class="section-divider"></div>
     <p class="membership-intro">Becoming a member of NWGN-CA connects you with a supportive community of Nepalese women across California and directly funds our programs &mdash; financial assistance, counseling, scholarships, leadership training, and community events. Choose the membership that's right for you below.</p>
@@ -861,7 +889,7 @@
         <button class="btn-primary" onclick="openMembership(event,'General Membership',25)">Become a Member</button>
       </div>
       <div class="plan-card featured">
-        <span class="plan-badge">&#x1F48E; Best Value</span>
+        <span class="plan-badge">Best Value</span>
         <h3>Lifetime Membership</h3>
         <div class="plan-price">$250<span> one-time</span></div>
         <div class="plan-sub">Pay once, member for life</div>
@@ -879,7 +907,7 @@
 <!-- DONATE BANNER -->
 <div class="donate-banner">
   <div class="section-inner" style="position:relative;">
-    <h2>Want to Contribute? Donate Here &#x1F49B;</h2>
+    <h2>Want to Contribute? Donate Here</h2>
     <p>Your generous donation helps us provide financial assistance, counseling, scholarships, and resources to Nepalese women in California. Every contribution makes a difference.</p>
     <a href="#" class="btn-gold" onclick="openDonate(event)">Donate Now via Stripe</a>
   </div>
@@ -887,8 +915,6 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
-    <div class="section-label">Get In Touch</div>
-    <div class="section-label">Reach Out</div>
     <h2 class="section-title">Contact Us</h2>
     <div class="section-divider"></div>
     <div class="contact-grid">
@@ -919,11 +945,10 @@
           <div><strong>Website</strong><span><a href="https://nwgnca.org" target="_blank" style="color:var(--crimson);text-decoration:none;">nwgnca.org</a></span></div>
         </div>
         <div style="margin-top:1.5rem;">
-          <strong style="font-size:12px;color:var(--mid-gray);text-transform:uppercase;letter-spacing:0.06em;">Follow Us</strong>
-          <div class="social-links" style="margin-top:0.75rem;">
-            <a href="https://www.facebook.com/nwgncachapter2012/" target="_blank" title="Facebook" style="background:var(--light-gray);color:var(--charcoal);">f</a>
-            <a href="#" title="Instagram" style="background:var(--light-gray);color:var(--charcoal);">&#x1F4F8;</a>
-            <a href="mailto:nwgnca2012@gmail.com" title="Email" style="background:var(--light-gray);color:var(--charcoal);">&#x2709;</a>
+          <strong style="display:block;font-size:0.95rem;font-weight:600;color:var(--charcoal);">Connect with us</strong>
+          <div class="social-links social-brand" style="margin-top:0.85rem;">
+            <a href="https://www.facebook.com/nwgncachapter2012/" target="_blank" rel="noopener" title="Facebook" aria-label="NWGN-CA on Facebook (opens in a new tab)"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.6" fill="#fff"/><path fill="#0866FF" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="mailto:nwgnca2012@gmail.com" title="Email" aria-label="Email NWGN-CA at nwgnca2012@gmail.com"><svg width="30" height="26" viewBox="3 6 42 36" aria-hidden="true"><path fill="#4caf50" d="M45,16.2l-5,2.75l-5,4.75L35,40h7c1.657,0,3-1.343,3-3V16.2z"/><path fill="#1e88e5" d="M3,16.2l3.614,1.71L13,23.7V40H6c-1.657,0-3-1.343-3-3V16.2z"/><polygon fill="#e53935" points="35,11.2 24,19.45 13,11.2 12,17 13,23.7 24,31.95 35,23.7 36,17"/><path fill="#c62828" d="M3,12.298V16.2l10,7.5V11.2L9.876,8.859C9.132,8.301,8.228,8,7.298,8h0C4.924,8,3,9.924,3,12.298z"/><path fill="#fbc02d" d="M45,12.298V16.2l-10,7.5V11.2l3.124-2.341C38.868,8.301,39.772,8,40.702,8h0C43.076,8,45,9.924,45,12.298z"/></svg></a>
           </div>
         </div>
       </div>
@@ -931,12 +956,12 @@
         <h3>Send Us a Message</h3>
         <form onsubmit="handleContact(event)">
           <div class="form-row">
-            <div class="form-group"><label>First Name</label><input type="text" id="contact-first" placeholder="Sita" required></div>
-            <div class="form-group"><label>Last Name</label><input type="text" id="contact-last" placeholder="Sharma" required></div>
+            <div class="form-group"><label for="contact-first">First Name</label><input type="text" id="contact-first" autocomplete="given-name" placeholder="Sita" required></div>
+            <div class="form-group"><label for="contact-last">Last Name</label><input type="text" id="contact-last" autocomplete="family-name" placeholder="Sharma" required></div>
           </div>
-          <div class="form-group"><label>Email Address</label><input type="email" id="contact-email" placeholder="you@example.com" required></div>
+          <div class="form-group"><label for="contact-email">Email Address</label><input type="email" id="contact-email" autocomplete="email" placeholder="you@example.com" required></div>
           <div class="form-group">
-            <label>Subject</label>
+            <label for="contact-subject">Subject</label>
             <select id="contact-subject">
               <option>General Inquiry</option>
               <option>Membership Question</option>
@@ -946,7 +971,7 @@
               <option>Other</option>
             </select>
           </div>
-          <div class="form-group"><label>Message</label><textarea id="contact-message" placeholder="How can we help you?" required></textarea></div>
+          <div class="form-group"><label for="contact-message">Message</label><textarea id="contact-message" placeholder="How can we help you?" required></textarea></div>
           <button type="submit" class="btn-primary" id="contactSubmitBtn" style="width:100%;text-align:center;margin-top:0.5rem;">Send Message &rarr;</button>
         </form>
       </div>
@@ -960,9 +985,8 @@
       <strong>NWGN &ndash; California Chapter</strong>
       <p>A non-profit, women-led organization dedicated to empowering Nepalese women in California through education, advocacy, and community support since 2012.</p>
       <div class="social-links">
-        <a href="https://www.facebook.com/nwgncachapter2012/" target="_blank" title="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-        <a href="#" title="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-        <a href="mailto:nwgnca2012@gmail.com" title="Email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+        <a href="https://www.facebook.com/nwgncachapter2012/" target="_blank" rel="noopener" title="Facebook" aria-label="NWGN-CA on Facebook (opens in a new tab)"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.6" fill="#fff"/><path fill="#0866FF" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="mailto:nwgnca2012@gmail.com" title="Email" aria-label="Email NWGN-CA at nwgnca2012@gmail.com"><svg width="24" height="21" viewBox="3 6 42 36" aria-hidden="true"><path fill="#4caf50" d="M45,16.2l-5,2.75l-5,4.75L35,40h7c1.657,0,3-1.343,3-3V16.2z"/><path fill="#1e88e5" d="M3,16.2l3.614,1.71L13,23.7V40H6c-1.657,0-3-1.343-3-3V16.2z"/><polygon fill="#e53935" points="35,11.2 24,19.45 13,11.2 12,17 13,23.7 24,31.95 35,23.7 36,17"/><path fill="#c62828" d="M3,12.298V16.2l10,7.5V11.2L9.876,8.859C9.132,8.301,8.228,8,7.298,8h0C4.924,8,3,9.924,3,12.298z"/><path fill="#fbc02d" d="M45,12.298V16.2l-10,7.5V11.2l3.124-2.341C38.868,8.301,39.772,8,40.702,8h0C43.076,8,45,9.924,45,12.298z"/></svg></a>
       </div>
     </div>
     <div>
@@ -1002,7 +1026,7 @@
 <div class="modal-overlay" id="membershipModal">
   <div class="modal">
     <div class="modal-header">
-      <button class="modal-close" onclick="closeMembership()">&#x2715;</button>
+      <button class="modal-close" onclick="closeMembership()" aria-label="Close">&#x2715;</button>
       <h2>Join NWGN-CA</h2>
       <p>Become part of our community and make a difference</p>
     </div>
@@ -1017,11 +1041,11 @@
         <button class="tier" onclick="selectTier(this,'Lifetime Membership',250)">
           <div class="tier-name">Lifetime Membership</div>
           <div class="price">$250<span style="font-size:0.9rem;font-weight:400"> once</span></div>
-          <div class="tier-desc">&#x1F3AB; Free tickets to all future events</div>
+          <div class="tier-desc">Free tickets to all future events</div>
         </button>
       </div>
       <div class="lifetime-perk" id="lifetime-perk">
-        <strong>&#x1F48E; Lifetime Member Benefit</strong>
+        <strong>Lifetime Member Benefit</strong>
         As a Lifetime member you receive:
         <ul>
           <li><strong>Free tickets to every future NWGN-CA event</strong> &mdash; for life, no annual renewal.</li>
@@ -1031,18 +1055,18 @@
       </div>
       <form id="membershipForm" onsubmit="handleMembership(event)">
         <div class="form-sep">Personal Information</div>
-        <div class="form-group"><label>Full Name *</label><input type="text" id="mem-fullname" placeholder="Sita Sharma" required></div>
-        <div class="form-group"><label>Email Address *</label><input type="email" id="mem-email" placeholder="you@example.com" required></div>
-        <div class="form-group"><label>Phone Number *</label><input type="tel" id="mem-phone" placeholder="(415) 555-0100" required></div>
+        <div class="form-group"><label for="mem-fullname">Full Name *</label><input type="text" id="mem-fullname" autocomplete="name" placeholder="Sita Sharma" required></div>
+        <div class="form-group"><label for="mem-email">Email Address *</label><input type="email" id="mem-email" autocomplete="email" placeholder="you@example.com" required></div>
+        <div class="form-group"><label for="mem-phone">Phone Number *</label><input type="tel" id="mem-phone" autocomplete="tel" placeholder="(415) 555-0100" required></div>
         <div class="form-sep">Address</div>
-        <div class="form-group"><label>Street Address *</label><input type="text" id="mem-street" placeholder="123 Main Street" required></div>
+        <div class="form-group"><label for="mem-street">Street Address *</label><input type="text" id="mem-street" autocomplete="street-address" placeholder="123 Main Street" required></div>
         <div class="form-row">
-          <div class="form-group"><label>City *</label><input type="text" id="mem-city" placeholder="San Francisco" required></div>
-          <div class="form-group"><label>ZIP Code *</label><input type="text" id="mem-zip" placeholder="94105" required></div>
+          <div class="form-group"><label for="mem-city">City *</label><input type="text" id="mem-city" autocomplete="address-level2" placeholder="San Francisco" required></div>
+          <div class="form-group"><label for="mem-zip">ZIP Code *</label><input type="text" id="mem-zip" autocomplete="postal-code" placeholder="94105" required></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label>State</label><input type="text" id="mem-state" value="CA"></div>
-          <div class="form-group"><label>Country</label><input type="text" id="mem-country" value="USA"></div>
+          <div class="form-group"><label for="mem-state">State</label><input type="text" id="mem-state" autocomplete="address-level1" value="CA"></div>
+          <div class="form-group"><label for="mem-country">Country</label><input type="text" id="mem-country" autocomplete="country-name" value="USA"></div>
         </div>
         <div class="form-sep">Payment</div>
         <div class="payment-note">
@@ -1056,14 +1080,14 @@
             </div>
           </div>
           <strong>Selected plan: <span id="selected-plan-name">General Membership &ndash; $25/year</span></strong>
-          <div style="margin-top:0.5rem;font-size:12px;color:var(--mid-gray);">&#x1F512; 256-bit SSL encryption &middot; All major cards accepted</div>
+          <div style="margin-top:0.5rem;font-size:12px;color:var(--mid-gray);"><svg class="icon-inline" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>256-bit SSL encryption &middot; All major cards accepted</div>
         </div>
         <button type="submit" class="btn-primary" style="width:100%;text-align:center;margin-top:1.5rem;font-size:15px;padding:14px;" id="membershipSubmitBtn">Join Now &rarr;</button>
       </form>
     </div>
     <div class="success-msg" id="membershipSuccess">
       <img class="success-logo" src="logo.jpg" alt="NWGN-CA logo">
-      <h3>Thank You for Joining NWGN-CA! &#x1F338;</h3>
+      <h3>Thank You for Joining NWGN-CA!</h3>
       <p>Your membership application has been received &mdash; welcome to our community.</p>
       <p>A confirmation email will be sent to you shortly, and our team will follow up within 2 business days.</p>
       <p style="margin-top:0.75rem;font-size:0.85rem;color:var(--crimson);">Please complete your payment to activate your membership.</p>
@@ -1075,7 +1099,7 @@
 <div class="modal-overlay" id="donateModal">
   <div class="modal">
     <div class="modal-header">
-      <button class="modal-close" onclick="closeDonate()">&#x2715;</button>
+      <button class="modal-close" onclick="closeDonate()" aria-label="Close">&#x2715;</button>
       <h2>Donate to NWGN-CA</h2>
       <p>Your generosity empowers Nepalese women in California</p>
     </div>
@@ -1090,13 +1114,13 @@
         <button class="tier" onclick="selectDonate(this,'custom')"><div class="price" style="font-size:1.2rem;">Custom</div><div class="tier-desc">Your amount</div></button>
       </div>
       <div id="customAmountField" style="display:none;margin-bottom:1rem;">
-        <label>Enter Amount ($)</label>
+        <label for="customAmount">Enter Amount ($)</label>
         <input type="number" id="customAmount" placeholder="e.g. 75" min="1">
       </div>
       <div class="form-sep" style="margin-top:0.5rem;">Your Information</div>
       <div class="form-row">
-        <div class="form-group"><label>Full Name *</label><input type="text" id="donate-name" placeholder="Sita Sharma" required></div>
-        <div class="form-group"><label>Email Address *</label><input type="email" id="donate-email" placeholder="you@example.com" required></div>
+        <div class="form-group"><label for="donate-name">Full Name *</label><input type="text" id="donate-name" autocomplete="name" placeholder="Sita Sharma" required></div>
+        <div class="form-group"><label for="donate-email">Email Address *</label><input type="email" id="donate-email" autocomplete="email" placeholder="you@example.com" required></div>
       </div>
       <div class="payment-note">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.6rem;">
@@ -1105,13 +1129,13 @@
           </div>
           <strong>Secure payment via Stripe</strong>
         </div>
-        <div style="font-size:12px;color:var(--mid-gray);">&#x1F512; 256-bit SSL &middot; All major cards accepted &middot; Tax-deductible (501(c)(3))</div>
+        <div style="font-size:12px;color:var(--mid-gray);"><svg class="icon-inline" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>256-bit SSL &middot; All major cards accepted &middot; Tax-deductible (501(c)(3))</div>
       </div>
-      <button class="btn-gold" style="width:100%;text-align:center;margin-top:1.5rem;font-size:15px;padding:14px;" onclick="proceedDonate()">&#x2665; Proceed to Secure Donation &rarr;</button>
+      <button class="btn-gold" style="width:100%;text-align:center;margin-top:1.5rem;font-size:15px;padding:14px;" onclick="proceedDonate()">Proceed to Secure Donation &rarr;</button>
     </div>
     <div class="success-msg" id="donateSuccess" style="display:none;">
-      <div class="check-circle" style="background:linear-gradient(135deg,var(--gold),var(--amber));">&#x2665;</div>
-      <h3>Thank You! &#x1F49B;</h3>
+      <div class="check-circle" style="background:linear-gradient(135deg,var(--gold),var(--amber));">&#x2713;</div>
+      <h3>Thank You!</h3>
       <p>Your generous donation is making a difference for Nepalese women in California.</p>
       <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--mid-gray);">A receipt will be sent to your email.</p>
       <button class="btn-gold" style="margin-top:1.5rem;" onclick="closeDonate()">Close</button>
@@ -1122,26 +1146,26 @@
 <div class="modal-overlay" id="ticketModal">
   <div class="modal">
     <div class="modal-header">
-      <button class="modal-close" onclick="closeTicket()">&#x2715;</button>
+      <button class="modal-close" onclick="closeTicket()" aria-label="Close">&#x2715;</button>
       <h2>Claim Free Event Tickets</h2>
-      <p>A Lifetime member benefit &#x1F48E;</p>
+      <p>A Lifetime member benefit</p>
     </div>
     <div class="modal-body" id="ticketFormBody">
       <p style="color:var(--mid-gray);line-height:1.7;margin-bottom:1.25rem;font-size:0.9rem;">Lifetime members attend all NWGN-CA events for free. Tell us which event you'd like to attend and how many tickets you need, and we'll confirm your reservation by email.</p>
       <form id="ticketForm" onsubmit="handleTicketClaim(event)">
-        <div class="form-group"><label>Full Name *</label><input type="text" id="tk-name" placeholder="Sita Sharma" required></div>
-        <div class="form-group"><label>Email Address *</label><input type="email" id="tk-email" placeholder="you@example.com" required></div>
+        <div class="form-group"><label for="tk-name">Full Name *</label><input type="text" id="tk-name" autocomplete="name" placeholder="Sita Sharma" required></div>
+        <div class="form-group"><label for="tk-email">Email Address *</label><input type="email" id="tk-email" autocomplete="email" placeholder="you@example.com" required></div>
         <div class="form-row">
-          <div class="form-group"><label>Event *</label><input type="text" id="tk-event" placeholder="e.g. IWD 2026 Celebration" required></div>
-          <div class="form-group"><label>Number of Tickets *</label><input type="number" id="tk-qty" value="1" min="1" max="6" required></div>
+          <div class="form-group"><label for="tk-event">Event *</label><input type="text" id="tk-event" placeholder="e.g. IWD 2026 Celebration" required></div>
+          <div class="form-group"><label for="tk-qty">Number of Tickets *</label><input type="number" id="tk-qty" value="1" min="1" max="6" required></div>
         </div>
-        <div class="payment-note" style="margin-top:0.5rem;">&#x2705; Lifetime members only. We'll verify your membership and email your free ticket confirmation. Not a Lifetime member yet? <a href="#" onclick="closeTicket();openMembership(event);return false;" style="color:var(--crimson);font-weight:600;">Become one &rarr;</a></div>
-        <button type="submit" class="btn-primary" style="width:100%;text-align:center;margin-top:1.5rem;font-size:15px;padding:14px;" id="ticketSubmitBtn">&#x1F3AB; Reserve My Free Tickets &rarr;</button>
+        <div class="payment-note" style="margin-top:0.5rem;">Lifetime members only. We'll verify your membership and email your free ticket confirmation. Not a Lifetime member yet? <a href="#" onclick="closeTicket();openMembership(event);return false;" style="color:var(--crimson);font-weight:600;">Become one &rarr;</a></div>
+        <button type="submit" class="btn-primary" style="width:100%;text-align:center;margin-top:1.5rem;font-size:15px;padding:14px;" id="ticketSubmitBtn">Reserve My Free Tickets &rarr;</button>
       </form>
     </div>
     <div class="success-msg" id="ticketSuccess" style="display:none;">
       <div class="check-circle">&#x2713;</div>
-      <h3>Reservation received! &#x1F48E;</h3>
+      <h3>Reservation received!</h3>
       <p>Thank you! We'll verify your Lifetime membership and email your free ticket confirmation shortly.</p>
       <button class="btn-primary" style="margin-top:1.5rem;" onclick="closeTicket()">Close</button>
     </div>
@@ -1151,7 +1175,7 @@
 <div class="modal-overlay" id="privacyModal">
   <div class="modal">
     <div class="modal-header">
-      <button class="modal-close" onclick="closePrivacy()">&#x2715;</button>
+      <button class="modal-close" onclick="closePrivacy()" aria-label="Close">&#x2715;</button>
       <h2>Privacy Policy</h2>
       <p>Effective September 14, 2026</p>
     </div>
@@ -1216,7 +1240,7 @@
 <div class="modal-overlay" id="uploadModal">
   <div class="modal">
     <div class="modal-header">
-      <button class="modal-close" onclick="closeUpload()">&#x2715;</button>
+      <button class="modal-close" onclick="closeUpload()" aria-label="Close">&#x2715;</button>
       <h2>Upload Event Photos</h2>
       <p>Add photos directly to the gallery</p>
     </div>
@@ -1224,7 +1248,7 @@
       <div id="upload-auth">
         <p style="color:var(--mid-gray);font-size:0.875rem;margin-bottom:1.25rem;line-height:1.65;">Enter the admin password to upload photos to the gallery.</p>
         <div class="form-group">
-          <label>Admin Password</label>
+          <label for="upload-pwd">Admin Password</label>
           <input type="password" id="upload-pwd" placeholder="Enter password" onkeydown="if(event.key==='Enter')verifyUploadPassword()">
         </div>
         <div id="upload-pwd-error" style="color:var(--crimson);font-size:13px;display:none;margin-bottom:0.75rem;">Incorrect password. Please try again.</div>
@@ -1232,13 +1256,13 @@
       </div>
       <div id="upload-form" style="display:none;">
         <div class="form-group">
-          <label>Event Name / Caption *</label>
+          <label for="upload-caption">Event Name / Caption *</label>
           <input type="text" id="upload-caption" placeholder="e.g. IWD 2025 Celebration">
         </div>
         <div class="form-group">
-          <label>Select Photos</label>
+          <label for="upload-file-input">Select Photos</label>
           <div class="upload-area" id="upload-area" onclick="document.getElementById('upload-file-input').click()">
-            <div class="upload-icon">&#x1F4F7;</div>
+            <div class="upload-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
             <p>Click to select photos<br><small>JPG, PNG, WEBP &middot; up to 10MB each</small></p>
           </div>
           <input type="file" id="upload-file-input" multiple accept="image/*" style="display:none" onchange="handleFileSelect(this.files)">
@@ -1248,12 +1272,12 @@
           <div class="upload-progress-bar-bg"><div class="upload-progress-bar" id="upload-progress-bar"></div></div>
           <p id="upload-progress-text" style="font-size:12px;color:var(--mid-gray);margin-top:6px;text-align:center;">Uploading…</p>
         </div>
-        <button class="btn-primary" onclick="submitPhotos()" id="upload-submit-btn" style="width:100%;margin-top:1.5rem;padding:13px;" disabled>&#x2B06; Upload to Gallery &rarr;</button>
+        <button class="btn-primary" onclick="submitPhotos()" id="upload-submit-btn" style="width:100%;margin-top:1.5rem;padding:13px;" disabled>Upload to Gallery &rarr;</button>
       </div>
     </div>
     <div class="success-msg" id="uploadSuccess" style="display:none;">
       <div class="check-circle">&#x2713;</div>
-      <h3>Photos Added! &#x1F4F7;</h3>
+      <h3>Photos Added!</h3>
       <p>Your photos are now live in the gallery.</p>
       <button class="btn-primary" style="margin-top:1.5rem;" onclick="closeUpload()">View Gallery</button>
     </div>
@@ -1262,7 +1286,7 @@
 <!-- CONTACT THANK-YOU MODAL -->
 <div class="modal-overlay" id="contactModal">
   <div class="modal contact-thanks">
-    <button class="modal-close dark" onclick="closeContact()">&#x2715;</button>
+    <button class="modal-close dark" onclick="closeContact()" aria-label="Close">&#x2715;</button>
     <div class="contact-thanks-body">
       <img class="contact-thanks-logo" src="logo.jpg" alt="NWGN-CA logo">
       <h2>Thank you for reaching out!</h2>
@@ -1315,7 +1339,8 @@ const UPLOAD_PASSWORD = 'nwgn2025';
 
 // ─── NAV ─────────────────────────────────────────────────
 function toggleMenu() {
-  document.getElementById('navLinks').classList.toggle('open');
+  const open = document.getElementById('navLinks').classList.toggle('open');
+  document.querySelector('.hamburger').setAttribute('aria-expanded', open ? 'true' : 'false');
 }
 
 // ─── TABS ────────────────────────────────────────────────
@@ -1533,7 +1558,7 @@ function carShow(i) {
 }
 
 function carGo(step) { carShow(carIdx + step); carAuto(); }
-function carAuto() { clearInterval(carTimer); carTimer = setInterval(function() { carShow(carIdx + 1); }, 6000); }
+function carAuto() { clearInterval(carTimer); if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; carTimer = setInterval(function() { carShow(carIdx + 1); }, 6000); }
 
 // ─── albums ──────────────────────────────────────────────
 function allAlbums() {
@@ -1549,7 +1574,7 @@ function buildAlbums() {
   grid.innerHTML = allAlbums().map(function(al, i) {
     return '<button class="album-card" onclick="openAlbum(' + i + ')">' +
              '<div class="album-cover">' +
-               '<img src="' + al.photos[0] + '" alt="' + escHtml(al.title) + '">' +
+               '<img loading="lazy" src="' + al.photos[0] + '" alt="' + escHtml(al.title) + '">' +
                '<span class="album-count">' + al.photos.length + ' photo' + (al.photos.length === 1 ? '' : 's') + '</span>' +
                '<div class="album-label"><strong>' + escHtml(al.title) + '</strong><span>' + escHtml(al.meta) + '</span></div>' +
              '</div>' +
@@ -1565,7 +1590,7 @@ function openAlbum(i) {
   lbIdx = 0;
   document.getElementById('lb-album').textContent = lbAlbum.title;
   document.getElementById('lb-strip').innerHTML = lbAlbum.photos.map(function(src, n) {
-    return '<button class="lb-thumb" onclick="lbShow(' + n + ')"><img src="' + src + '" alt=""></button>';
+    return '<button class="lb-thumb" onclick="lbShow(' + n + ')"><img loading="lazy" src="' + src + '" alt=""></button>';
   }).join('');
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -1753,7 +1778,7 @@ function closeTicket() {
   document.getElementById('ticketFormBody').style.display = 'block';
   document.getElementById('ticketSuccess').style.display = 'none';
   const btn = document.getElementById('ticketSubmitBtn');
-  if (btn) { btn.disabled = false; btn.innerHTML = '&#x1F3AB; Reserve My Free Tickets &rarr;'; }
+  if (btn) { btn.disabled = false; btn.innerHTML = 'Reserve My Free Tickets &rarr;'; }
 }
 function openPrivacy(e) {
   if (e) e.preventDefault();
@@ -1947,7 +1972,7 @@ document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
 
 // CLOSE NAV ON LINK CLICK (MOBILE)
 document.querySelectorAll('.nav-links a').forEach(function(a) {
-  a.addEventListener('click', function() { document.getElementById('navLinks').classList.remove('open'); });
+  a.addEventListener('click', function() { document.getElementById('navLinks').classList.remove('open'); document.querySelector('.hamburger').setAttribute('aria-expanded', 'false'); });
 });
 
 </script>
