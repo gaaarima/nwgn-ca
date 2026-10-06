@@ -263,11 +263,11 @@
     .albums-heading { margin-top: 2.25rem; }
   }
   /* DONATE BANNER */
-  .donate-banner { background: linear-gradient(135deg, var(--crimson) 0%, var(--deep-red) 60%, #7A2018 100%); color: white; text-align: center; padding: 5rem 2rem; position: relative; overflow: hidden; }
-  .donate-banner::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 10% 50%, rgba(255,255,255,0.05) 0%, transparent 40%), radial-gradient(circle at 90% 50%, rgba(255,255,255,0.05) 0%, transparent 40%); }
-  .donate-banner h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; position: relative; color: white; font-weight: 600; }
-  .donate-banner p { color: rgba(255,255,255,0.78); max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.75; position: relative; font-size: 1.05rem; }
-  .donate-banner .btn-donate { position: relative; font-size: 1rem; padding: 14px 36px; box-shadow: 0 8px 28px rgba(0,0,0,0.25); }
+  .donate-banner { background: linear-gradient(135deg, #FDF6EC 0%, #F6DDBE 50%, #EFCB8E 100%); color: var(--charcoal); text-align: center; padding: 5rem 2rem; position: relative; overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .donate-banner::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 10% 50%, rgba(255,255,255,0.45) 0%, transparent 40%), radial-gradient(circle at 90% 50%, rgba(255,255,255,0.45) 0%, transparent 40%); }
+  .donate-banner h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; position: relative; color: var(--crimson); font-weight: 600; }
+  .donate-banner p { color: var(--mid-gray); max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.75; position: relative; font-size: 1.05rem; }
+  .donate-banner .btn-donate { position: relative; font-size: 1rem; padding: 14px 36px; box-shadow: 0 8px 28px rgba(212,162,58,0.35); }
   /* CONTACT */
   #contact { background: var(--light-gray); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; }
@@ -457,7 +457,7 @@
   #home:focus { outline: none; }
   a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:not([tabindex="-1"]):focus-visible { outline: 3px solid var(--crimson); outline-offset: 3px; }
   nav:not(.scrolled) :focus-visible, #home :focus-visible, footer :focus-visible, .lightbox :focus-visible, .carousel :focus-visible,
-  .about-pull :focus-visible, .donate-banner :focus-visible, .modal-header :focus-visible, .skip-link:focus-visible { outline-color: var(--champagne); }
+  .about-pull :focus-visible, .modal-header :focus-visible, .skip-link:focus-visible { outline-color: var(--champagne); }
   .nav-links.open :focus-visible { outline-color: var(--crimson); }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto !important; }
