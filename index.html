@@ -100,9 +100,8 @@
   /* fixed nav overlaps anchor targets; offset the native jump */
   section[id], footer[id] { scroll-margin-top: 90px; }
   .section-inner { max-width: 1200px; margin: auto; }
-  h2.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; color: var(--charcoal); margin-bottom: 1rem; }
+  h2.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; color: var(--charcoal); margin-bottom: 1.5rem; }
   h1.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; color: var(--charcoal); margin-bottom: 1rem; }
-  .section-divider { width: 60px; height: 3px; background: var(--crimson); border-radius: 2px; margin-bottom: 1.5rem; }
   /* ABOUT */
   #about { background: var(--warm-white); }
   /* About reads top-to-bottom: community banner, purpose card, then the narrative */
@@ -546,7 +545,6 @@
       <div class="about-story">
         <h2>Empowering <em>Nepalese Women</em> in California</h2>
         <p class="about-estd">Est. 2012 &middot; San Francisco Bay Area</p>
-        <div class="section-divider"></div>
         <p>The NWGN California Chapter is a women-led non-profit established in 2012, dedicated to supporting the growth and development of Nepalese women across the San Francisco Bay Area and beyond.</p>
         <p>We provide financial assistance, emotional support, and social resources — helping Nepalese women achieve self-reliance, build lasting connections, and make their mark in society.</p>
         <p>We collaborate with national and international organizations that share our vision, and actively advocate for the rights and interests of Nepali women everywhere.</p>
@@ -564,7 +562,6 @@
     <!-- Mission pillars -->
     <div style="text-align:center;margin-bottom:2.5rem;">
       <h2 class="section-title" style="margin-bottom:0.5rem;">Our Mission Pillars</h2>
-      <div class="section-divider" style="margin:0.75rem auto 0;"></div>
     </div>
     <div class="mission-grid">
       <div class="mission-card">
@@ -604,7 +601,6 @@
 <section id="members">
   <div class="section-inner">
     <h2 class="section-title">Current Board Members</h2>
-    <div class="section-divider"></div>
     <p style="color:var(--mid-gray);line-height:1.7;">Our dedicated board members guide NWGN-CA's programs, events, and mission. We welcome volunteers and new members to join our growing community.</p>
     <div class="board-grid">
       <div class="board-card">
@@ -674,7 +670,6 @@
 <section id="presidents">
   <div class="section-inner">
     <h2 class="section-title">Past Presidents</h2>
-    <div class="section-divider"></div>
     <p style="color:var(--mid-gray);max-width:560px;line-height:1.7;margin-bottom:0.5rem;">We honor the dedicated women who have led the NWGN California Chapter since its founding in 2012.</p>
     <div class="presidents-list">
       <div class="president-row">
@@ -704,7 +699,6 @@
 <section id="events">
   <div class="section-inner">
     <h2 class="section-title">Events &amp; Initiatives</h2>
-    <div class="section-divider"></div>
     <div class="events-tabs">
       <button class="tab-btn" onclick="switchTab('upcoming',this)">Upcoming Events</button>
       <button class="tab-btn active" onclick="switchTab('past',this)">Past Events</button>
@@ -855,7 +849,6 @@
 <section id="gallery">
   <div class="section-inner">
     <h2 class="section-title">Our Moments</h2>
-    <div class="section-divider"></div>
     <p style="color:var(--mid-gray);max-width:560px;line-height:1.7;">Glimpses from our events, celebrations, and community gatherings over the years.</p>
     <div class="carousel" id="carousel">
       <div class="carousel-track" id="carousel-track"></div>
@@ -884,7 +877,6 @@
 <section id="membership">
   <div class="section-inner">
     <h2 class="section-title">Become a Member</h2>
-    <div class="section-divider"></div>
     <p class="membership-intro">Becoming a member of NWGN-CA connects you with a supportive community of Nepalese women across California and directly funds our programs &mdash; financial assistance, counseling, scholarships, leadership training, and community events. Choose the membership that's right for you below.</p>
     <div class="membership-plans">
       <div class="plan-card">
@@ -927,7 +919,6 @@
 <section id="contact">
   <div class="section-inner">
     <h2 class="section-title">Contact Us</h2>
-    <div class="section-divider"></div>
     <div class="contact-grid">
       <div class="contact-info">
         <h3>We'd love to hear from you</h3>
@@ -1835,13 +1826,11 @@ function setupAccordions() {
     const label = override || (titleEl ? titleEl.textContent.trim() : id);
 
     // when the bar borrows the section's own heading, mark that heading block
-    // (eyebrow label(s) above it, divider below) so mobile doesn't show it twice
+    // (heading plus any eyebrow label(s) above it) so mobile doesn't show it twice
     if (!override && titleEl) {
       titleEl.classList.add('sec-dup');
       let prev = titleEl.previousElementSibling;
       while (prev && prev.classList.contains('section-label')) { prev.classList.add('sec-dup'); prev = prev.previousElementSibling; }
-      const next = titleEl.nextElementSibling;
-      if (next && next.classList.contains('section-divider')) next.classList.add('sec-dup');
     }
 
     const body = document.createElement('div');
