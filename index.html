@@ -32,8 +32,7 @@
   nav.scrolled { background: var(--warm-white); border-bottom: 1px solid var(--border); }
   nav.scrolled .nav-links a, nav.scrolled .nav-logo span, nav.scrolled .nav-logo small { color: var(--charcoal) !important; }
   nav.scrolled .nav-links a:hover { color: var(--crimson) !important; }
-  nav.scrolled .nav-links a.nav-donate { color: var(--crimson) !important; }
-  nav.scrolled .nav-links a.nav-donate:hover { color: #fff !important; }
+  nav.scrolled .nav-links a.nav-donate, nav.scrolled .nav-links a.nav-donate:hover { color: var(--charcoal) !important; }
   .nav-inner { max-width: 1280px; margin: auto; display: flex; align-items: center; justify-content: space-between; height: 78px; }
   .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
   .logo-emblem { width: 56px; height: 56px; object-fit: contain; flex-shrink: 0; }
@@ -45,8 +44,8 @@
   .nav-links li { display: flex; align-items: center; height: 100%; }
   .nav-links a { text-decoration: none; color: #fff; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0 16px; transition: color 0.2s; display: flex; align-items: center; height: 100%; }
   .nav-links a:hover { color: var(--champagne); }
-  .nav-donate { align-self: center; height: auto !important; background: #fff !important; color: var(--crimson) !important; border: 2px solid var(--crimson); border-radius: 10px !important; font-weight: 800 !important; padding: 10px 22px !important; margin-left: 12px; letter-spacing: 0.06em; transition: all 0.25s; }
-  .nav-donate:hover { background: var(--crimson) !important; color: #fff !important; transform: translateY(-1px); }
+  .nav-donate { align-self: center; height: auto !important; background: var(--champagne) !important; color: var(--charcoal) !important; border: 2px solid var(--champagne); border-radius: 10px !important; font-weight: 800 !important; padding: 10px 22px !important; margin-left: 12px; letter-spacing: 0.06em; transition: all 0.25s; }
+  .nav-donate:hover { background: #E2B44E !important; border-color: #E2B44E; color: var(--charcoal) !important; transform: translateY(-1px); }
   .nav-action-item { margin-left: 8px; padding-left: 8px; }
   .nav-cta { color: var(--charcoal) !important; gap: 6px; }
   .nav-cta svg { stroke-width: 2; }
@@ -76,13 +75,12 @@
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.8s 0.3s ease both; }
   /* Outlined buttons: white fill, coloured border + text; fill with colour on hover */
   .btn-primary, .btn-gold, .btn-secondary { padding: 13px 26px; border-radius: 10px; background: #fff; font-weight: 700; font-size: 14px; text-decoration: none; border: 2px solid; transition: all 0.25s; cursor: pointer; display: inline-block; font-family:'DM Sans',sans-serif; }
-  .btn-primary { color: var(--crimson); border-color: var(--crimson); }
-  .btn-primary:hover { background: var(--crimson); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(192,57,43,0.3); }
-  .btn-gold { color: var(--gold); border-color: var(--gold); }
-  .btn-gold:hover { background: var(--gold); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(47,95,143,0.3); }
-  .btn-secondary { color: var(--charcoal); border-color: var(--charcoal); }
-  .btn-secondary:hover { background: var(--charcoal); color: #fff; transform: translateY(-2px); }
-  .btn-primary:disabled, .btn-gold:disabled { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
+  .btn-primary, .btn-gold, .btn-secondary { color: var(--gold); border-color: var(--gold); }
+  .btn-primary:hover, .btn-gold:hover, .btn-secondary:hover { background: var(--gold); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(47,95,143,0.3); }
+  /* Donate buttons: filled mustard yellow with dark text */
+  .btn-donate { padding: 13px 26px; border-radius: 10px; background: var(--champagne); color: var(--charcoal); font-weight: 700; font-size: 14px; text-decoration: none; border: 2px solid var(--champagne); transition: all 0.25s; cursor: pointer; display: inline-block; font-family:'DM Sans',sans-serif; }
+  .btn-donate:hover { background: #E2B44E; border-color: #E2B44E; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,162,58,0.4); }
+  .btn-primary:disabled, .btn-gold:disabled, .btn-donate:disabled { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
   .hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; flex-wrap: wrap; animation: fadeUp 0.8s 0.4s ease both; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.14); }
   .stat { border-left: 2px solid var(--champagne); padding-left: 1rem; }
   .stat strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 2.1rem; color: #fff; font-weight: 600; line-height: 1; }
@@ -174,7 +172,7 @@
   #events { background: var(--warm-white); }
   .events-tabs { display: flex; gap: 0.75rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
   .tab-btn { padding: 10px 22px; border-radius: 100px; font-weight: 600; font-size: 14px; border: 2px solid var(--border); background: white; cursor: pointer; transition: all 0.2s; color: var(--mid-gray); font-family:'DM Sans',sans-serif; }
-  .tab-btn.active { background: var(--crimson); color: white; border-color: var(--crimson); }
+  .tab-btn.active { background: var(--gold); color: white; border-color: var(--gold); }
   .tab-panel { display: none; }
   .tab-panel.active { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
   .event-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); transition: all 0.25s; }
@@ -187,8 +185,8 @@
   .event-tag { display: inline-block; margin-top: 0.75rem; background: var(--light-gray); color: var(--mid-gray); font-size: 11px; padding: 3px 10px; border-radius: 100px; font-weight: 600; }
   .event-tag.upcoming { background: rgba(192,57,43,0.08); color: var(--crimson); }
   .event-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .event-photos-btn { display: inline-flex; align-items: center; gap: 6px; margin-top: 0.75rem; margin-left: 6px; background: rgba(192,57,43,0.08); color: var(--crimson); font-size: 13px; padding: 8px 16px; border-radius: 100px; font-weight: 600; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s; }
-  .event-photos-btn:hover { background: var(--crimson); color: white; }
+  .event-photos-btn { display: inline-flex; align-items: center; gap: 6px; margin-top: 0.75rem; margin-left: 6px; background: rgba(47,95,143,0.08); color: var(--gold); font-size: 13px; padding: 8px 16px; border-radius: 100px; font-weight: 600; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s; }
+  .event-photos-btn:hover { background: var(--gold); color: white; }
   /* LIGHTBOX */
   /* GALLERY */
   /* MEMBERSHIP SECTION */
@@ -269,8 +267,7 @@
   .donate-banner::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 10% 50%, rgba(255,255,255,0.05) 0%, transparent 40%), radial-gradient(circle at 90% 50%, rgba(255,255,255,0.05) 0%, transparent 40%); }
   .donate-banner h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; position: relative; color: white; font-weight: 600; }
   .donate-banner p { color: rgba(255,255,255,0.78); max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.75; position: relative; font-size: 1.05rem; }
-  .donate-banner .btn-gold { position: relative; font-size: 1rem; padding: 14px 36px; color: var(--crimson); border-color: #fff; box-shadow: 0 8px 28px rgba(0,0,0,0.25); }
-  .donate-banner .btn-gold:hover { background: var(--peach); color: var(--deep-red); border-color: var(--peach); }
+  .donate-banner .btn-donate { position: relative; font-size: 1rem; padding: 14px 36px; box-shadow: 0 8px 28px rgba(0,0,0,0.25); }
   /* CONTACT */
   #contact { background: var(--light-gray); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; }
@@ -431,7 +428,7 @@
     .donate-banner { padding: 3rem 1.25rem; }
     h1.hero-title { font-size: clamp(2rem, 9vw, 2.6rem); }
     .hero-sub { font-size: 1rem; }
-    .hero-actions .btn-primary, .hero-actions .btn-gold, .hero-actions .btn-secondary { width: 100%; text-align: center; }
+    .hero-actions .btn-primary, .hero-actions .btn-gold, .hero-actions .btn-secondary, .hero-actions .btn-donate { width: 100%; text-align: center; }
     .hero-stats { gap: 1.25rem 2rem; }
     .donate-banner h2 { font-size: 1.9rem; }
     .upcoming-notice h3, .upcoming-success h3 { font-size: 1.9rem; }
@@ -915,7 +912,7 @@
   <div class="section-inner" style="position:relative;">
     <h2>Want to Contribute? Donate Here</h2>
     <p>Your generous donation helps us provide financial assistance, counseling, scholarships, and resources to Nepalese women in California. Every contribution makes a difference.</p>
-    <a href="#" class="btn-gold" onclick="openDonate(event)">Donate Now via Stripe</a>
+    <a href="#" class="btn-donate" onclick="openDonate(event)">Donate Now via Stripe</a>
   </div>
 </div>
 <!-- CONTACT -->
@@ -1137,14 +1134,14 @@
         </div>
         <div style="font-size:12px;color:var(--mid-gray);"><svg class="icon-inline" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>256-bit SSL &middot; All major cards accepted &middot; Tax-deductible (501(c)(3))</div>
       </div>
-      <button class="btn-gold" style="width:100%;text-align:center;margin-top:1.5rem;font-size:15px;padding:14px;" onclick="proceedDonate()">Proceed to Secure Donation &rarr;</button>
+      <button class="btn-donate" style="width:100%;text-align:center;margin-top:1.5rem;font-size:15px;padding:14px;" onclick="proceedDonate()">Proceed to Secure Donation &rarr;</button>
     </div>
     <div class="success-msg" id="donateSuccess" style="display:none;">
       <div class="check-circle" style="background:linear-gradient(135deg,var(--gold),var(--amber));">&#x2713;</div>
       <h3>Thank You!</h3>
       <p>Your generous donation is making a difference for Nepalese women in California.</p>
       <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--mid-gray);">A receipt will be sent to your email.</p>
-      <button class="btn-gold" style="margin-top:1.5rem;" onclick="closeDonate()">Close</button>
+      <button class="btn-donate" style="margin-top:1.5rem;" onclick="closeDonate()">Close</button>
     </div>
   </div>
 </div>
