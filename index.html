@@ -363,7 +363,9 @@
     .sec-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%;
       padding: 1.25rem 0; background: none; border: none; border-bottom: 1px solid var(--border);
       font: inherit; text-align: left; color: var(--charcoal); cursor: pointer; }
-    .sec-head span { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; line-height: 1.25; }
+    .sec-head span { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 600; line-height: 1.2; letter-spacing: 0.01em; }
+    /* About's inner wrapper carries inline desktop padding; the bar should line up with the others */
+    #about > .section-inner { padding: 0 !important; }
     .sec-head svg { flex-shrink: 0; color: var(--crimson); transition: transform 0.3s ease; }
     .sec-open .sec-head svg { transform: rotate(180deg); }
     .sec-open .sec-head { border-bottom-color: transparent; }
