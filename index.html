@@ -8,6 +8,7 @@
 <meta http-equiv="Expires" content="0">
 <title>NWGN-CA | Nepalese Women Global Network / California Chapter</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion');</script>
 <style>
   :root {
     --crimson: #C0392B;
@@ -59,15 +60,10 @@
   .hero-circle { display: none; }
   .hero-photo-bg { position: absolute; inset: 0; z-index: 0; }
   .hero-photo-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
-  /* desktop: zoom in slightly so the members fill the frame and their faces read around the title */
-  @media (min-width: 1101px) { .hero-photo-bg { overflow: hidden; } .hero-photo-bg img { object-position: center 100%; transform: scale(1.06); transform-origin: center 100%; } }
   .hero-overlay { position: absolute; inset: 0; z-index: 1;
-    /* top band keeps white nav text >= 4.5:1 over the bright right side of the photo */
-    background: linear-gradient(to bottom, rgba(31,26,23,0.45) 0, rgba(31,26,23,0.45) 80px, rgba(31,26,23,0) 220px),
-      /* soft pool of shade behind the centred title and buttons; the rest of the photo stays bright */
-      radial-gradient(ellipse 60% 55% at 50% 52%, rgba(31,26,23,0.32) 0%, rgba(31,26,23,0) 100%),
-      /* light overall wash */
-      rgba(31,26,23,0.2);
+    /* top band keeps the white nav readable; the bottom fade carries the title, so faces stay clear */
+    background: linear-gradient(to bottom, rgba(31,26,23,0.45) 0, rgba(31,26,23,0.45) 80px, rgba(31,26,23,0) 200px),
+      linear-gradient(to top, rgba(31,26,23,0.85) 0%, rgba(31,26,23,0.55) 28%, rgba(31,26,23,0) 55%);
   }
   .hero-inner { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
   .hero-photo { display: none; }
@@ -85,18 +81,29 @@
   .btn-donate { padding: 13px 26px; border-radius: 10px; background: var(--champagne); color: var(--charcoal); font-weight: 700; font-size: 14px; text-decoration: none; border: 2px solid var(--champagne); transition: all 0.25s; cursor: pointer; display: inline-block; font-family:'DM Sans',sans-serif; }
   .btn-donate:hover { background: #E2B44E; border-color: #E2B44E; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,162,58,0.4); }
   .btn-primary:disabled, .btn-gold:disabled, .btn-donate:disabled { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
-  .hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; flex-wrap: wrap; animation: fadeUp 0.8s 0.4s ease both; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.14); }
-  .stat { border-left: 2px solid var(--champagne); padding-left: 1rem; }
-  .stat strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 2.1rem; color: #fff; font-weight: 600; line-height: 1; }
-  .stat span { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: rgba(255,255,255,0.52); font-weight: 600; }
-  /* centered hero: NWGN with the city beneath */
-  .hero-center { max-width: 820px; margin: 0 auto; text-align: center; }
-  .hero-center h1.hero-title { font-size: clamp(3.2rem, 12vw, 8.5rem); letter-spacing: 0.05em; margin-bottom: 0.75rem; white-space: nowrap; text-shadow: 0 4px 24px rgba(0,0,0,0.35); }
-  .hero-place { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.5rem, 3.5vw, 2.4rem); color: #fff; margin-bottom: 2.5rem; animation: fadeUp 0.8s 0.2s ease both; text-shadow: 0 2px 12px rgba(0,0,0,0.55); }
   .hero-fullname { font-size: clamp(0.8rem, 1.6vw, 1.05rem); font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: #fff; margin-bottom: 2.5rem; text-shadow: 0 2px 12px rgba(0,0,0,0.6); animation: fadeUp 0.8s 0.15s ease both; }
-  .hero-center .hero-actions, .hero-center .hero-stats { justify-content: center; }
-  .hero-center .stat { text-align: left; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  /* CLEAN HERO: title block anchored bottom-left so the photo (and every face) stays open above it */
+  .hero-photo-bg { overflow: hidden; }
+  /* bottom of the photo: lifts both rows of faces above the title block */
+  .hero-photo-bg img { object-position: center 100%; will-change: translate; }
+  .hero-clean { margin: 0 auto; align-self: flex-end; display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; padding: 0 3rem 3rem; max-width: 1320px; }
+  .hero-copy { max-width: 900px; will-change: translate, opacity; }
+  .hero-clean h1.hero-title { font-size: clamp(3.2rem, 7vw, 7rem); letter-spacing: 0.02em; line-height: 0.9; margin-bottom: 1rem; white-space: nowrap; text-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+  .hero-clean .hero-fullname { margin-bottom: 2rem; text-align: left; }
+  .hero-clean .hero-actions { justify-content: flex-start; }
+  .hero-scroll { display: flex; flex-direction: column; align-items: center; gap: 10px; color: #fff; text-decoration: none; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; padding-bottom: 0.5rem; flex-shrink: 0; animation: fadeUp 0.8s 0.5s ease both; }
+  .hero-scroll i { display: block; width: 1px; height: 56px; background: rgba(255,255,255,0.35); position: relative; overflow: hidden; }
+  .hero-scroll i::after { content: ''; position: absolute; left: 0; top: -40%; width: 100%; height: 40%; background: #fff; animation: scrollCue 1.8s cubic-bezier(.6,0,.3,1) infinite; }
+  @keyframes scrollCue { to { top: 100%; } }
+  @media (max-width: 700px) {
+    .hero-clean { padding: 0 1.25rem 2rem; }
+    .hero-clean .hero-fullname { margin-bottom: 1.25rem; }
+    .hero-clean .hero-actions { flex-wrap: nowrap; gap: 0.6rem; }
+    .hero-clean .hero-actions a { flex: 1; width: auto !important; padding: 12px 6px; font-size: 13px; text-align: center; white-space: nowrap; }
+    .hero-clean h1.hero-title { font-size: clamp(3rem, 16vw, 4.5rem); }
+    .hero-scroll { display: none; }
+  }
   /* SECTION COMMON */
   section { padding: 5rem 2rem; }
   /* fixed nav overlaps anchor targets; offset the native jump */
@@ -427,7 +434,6 @@
     .modal-header { padding: 1.5rem; }
     .footer-inner { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
-    .hero-stats { gap: 1.5rem; }
   }
   @media (max-width: 480px) {
     section { padding: 3.5rem 1.25rem; }
@@ -438,7 +444,6 @@
     .hero-fullname { letter-spacing: 0.1em; font-size: 0.78rem; }
     .hero-sub { font-size: 1rem; }
     .hero-actions .btn-primary, .hero-actions .btn-gold, .hero-actions .btn-secondary, .hero-actions .btn-donate { width: 100%; text-align: center; }
-    .hero-stats { gap: 1.25rem 2rem; }
     .donate-banner h2 { font-size: 1.9rem; }
     .upcoming-notice h3, .upcoming-success h3 { font-size: 1.9rem; }
     .upcoming-notice > p, .upcoming-success > p { font-size: 1.05rem; }
@@ -482,9 +487,18 @@
     /* email / phone / site links: 45px hit area, layout unchanged (margin cancels padding) */
     .contact-item a { display: inline-block; padding: 13px 0; margin: -13px 0; }
   }
+
+  /* ================= motion: smooth scroll, scroll reveals, light interactions ================= */
+  html.smooth-wheel { scroll-behavior: auto; }
+  .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; background: var(--crimson); transform-origin: 0 50%; transform: scaleX(0); z-index: 1100; pointer-events: none; }
+  html.motion .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1); }
+  html.motion .reveal.reveal-img { transform: translateY(40px) scale(0.97); }
+  html.motion .reveal.in { opacity: 1; transform: none; }
+  .btn-primary, .btn-gold, .btn-secondary, .btn-donate, .nav-donate { transition: all 0.25s, translate 0.35s cubic-bezier(.2,.7,.2,1); }
 </style>
 </head>
 <body>
+<div class="scroll-progress" aria-hidden="true"></div>
 <a class="skip-link" href="#home">Skip to main content</a>
 <!-- NAVIGATION -->
 <nav>
@@ -516,21 +530,16 @@
     <img src="hero-banner.jpg" alt="NWGN CA Chapter 2025 group photo">
   </div>
   <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-center">
+  <div class="hero-content hero-clean">
+    <div class="hero-copy">
       <h1 class="hero-title">NWGN-CA</h1>
       <p class="hero-fullname">Nepalese Women Global Network <span style="white-space:nowrap">&middot; San Francisco</span></p>
       <div class="hero-actions">
-        <a href="#about" class="btn-primary">Our Mission</a>
         <a href="#membership" class="btn-gold">Become a Member</a>
         <a href="#events" class="btn-secondary">Upcoming Events &rarr;</a>
       </div>
-      <div class="hero-stats">
-        <div class="stat"><strong>2012</strong><span>Founded</span></div>
-        <div class="stat"><strong>12+</strong><span>Years of Service</span></div>
-        <div class="stat"><strong>100+</strong><span>Members</span></div>
-      </div>
     </div>
+    <a class="hero-scroll" href="#about" aria-label="Scroll to About Us"><span>Scroll</span><i aria-hidden="true"></i></a>
   </div>
 </section>
 <!-- ABOUT -->
@@ -1519,6 +1528,7 @@ function buildAlbums() {
              '</div>' +
            '</button>';
   }).join('');
+  if (window.revealIn) window.revealIn(grid);
 }
 
 // ─── lightbox ────────────────────────────────────────────
@@ -1897,6 +1907,117 @@ document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
     if (e.target === this) { this.classList.remove('open'); document.body.style.overflow = ''; }
   });
 });
+
+// ═══════════════════════════════════════════════════════════
+// MOTION — smooth wheel scrolling, scroll reveals, hero parallax,
+// magnetic buttons. All skipped when the visitor prefers reduced motion.
+// ═══════════════════════════════════════════════════════════
+(function () {
+  const motion = document.documentElement.classList.contains('motion');
+  const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+  // --- smooth wheel scrolling (desktop mouse/trackpad only; touch stays native) ---
+  if (motion && finePointer) {
+    document.documentElement.classList.add('smooth-wheel');
+    let target = window.scrollY, current = window.scrollY, running = false;
+    const maxScroll = () => document.documentElement.scrollHeight - window.innerHeight;
+
+    // let modals, the lightbox, textareas and other inner scrollers scroll themselves
+    function innerScroller(el, dy) {
+      for (; el && el !== document.body && el !== document.documentElement; el = el.parentElement) {
+        const st = getComputedStyle(el);
+        if (/(auto|scroll)/.test(st.overflowY) && el.scrollHeight > el.clientHeight) {
+          if ((dy < 0 && el.scrollTop > 0) || (dy > 0 && el.scrollTop + el.clientHeight < el.scrollHeight)) return true;
+        }
+      }
+      return false;
+    }
+    function step() {
+      current += (target - current) * 0.11;
+      if (Math.abs(target - current) < 0.5) { current = target; running = false; }
+      window.scrollTo({ top: current, behavior: 'instant' });
+      if (running) requestAnimationFrame(step);
+    }
+    window.addEventListener('wheel', function (e) {
+      if (e.ctrlKey || document.body.style.overflow === 'hidden') return;
+      let dy = e.deltaY * (e.deltaMode === 1 ? 32 : e.deltaMode === 2 ? window.innerHeight : 1);
+      if (Math.abs(e.deltaX) > Math.abs(dy) || innerScroller(e.target, dy)) return;
+      e.preventDefault();
+      if (!running) { target = current = window.scrollY; }
+      target = Math.max(0, Math.min(maxScroll(), target + dy));
+      if (!running) { running = true; requestAnimationFrame(step); }
+    }, { passive: false });
+    // keyboard, scrollbar drags and anchor jumps move the page natively; follow them
+    window.addEventListener('scroll', function () { if (!running) target = current = window.scrollY; }, { passive: true });
+  }
+
+  // --- reading-progress bar + hero parallax ---
+  const bar = document.querySelector('.scroll-progress');
+  const heroImg = document.querySelector('.hero-photo-bg img');
+  const heroCopy = document.querySelector('.hero-copy');
+  let ticking = false;
+  function onScroll() {
+    ticking = false;
+    const y = window.scrollY, max = document.documentElement.scrollHeight - window.innerHeight;
+    if (bar) bar.style.transform = 'scaleX(' + (max > 0 ? y / max : 0) + ')';
+    if (!motion) return;
+    const h = window.innerHeight;
+    if (y <= h) {
+      if (heroImg) heroImg.style.translate = '0 ' + (y * 0.25).toFixed(1) + 'px';
+      if (heroCopy) { heroCopy.style.translate = '0 ' + (y * -0.12).toFixed(1) + 'px'; heroCopy.style.opacity = Math.max(0, 1 - y / (h * 0.7)).toFixed(3); }
+    }
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+
+  // --- scroll reveals ---
+  if (motion && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        const el = en.target;
+        el.classList.add('in');
+        io.unobserve(el);
+        // hand transform back to each element's own hover styles once it has landed
+        setTimeout(function () { el.classList.remove('reveal', 'reveal-img', 'in'); el.style.transitionDelay = ''; }, 1400);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    window.revealIn = function (root) {
+      const groups = [
+        '.section-title, .about-story h2, .about-estd, .about-story p, .albums-heading, .membership-intro, .contact-info h3, .contact-form, .donate-banner h2, .donate-banner p, .donate-banner .btn-donate, #members .section-inner > p, #presidents .section-inner > p, .events-tabs',
+        '.about-img-wrap, .about-pull, .carousel',
+        '.mission-card, .board-card, .president-row, .event-card, .plan-card, .album-card, .contact-item'
+      ];
+      groups.forEach(function (sel, gi) {
+        (root || document).querySelectorAll(sel).forEach(function (el) {
+          if (el.closest('#home') || el.dataset.revealed) return;
+          el.dataset.revealed = '1';
+          el.classList.add('reveal');
+          if (gi === 1) el.classList.add('reveal-img');
+          // stagger siblings in a grid so cards arrive one after another
+          if (gi === 2) { const i = Array.prototype.indexOf.call(el.parentElement.children, el); el.style.transitionDelay = (i % 4) * 90 + 'ms'; }
+          io.observe(el);
+        });
+      });
+    };
+    window.revealIn();
+  } else {
+    window.revealIn = function () {};
+  }
+
+  // --- magnetic buttons (desktop) ---
+  if (motion && finePointer) {
+    document.addEventListener('pointermove', function (e) {
+      const el = e.target.closest && e.target.closest('.btn-primary, .btn-gold, .btn-secondary, .btn-donate, .nav-donate');
+      document.querySelectorAll('[data-magnet]').forEach(function (m) { if (m !== el) { m.style.translate = ''; delete m.dataset.magnet; } });
+      if (!el || el.closest('.modal')) return;
+      const r = el.getBoundingClientRect();
+      const x = (e.clientX - (r.left + r.width / 2)) * 0.18, y = (e.clientY - (r.top + r.height / 2)) * 0.3;
+      el.dataset.magnet = '1';
+      el.style.translate = x.toFixed(1) + 'px ' + y.toFixed(1) + 'px';
+    }, { passive: true });
+  }
+})();
 
 // CLOSE NAV ON LINK CLICK (MOBILE)
 document.querySelectorAll('.nav-links a').forEach(function(a) {
