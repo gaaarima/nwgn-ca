@@ -88,6 +88,8 @@
   .hero-photo-bg { overflow: hidden; }
   /* bottom of the photo: lifts both rows of faces above the title block */
   .hero-photo-bg { top: 78px; }
+  /* never let a short or wide window crop the faces: the hero is at least as tall as most of the photo */
+  #home { min-height: max(100vh, calc(100vw * 0.56 + 78px)); }
   .hero-photo-bg img { object-position: center 90%; will-change: translate; }
   .hero-clean { margin: 0 auto; align-self: flex-end; display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; padding: 0 3rem 3rem; max-width: 1320px; }
   .hero-copy { max-width: 900px; will-change: translate, opacity; }
@@ -120,7 +122,7 @@
   .about-split { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 5rem; }
   .about-img-wrap { position: relative; }
   .about-img-wrap img { width: 100%; height: 420px; object-fit: cover; object-position: center 40%; border-radius: 24px; display: block; box-shadow: 0 32px 72px rgba(0,0,0,0.13); }
-  .about-story h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 4vw, 3.4rem); color: var(--charcoal); line-height: 1.1; margin-bottom: 1.25rem; font-weight: 600; }
+  .about-story h2 { white-space: nowrap; font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 3.4vw, 3.2rem); color: var(--charcoal); line-height: 1.1; margin-bottom: 1.25rem; font-weight: 600; }
   .about-story h2 em { color: var(--crimson); font-style: italic; }
   .about-story .about-estd { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid-gray); margin: -0.5rem 0 1.25rem; }
   .about-story p { color: var(--mid-gray); line-height: 1.8; font-size: 1rem; margin-bottom: 1rem; }
@@ -143,7 +145,7 @@
     .mission-grid { grid-template-columns: repeat(2,1fr); }
     .about-pull { padding: 2.5rem 1.75rem; border-radius: 16px; }
   }
-  @media (max-width: 540px) { .mission-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 540px) { .mission-grid { grid-template-columns: 1fr; } .about-story h2 { font-size: 7.4vw; } }
   /* full-width section, so cap the measure rather than letting lines run to 1200px */
   .about-text p { color: var(--mid-gray); line-height: 1.8; margin-bottom: 1.25rem; max-width: 900px; }
   @media (max-width: 860px) {
@@ -186,14 +188,16 @@
   .tab-panel.active { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
   .event-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); transition: all 0.25s; }
   .event-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.1); }
-  .event-banner { height: 130px; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+  /* show the whole flyer/photo: image is contained, a blurred copy of it fills the empty edges */
+  .event-banner { height: 220px; display: flex; align-items: center; justify-content: center; font-size: 3rem; position: relative; overflow: hidden; background: var(--light-gray); }
+  .event-banner::before { content: ''; position: absolute; inset: -24px; background: var(--banner-bg, none) center / cover; filter: blur(18px) brightness(0.92); transform: scale(1.1); }
   .event-body { padding: 1.25rem 1.5rem 1.5rem; }
   .event-date { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--crimson); text-transform: uppercase; margin-bottom: 0.5rem; }
   .event-body h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.5rem; }
   .event-body p { font-size: 0.875rem; color: var(--mid-gray); line-height: 1.6; }
   .event-tag { display: inline-block; margin-top: 0.75rem; background: var(--light-gray); color: var(--mid-gray); font-size: 11px; padding: 3px 10px; border-radius: 100px; font-weight: 600; }
   .event-tag.upcoming { background: rgba(192,57,43,0.08); color: var(--crimson); }
-  .event-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .event-banner img { width: 100%; height: 100%; object-fit: contain; display: block; position: relative; }
   .event-photos-btn { display: inline-flex; align-items: center; gap: 6px; margin-top: 0.75rem; margin-left: 6px; background: var(--blush); color: var(--deep-red); font-size: 13px; padding: 8px 16px; border-radius: 100px; font-weight: 600; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s; }
   .event-photos-btn:hover { background: var(--gold); color: white; }
   /* LIGHTBOX */
@@ -563,11 +567,10 @@
         <img src="about-banner.jpg" alt="NWGN-CA members gathered at the 2023 chapter handover" loading="lazy" decoding="async">
       </div>
       <div class="about-story">
-        <h2>Empowering <em>Nepalese Women</em> in California</h2>
+        <h2>Empowering <em>Nepalese Women</em></h2>
         <p class="about-estd">Est. 2012 &middot; San Francisco Bay Area</p>
-        <p>The NWGN California Chapter is a women-led non-profit established in 2012, dedicated to supporting the growth and development of Nepalese women across the San Francisco Bay Area and beyond.</p>
-        <p>We provide financial assistance, emotional support, and social resources — helping Nepalese women achieve self-reliance, build lasting connections, and make their mark in society.</p>
-        <p>We collaborate with national and international organizations that share our vision, and actively advocate for the rights and interests of Nepali women everywhere.</p>
+        <p>Since 2012, NWGN California has been a home for Nepalese women across the Bay Area: a women-led non-profit where no one has to navigate a new country, a hard season or a big dream alone.</p>
+        <p>We offer financial help, emotional support and practical resources, and we celebrate our culture together. Alongside partners at home and around the world, we speak up for the rights of Nepali women everywhere.</p>
       </div>
     </div>
 
@@ -809,7 +812,7 @@
         </div>
       </div>
       <div class="event-card">
-        <div class="event-banner is-placeholder"><strong>2022</strong><span>International Women&rsquo;s Day</span></div>
+        <div class="event-banner"><img src="gallery/albums/leadership-2.jpg" alt="NWGN CA Chapter International Women's Day 2022 flyer" loading="lazy" decoding="async"></div>
         <div class="event-body">
           <div class="event-date">March 5, 2022 &middot; Virtual (Zoom)</div>
           <h3>International Women's Day 2022</h3>
@@ -1975,7 +1978,6 @@ document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
     if (!motion) return;
     const h = window.innerHeight;
     if (y <= h) {
-      if (heroImg) heroImg.style.translate = '0 ' + (y * 0.25).toFixed(1) + 'px';
       if (heroCopy) { heroCopy.style.translate = '0 ' + (y * -0.12).toFixed(1) + 'px'; heroCopy.style.opacity = Math.max(0, 1 - y / (h * 0.7)).toFixed(3); }
     }
   }
@@ -2030,6 +2032,11 @@ document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
     }, { passive: true });
   }
 })();
+
+// event cards: a blurred copy of each image fills the space around the uncropped original
+document.querySelectorAll('.event-banner img').forEach(function (img) {
+  img.parentElement.style.setProperty('--banner-bg', 'url("' + img.getAttribute('src') + '")');
+});
 
 // CLOSE NAV ON LINK CLICK (MOBILE)
 document.querySelectorAll('.nav-links a').forEach(function(a) {
