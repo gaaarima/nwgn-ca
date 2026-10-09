@@ -95,6 +95,8 @@
   .hero-copy { max-width: 900px; will-change: translate, opacity; }
   .hero-clean h1.hero-title { font-size: clamp(3.2rem, 7vw, 7rem); letter-spacing: 0.02em; line-height: 0.9; margin-bottom: 1rem; white-space: nowrap; text-shadow: 0 4px 30px rgba(0,0,0,0.3); }
   .hero-clean .hero-fullname { margin-bottom: 2rem; text-align: left; }
+  /* Cormorant's hyphen is slanted and tapered; a sans-serif dash sits straight and level */
+  .hero-dash { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 0.8em; margin: 0 0.04em; position: relative; top: -0.06em; }
   .hero-clean .hero-actions { justify-content: flex-start; }
   .hero-scroll { display: flex; flex-direction: column; align-items: center; gap: 10px; color: #fff; text-decoration: none; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; padding-bottom: 0.5rem; flex-shrink: 0; animation: fadeUp 0.8s 0.5s ease both; }
   .hero-scroll i { display: block; width: 1px; height: 56px; background: rgba(255,255,255,0.35); position: relative; overflow: hidden; }
@@ -548,7 +550,7 @@
   <div class="hero-overlay"></div>
   <div class="hero-content hero-clean">
     <div class="hero-copy">
-      <h1 class="hero-title">NWGN-CA</h1>
+      <h1 class="hero-title">NWGN<span class="hero-dash">-</span>CA</h1>
       <p class="hero-fullname">Nepalese Women Global Network <span style="white-space:nowrap">&middot; San Francisco</span></p>
       <div class="hero-actions">
         <a href="#membership" class="btn-gold">Become a Member</a>
