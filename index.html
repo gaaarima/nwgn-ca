@@ -128,10 +128,18 @@
   .about-story h2 em { color: var(--crimson); font-style: italic; }
   .about-story .about-estd { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid-gray); margin: -0.5rem 0 1.25rem; }
   .about-story p { color: var(--mid-gray); line-height: 1.8; font-size: 1rem; margin-bottom: 1rem; }
-  .about-pull { background: linear-gradient(135deg, var(--crimson), var(--deep-red)); border-radius: 24px; color: white; padding: 4rem 3.5rem; text-align: center; position: relative; overflow: hidden; margin-bottom: 4rem; }
-  .about-pull::before { content: '\201C'; position: absolute; top: -10px; left: 28px; font-family: 'Cormorant Garamond', serif; font-size: 10rem; color: rgba(255,255,255,0.08); line-height: 1; }
-  .about-pull blockquote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.7rem, 3vw, 2.4rem); font-style: italic; font-weight: 400; line-height: 1.4; max-width: 800px; margin: 0 auto; position: relative; }
-  .about-pull cite { display: block; margin-top: 1.25rem; font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; font-style: normal; }
+  /* PULL QUOTE: slow-moving warm gradient, a glow that follows the cursor, words that rise in on scroll */
+  .about-pull { --mx: 50%; --my: 40%; background: linear-gradient(120deg, #7A2018 0%, #B3321F 28%, #C0392B 45%, #D9603E 62%, #B3321F 80%, #7A2018 100%); background-size: 260% 260%; animation: pullShift 16s ease-in-out infinite; border-radius: 28px; color: #fff; padding: 5rem 3.5rem 4.25rem; text-align: center; position: relative; overflow: hidden; margin-bottom: 4rem; isolation: isolate; box-shadow: 0 30px 60px -20px rgba(122,32,24,0.45); }
+  @keyframes pullShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+  .about-pull::after { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(520px circle at var(--mx) var(--my), rgba(255,214,170,0.28), transparent 62%); transition: opacity 0.4s; pointer-events: none; }
+  .about-pull::before { content: '\201C'; position: absolute; top: 18px; left: 50%; transform: translateX(-50%); font-family: 'Playfair Display', serif; font-size: 7rem; color: var(--champagne); opacity: 0.55; line-height: 1; }
+  .about-pull blockquote { font-family: 'Playfair Display', serif; font-size: clamp(1.45rem, 2.6vw, 2.15rem); font-weight: 400; line-height: 1.45; letter-spacing: -0.005em; max-width: 860px; margin: 1.5rem auto 0; position: relative; }
+  .about-pull blockquote em { font-style: italic; color: #FFE3B8; }
+  .about-pull .w { display: inline-block; white-space: pre; }
+  html.motion .about-pull .w { opacity: 0; transform: translateY(0.5em); filter: blur(4px); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(.2,.7,.2,1), filter 0.6s ease; }
+  html.motion .about-pull.words-in .w { opacity: 1; transform: none; filter: none; }
+  .about-pull cite { display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 2rem; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.85; font-style: normal; }
+  .about-pull cite::before, .about-pull cite::after { content: ''; width: 32px; height: 1px; background: var(--champagne); }
   .mission-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
   .mission-card { background: var(--light-gray); border-radius: 18px; padding: 1.75rem 1.5rem; border: 1px solid var(--border); transition: all 0.25s; }
   .mission-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.07); border-color: var(--crimson); }
@@ -145,7 +153,8 @@
     .about-split { grid-template-columns: 1fr; gap: 2rem; }
     .about-img-wrap img { height: 260px; }
     .mission-grid { grid-template-columns: repeat(2,1fr); }
-    .about-pull { padding: 2.5rem 1.75rem; border-radius: 16px; }
+    .about-pull { padding: 4.25rem 1.5rem 3rem; border-radius: 18px; }
+    .about-pull::before { font-size: 5rem; top: 12px; }
   }
   @media (max-width: 540px) { .mission-grid { grid-template-columns: 1fr; } .about-story h2 { font-size: 7.4vw; } }
   /* full-width section, so cap the measure rather than letting lines run to 1200px */
@@ -579,7 +588,7 @@
     <!-- Pull quote -->
     <div class="about-pull">
       <blockquote>
-        We believe the dreams and goals of Nepali women are worth pursuing, and we exist to make sure nothing stands in the way.
+        <span class="pull-text">We believe the dreams and goals of Nepali women are <em>worth pursuing</em>, and we exist to make sure <em>nothing stands in the way.</em></span>
         <cite>NWGN California Chapter</cite>
       </blockquote>
     </div>
@@ -2039,6 +2048,50 @@ document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
 document.querySelectorAll('.event-banner img').forEach(function (img) {
   img.parentElement.style.setProperty('--banner-bg', 'url("' + img.getAttribute('src') + '")');
 });
+
+// pull quote: glow follows the cursor (drifts on its own on touch screens); words rise in when it scrolls into view
+(function () {
+  const pull = document.querySelector('.about-pull');
+  if (!pull) return;
+  const text = pull.querySelector('.pull-text');
+  if (text && document.documentElement.classList.contains('motion')) {
+    let n = 0;
+    (function wrap(node) {
+      Array.from(node.childNodes).forEach(function (c) {
+        if (c.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          c.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            const w = document.createElement('span');
+            w.className = 'w'; w.textContent = part; w.style.transitionDelay = (n++ * 45) + 'ms';
+            frag.appendChild(w);
+          });
+          node.replaceChild(frag, c);
+        } else if (c.nodeType === 1) wrap(c);
+      });
+    })(text);
+    new IntersectionObserver(function (es, o) {
+      es.forEach(function (e) { if (e.isIntersecting) { pull.classList.add('words-in'); o.disconnect(); } });
+    }, { threshold: 0.35 }).observe(pull);
+  }
+  if (window.matchMedia('(pointer: fine)').matches) {
+    pull.addEventListener('pointermove', function (e) {
+      const r = pull.getBoundingClientRect();
+      pull.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      pull.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+    pull.addEventListener('pointerleave', function () { pull.style.setProperty('--mx', '50%'); pull.style.setProperty('--my', '40%'); });
+  } else if (document.documentElement.classList.contains('motion')) {
+    let t = 0;
+    (function drift() {
+      t += 0.004;
+      pull.style.setProperty('--mx', (50 + 35 * Math.sin(t)) + '%');
+      pull.style.setProperty('--my', (45 + 25 * Math.cos(t * 1.3)) + '%');
+      requestAnimationFrame(drift);
+    })();
+  }
+})();
 
 // CLOSE NAV ON LINK CLICK (MOBILE)
 document.querySelectorAll('.nav-links a').forEach(function(a) {
