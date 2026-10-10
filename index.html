@@ -87,7 +87,7 @@
   /* CLEAN HERO: title block anchored bottom-left so the photo (and every face) stays open above it */
   .hero-photo-bg { overflow: hidden; }
   /* bottom of the photo: lifts both rows of faces above the title block */
-  .hero-photo-bg { top: 78px; }
+  .hero-photo-bg, .hero-overlay { top: 78px; }
   /* never let a short or wide window crop the faces: the hero is at least as tall as most of the photo */
   #home { min-height: max(100vh, calc(100vw * 0.56 + 78px)); }
   .hero-photo-bg img { object-position: center 90%; will-change: translate; }
@@ -523,6 +523,141 @@
   nav .logo-text span { color: var(--mid-gray) !important; font-weight: 600; }
   nav .hamburger span { background: var(--charcoal) !important; }
   nav :focus-visible { outline-color: var(--crimson) !important; }
+
+  /* ======================================================================
+     ELEGANT REDESIGN LAYER
+     Softer, richer palette · serif display + sans body · generous space ·
+     slow, smooth motion. Loaded last so it refines everything above.
+     ====================================================================== */
+  :root {
+    --wine: #6E2232; --wine-deep: #4E1724; --rose: #B23A3A; --rose-soft: #F4E3DE;
+    --marigold: #E6A93B; --marigold-deep: #D08F1F; --ivory: #FBF7F2; --ink: #2A211E;
+    --ease-slow: cubic-bezier(.22,.61,.25,1);
+    --crimson: #B23A3A; --deep-red: #8C2B2E; --warm-white: #FBF7F2; --cream: #FBF7F2; --charcoal: #2A211E; --mid-gray: #6B5F58;
+  }
+  body { background: var(--ivory); color: var(--ink); font-size: 17px; line-height: 1.7; }
+  section { padding: 7rem 2rem; }
+  h2.section-title, .albums-heading, .contact-info h3, .contact-form h3, .plan-card h3, .event-body h3, .mission-card h4, .president-row h4, .donate-banner h2, .upcoming-notice h3, .success-msg h3 {
+    font-family: 'Cormorant Garamond', serif !important; font-weight: 600; letter-spacing: -0.01em;
+  }
+  h2.section-title { font-size: clamp(2.4rem, 4.6vw, 3.6rem); line-height: 1.05; margin-bottom: 1.5rem; }
+  .event-body h3 { font-size: 1.45rem; line-height: 1.2; }
+  .mission-card h4 { font-size: 1.35rem; }
+  .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rose); margin: 0 0 1.25rem; }
+  .btn-primary, .btn-gold, .btn-secondary { border-radius: 999px; padding: 14px 28px; }
+
+  /* ---------- Donate: warm marigold pill with a heart (header + key sections) ---------- */
+  .btn-donate, nav .nav-links a.nav-donate {
+    display: inline-flex !important; align-items: center; justify-content: center; gap: 9px;
+    background: var(--marigold) !important; color: var(--ink) !important; border: 0 !important;
+    border-radius: 999px !important; font-weight: 700 !important; letter-spacing: 0.02em;
+    box-shadow: 0 10px 24px -10px rgba(208,143,31,0.75), inset 0 -2px 0 rgba(0,0,0,0.08);
+    transition: background 0.5s var(--ease-slow), color 0.5s var(--ease-slow), box-shadow 0.5s var(--ease-slow), transform 0.5s var(--ease-slow), translate 0.35s var(--ease-slow) !important;
+  }
+  .btn-donate { padding: 15px 30px; font-size: 15px; }
+  nav .nav-links a.nav-donate { padding: 12px 24px !important; font-size: 13px; text-transform: uppercase; }
+  .btn-donate:hover, nav .nav-links a.nav-donate:hover { background: var(--wine) !important; color: #fff !important; transform: translateY(-2px); box-shadow: 0 16px 32px -14px rgba(110,34,50,0.8); }
+  .btn-donate .heart, .nav-donate .heart { color: var(--rose); transition: color 0.5s, transform 0.5s var(--ease-slow); flex-shrink: 0; }
+  .btn-donate:hover .heart, .nav-donate:hover .heart { color: #FFB3A7; transform: scale(1.18); }
+  .donate-banner .btn-donate { padding: 18px 40px; font-size: 1.05rem; }
+
+  /* ---------- Hero: slow window-to-full-bleed reveal on load ---------- */
+  #home { background: var(--ivory); }
+  html.motion .hero-photo-bg, html.motion .hero-overlay {
+    clip-path: inset(18% 22% 18% 22% round 48px);
+    animation: heroReveal 2.2s var(--ease-slow) 0.25s forwards;
+  }
+  html.motion .hero-photo-bg img { transform: scale(1.12); animation: heroSettle 3.2s var(--ease-slow) 0.25s forwards; }
+  @keyframes heroReveal { to { clip-path: inset(0 0 0 0 round 0); } }
+  @keyframes heroSettle { to { transform: scale(1); } }
+  html.motion .hero-copy > * { opacity: 0; transform: translateY(28px); animation: heroRise 1.4s var(--ease-slow) forwards; }
+  html.motion .hero-copy > :nth-child(1) { animation-delay: 1.35s; }
+  html.motion .hero-copy > :nth-child(2) { animation-delay: 1.6s; }
+  html.motion .hero-copy > :nth-child(3) { animation-delay: 1.85s; }
+  html.motion .hero-scroll { opacity: 0; animation: heroRise 1.4s var(--ease-slow) 2.2s forwards; }
+  @keyframes heroRise { to { opacity: 1; transform: none; } }
+  .hero-clean .hero-actions { gap: 0.75rem; flex-wrap: wrap; }
+
+  /* ---------- Empowering Women: editorial, statement-led ---------- */
+  #about { background: var(--ivory); }
+  .empower { padding: 1rem 0 6rem; }
+  .empower .eyebrow { text-align: left; color: var(--rose); }
+  .empower-title { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(3rem, 8.5vw, 7.5rem); line-height: 0.95; letter-spacing: -0.025em; color: var(--ink); margin: 0 0 4rem; max-width: 12ch; }
+  .empower-title em { color: var(--rose); font-style: italic; font-weight: 500; }
+  .empower-split { display: grid; grid-template-columns: 5fr 7fr; grid-template-rows: auto 1fr; column-gap: 5rem; row-gap: 2.5rem; align-items: start; border-top: 1px solid #D9C9BC; padding-top: 3rem; }
+  .empower-lead { grid-column: 1; font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 2.3vw, 2rem); line-height: 1.35; color: var(--ink); margin: 0; }
+  .empower-img { grid-column: 2; grid-row: 1 / span 2; margin: 0; }
+  .empower-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; display: block; box-shadow: none; height: auto; }
+  .empower-body { grid-column: 1; }
+  .empower-body p { color: var(--mid-gray); font-size: 1.02rem; line-height: 1.85; margin: 0 0 1.75rem; }
+  .text-link { color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--rose); padding-bottom: 4px; transition: color 0.4s, gap 0.4s; display: inline-flex; gap: 8px; }
+  .text-link:hover { color: var(--rose); gap: 14px; }
+  @media (max-width: 900px) {
+    .empower-split { grid-template-columns: 1fr; column-gap: 0; }
+    .empower-lead, .empower-img, .empower-body { grid-column: 1; grid-row: auto; }
+    .empower-title { margin-bottom: 2.5rem; }
+  }
+
+  /* ---------- Impact circles (Rotary-inspired band, in wine) ---------- */
+  #impact { background: radial-gradient(120% 140% at 15% 0%, #8A2C3E 0%, var(--wine) 45%, var(--wine-deep) 100%); color: #fff; padding: 7rem 2rem 7.5rem; overflow: hidden; position: relative; }
+  #impact::before, #impact::after { content: ''; position: absolute; border-radius: 50%; border: 1px solid rgba(255,255,255,0.12); pointer-events: none; }
+  #impact::before { width: 520px; height: 520px; right: -160px; top: -200px; }
+  #impact::after { width: 360px; height: 360px; left: -140px; bottom: -160px; }
+  .impact-head { text-align: center; max-width: 760px; margin: 0 auto 4rem; }
+  .impact-head .eyebrow { color: #F3C98B; }
+  .impact-head h2 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(2.3rem, 4.6vw, 3.8rem); line-height: 1.08; margin: 0; }
+  .impact-head h2 em { color: #F3C98B; }
+  .circles { list-style: none; margin: 0 auto; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.25rem; max-width: 1040px; }
+  .circle { aspect-ratio: 1; border-radius: 50%; overflow: hidden; position: relative; }
+  .circle.photo { box-shadow: 0 0 0 6px rgba(255,255,255,0.08); }
+  .circle.photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.2s var(--ease-slow); }
+  .circle.photo:hover img { transform: scale(1.08); }
+  .circle.stat { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 1rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.28); transition: background 0.6s var(--ease-slow); }
+  .circle.stat:hover { background: rgba(255,255,255,0.12); }
+  .circle.stat strong { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(2.2rem, 4.2vw, 3.6rem); line-height: 1; color: #fff; }
+  .circle.stat span { margin-top: 0.5rem; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #F6E3D6; max-width: 14ch; line-height: 1.45; }
+  .circles li:nth-child(4n+2), .circles li:nth-child(4n+4) { transform: translateY(2.25rem); }
+  html.motion .circles li:nth-child(odd) { animation: floatA 9s ease-in-out infinite; }
+  @keyframes floatA { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
+  .impact-cta { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 5.5rem; }
+  .btn-ghost-light { display: inline-flex; align-items: center; padding: 15px 30px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.7); color: #fff; text-decoration: none; font-weight: 600; font-size: 15px; transition: background 0.5s var(--ease-slow), color 0.5s, translate 0.35s; }
+  .btn-ghost-light:hover { background: #fff; color: var(--wine); }
+  @media (max-width: 800px) {
+    .circles { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .circles li:nth-child(4n+2), .circles li:nth-child(4n+4) { transform: none; }
+    .circles li:nth-child(even) { transform: translateY(1.5rem); }
+    #impact { padding: 5rem 1.25rem 6rem; }
+  }
+
+  /* ---------- Softer cards & sections ---------- */
+  .mission-card, .event-card, .plan-card, .president-row, .contact-form { border-radius: 20px; }
+  .event-card, .plan-card, .contact-form { box-shadow: 0 1px 0 rgba(0,0,0,0.02); }
+  .event-card:hover, .mission-card:hover, .plan-card:hover, .president-row:hover { box-shadow: 0 24px 50px -28px rgba(110,34,50,0.45); }
+  .event-card, .mission-card, .plan-card, .president-row, .album-card { transition: transform 0.7s var(--ease-slow), box-shadow 0.7s var(--ease-slow), border-color 0.5s; }
+  html.motion .reveal { transition-duration: 1.3s !important; }
+  #presidents, #gallery, #contact { background: #F5EEE6; }
+  .donate-banner { padding: 7rem 2rem; }
+
+  /* ---------- Moving photo ribbon above the footer ---------- */
+  .ribbon { padding: 5.5rem 0 4.5rem; background: var(--ivory); overflow: hidden; }
+  .ribbon-title { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--ink); margin: 0 0 2.5rem; }
+  .ribbon-title em { color: var(--rose); }
+  .ribbon-track { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .ribbon-row { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.25rem; width: max-content; }
+  .ribbon-row li { flex: 0 0 auto; height: 260px; }
+  .ribbon-row li:nth-child(3n+2) { height: 300px; margin-top: -20px; }
+  .ribbon-row img { height: 100%; width: auto; max-width: 420px; object-fit: cover; border-radius: 18px; display: block; }
+  html.motion .ribbon-row { animation: ribbonMove 70s linear infinite; }
+  .ribbon-track:hover .ribbon-row { animation-play-state: paused; }
+  @keyframes ribbonMove { to { transform: translateX(-50%); } }
+  html:not(.motion) .ribbon-track { overflow-x: auto; }
+  @media (max-width: 700px) { .ribbon-row li { height: 180px; } .ribbon-row li:nth-child(3n+2) { height: 210px; margin-top: -15px; } }
+
+  /* ---------- Responsive spacing ---------- */
+  @media (max-width: 700px) {
+    section { padding: 4.5rem 1.25rem; }
+    .hero-clean .hero-actions .btn-donate { flex-basis: 100%; }
+  }
 </style>
 </head>
 <body>
@@ -543,12 +678,12 @@
     </button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
-      <li><a href="#members">Members</a></li>
-      <li><a href="#membership">Become a Member</a></li>
       <li><a href="#events">Events</a></li>
       <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#members">Members</a></li>
+      <li><a href="#membership">Become a Member</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="#" class="nav-donate" onclick="openDonate(event)">Donate</a></li>
+      <li><a href="#" class="nav-donate" onclick="openDonate(event)"><svg class="heart" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 4.5 6.6 4.5c2.1 0 3.6 1.1 4.4 2.5.8-1.4 2.3-2.5 4.4-2.5 3.7 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg><span>Donate</span></a></li>
     </ul>
   </div>
 </nav>
@@ -563,6 +698,7 @@
       <h1 class="hero-title">NWGN<span class="hero-dash">-</span>CA</h1>
       <p class="hero-fullname">Nepalese Women Global Network <span style="white-space:nowrap">&middot; California</span></p>
       <div class="hero-actions">
+        <a href="#" class="btn-donate" onclick="openDonate(event)"><svg class="heart" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 4.5 6.6 4.5c2.1 0 3.6 1.1 4.4 2.5.8-1.4 2.3-2.5 4.4-2.5 3.7 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg><span>Donate</span></a>
         <a href="#membership" class="btn-gold">Become a Member</a>
         <a href="#events" class="btn-secondary">Upcoming Events &rarr;</a>
       </div>
@@ -573,16 +709,19 @@
 <!-- ABOUT -->
 <section id="about" data-accordion-label="About Us">
   <div class="section-inner" style="padding:5rem 2rem;">
-    <!-- Two-column story -->
-    <div class="about-split">
-      <div class="about-img-wrap">
-        <img src="about-banner.jpg" alt="NWGN-CA members gathered at the 2023 chapter handover" loading="lazy" decoding="async">
-      </div>
-      <div class="about-story">
-        <h2>Empowering <em>Nepalese Women</em></h2>
-        <p class="about-estd">Est. 2012 &middot; San Francisco Bay Area</p>
-        <p>Since 2012, NWGN California has been a home for Nepalese women across the Bay Area: a women-led non-profit where no one has to navigate a new country, a hard season or a big dream alone.</p>
-        <p>We offer financial help, emotional support and practical resources, and we celebrate our culture together. Alongside partners at home and around the world, we speak up for the rights of Nepali women everywhere.</p>
+    <!-- Empowering Women: editorial statement + split -->
+    <div class="empower">
+      <p class="eyebrow about-estd">Est. 2012 &middot; San Francisco Bay Area</p>
+      <h2 class="empower-title">Empowering <em>Nepalese Women</em></h2>
+      <div class="empower-split">
+        <p class="empower-lead">Since 2012, NWGN California has been a home for Nepalese women across the Bay Area: a women-led non-profit where no one has to navigate a new country, a hard season or a big dream alone.</p>
+        <figure class="empower-img about-img-wrap">
+          <img src="about-banner.jpg" alt="NWGN-CA members gathered at the 2023 chapter handover" loading="lazy" decoding="async">
+        </figure>
+        <div class="empower-body">
+          <p>We offer financial help, emotional support and practical resources, and we celebrate our culture together. Alongside partners at home and around the world, we speak up for the rights of Nepali women everywhere.</p>
+          <a class="text-link" href="#membership">Join our community <span aria-hidden="true">&rarr;</span></a>
+        </div>
       </div>
     </div>
 
@@ -632,116 +771,26 @@
     </div>
   </div>
 </section>
-<!-- MEMBERS -->
-<section id="members">
+<!-- IMPACT CIRCLES -->
+<section id="impact" aria-labelledby="impact-title">
   <div class="section-inner">
-    <h2 class="section-title">Current Board Members</h2>
-    <p style="color:var(--mid-gray);line-height:1.7;">Our dedicated board members guide NWGN-CA's programs, events, and mission. We welcome volunteers and new members to join our growing community.</p>
-    <div class="board-grid">
-      <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/sheela-thapa.png" alt="Sheela Thapa" loading="lazy" decoding="async"></div>
-        <h4 class="board-name">Sheela Thapa</h4>
-        <span class="board-role">President</span>
-      </div>
-      <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/tara-chalise.png" alt="Tara Poudel Chalise" loading="lazy" decoding="async"></div>
-        <h4 class="board-name">Tara Poudel Chalise</h4>
-        <span class="board-role">Vice President</span>
-      </div>
-      <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/sobe-dhital.png" alt="Sobe Dhital" loading="lazy" decoding="async"></div>
-        <h4 class="board-name">Sobe Dhital</h4>
-        <span class="board-role">General Secretary</span>
-      </div>
-      <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/anuradha-aryal.jpg" alt="Anuradha Aryal" loading="lazy" decoding="async"></div>
-        <h4 class="board-name">Anuradha Aryal</h4>
-        <span class="board-role">Secretary</span>
-      </div>
-      <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/Rishta-Karki.png" alt="Rishta Karki" loading="lazy" decoding="async"></div>
-        <h4 class="board-name">Rishta Karki</h4>
-        <span class="board-role">Treasurer</span>
-      </div>
-      <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/Soakshya-GC.jpg" alt="Soakshya GC" loading="lazy" decoding="async"></div>
-        <h4 class="board-name">Soakshya GC</h4>
-        <span class="board-role">Executive Member</span>
-      </div>
-      <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/Ashmita-Sapkota.jpg" alt="Ashmita Sapkota" loading="lazy" decoding="async"></div>
-        <h4 class="board-name">Ashmita Sapkota</h4>
-        <span class="board-role">Executive Member</span>
-      </div>
-      <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/Bandana-Parajuli--scaled.jpg" alt="Bandana Parajuli" loading="lazy" decoding="async"></div>
-        <h4 class="board-name">Bandana Parajuli</h4>
-        <span class="board-role">Executive Member</span>
-      </div>
-      <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/Ira-Joshi-scaled.jpg" alt="Ira Joshi" loading="lazy" decoding="async"></div>
-        <h4 class="board-name">Ira Joshi</h4>
-        <span class="board-role">Executive Member</span>
-      </div>
-      <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/Ram-Devi-Palikhe-.jpg" alt="Ram Devi Palikhe Shrestha" loading="lazy" decoding="async"></div>
-        <h4 class="board-name">Ram Devi Palikhe Shrestha</h4>
-        <span class="board-role">Executive Member</span>
-      </div>
-      <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/Rita-Raut-.jpg" alt="Rita Raut" loading="lazy" decoding="async"></div>
-        <h4 class="board-name">Rita Raut</h4>
-        <span class="board-role">Executive Member</span>
-      </div>
-      <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/Bindu-Sapkota-.jpg" alt="Bindu Sapkota" loading="lazy" decoding="async"></div>
-        <h4 class="board-name">Bindu Sapkota</h4>
-        <span class="board-role">Executive Member</span>
-      </div>
-      <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/Sapana-Sharma-.jpg" alt="Sapana Sharma" loading="lazy" decoding="async"></div>
-        <h4 class="board-name">Sapana Sharma</h4>
-        <span class="board-role">Executive Member</span>
-      </div>
-      <div class="board-card">
-        <div class="board-photo" style="background:linear-gradient(135deg,#d35400,#e67e22);"><span class="initials">PK</span></div>
-        <h4 class="board-name">Preeti Karki</h4>
-        <span class="board-role">Executive Member</span>
-      </div>
-      <div class="board-card">
-        <div class="board-photo"><img src="recovered-images/board/Kranti-Aryal.jpg" alt="Kranti Aryal Bhandari" loading="lazy" decoding="async"></div>
-        <h4 class="board-name">Kranti Aryal Bhandari</h4>
-        <span class="board-role">Executive Member</span>
-      </div>
+    <div class="impact-head">
+      <p class="eyebrow">Our community in numbers</p>
+      <h2 id="impact-title">Rooted in the Bay Area, <em>growing</em> since 2012</h2>
     </div>
-  </div>
-  </section>
-<!-- PAST PRESIDENTS -->
-<section id="presidents">
-  <div class="section-inner">
-    <h2 class="section-title">Past Presidents</h2>
-    <p style="color:var(--mid-gray);max-width:560px;line-height:1.7;margin-bottom:0.5rem;">We honor the dedicated women who have led the NWGN California Chapter since its founding in 2012.</p>
-    <div class="presidents-list">
-      <div class="president-row">
-        <div class="pres-initial">LK</div>
-        <div><h4>Laxmi Kharel</h4><span>Past President</span></div>
-      </div>
-      <div class="president-row">
-        <div class="pres-initial">BS</div>
-        <div><h4>Bishnu Subedi</h4><span>Past President</span></div>
-      </div>
-      <div class="president-row">
-        <div class="pres-initial">GD</div>
-        <div><h4>Geeta Dongol</h4><span>Past President</span></div>
-      </div>
-      <div class="president-row">
-        <div class="pres-initial">GS</div>
-        <div><h4>Geeta Shrestha</h4><span>Past President</span></div>
-      </div>
-      <div class="president-row">
-        <div class="pres-initial">BG</div>
-        <div><h4>Bishnu Gurung &ldquo;Ekata&rdquo;</h4><span>Founder President</span></div>
-      </div>
+    <ul class="circles">
+      <li class="circle photo"><img src="Events/2026%20Teej%20Special/p1.jpg" alt="Members celebrating at the 2026 Teej Special" loading="lazy" decoding="async"></li>
+      <li class="circle stat"><strong>2012</strong><span>Founded</span></li>
+      <li class="circle photo"><img src="Events/International%20Women%27s%20Day%202026/w1.jpg" alt="Walkers at the International Women's Day 2026 Walk-a-Thon" loading="lazy" decoding="async"></li>
+      <li class="circle stat"><strong>100+</strong><span>Members</span></li>
+      <li class="circle photo"><img src="Events/CPR%20Training/cpr1.jpg" alt="Members practising at the free CPR training" loading="lazy" decoding="async"></li>
+      <li class="circle stat"><strong>100+</strong><span>People trained in free CPR</span></li>
+      <li class="circle photo"><img src="Events/International%20Women%27s%20Day%202025/wd1.jpg" alt="Guests at International Women's Day 2025" loading="lazy" decoding="async"></li>
+      <li class="circle stat"><strong>12+</strong><span>Years of service</span></li>
+    </ul>
+    <div class="impact-cta">
+      <a href="#" class="btn-donate" onclick="openDonate(event)"><svg class="heart" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 4.5 6.6 4.5c2.1 0 3.6 1.1 4.4 2.5.8-1.4 2.3-2.5 4.4-2.5 3.7 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg><span>Donate</span></a>
+      <a href="#membership" class="btn-ghost-light">Become a Member</a>
     </div>
   </div>
 </section>
@@ -941,6 +990,119 @@
   </div>
   <div class="lb-strip" id="lb-strip"></div>
 </div>
+<!-- MEMBERS -->
+<section id="members">
+  <div class="section-inner">
+    <h2 class="section-title">Current Board Members</h2>
+    <p style="color:var(--mid-gray);line-height:1.7;">Our dedicated board members guide NWGN-CA's programs, events, and mission. We welcome volunteers and new members to join our growing community.</p>
+    <div class="board-grid">
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/sheela-thapa.png" alt="Sheela Thapa" loading="lazy" decoding="async"></div>
+        <h4 class="board-name">Sheela Thapa</h4>
+        <span class="board-role">President</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/tara-chalise.png" alt="Tara Poudel Chalise" loading="lazy" decoding="async"></div>
+        <h4 class="board-name">Tara Poudel Chalise</h4>
+        <span class="board-role">Vice President</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/sobe-dhital.png" alt="Sobe Dhital" loading="lazy" decoding="async"></div>
+        <h4 class="board-name">Sobe Dhital</h4>
+        <span class="board-role">General Secretary</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/anuradha-aryal.jpg" alt="Anuradha Aryal" loading="lazy" decoding="async"></div>
+        <h4 class="board-name">Anuradha Aryal</h4>
+        <span class="board-role">Secretary</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/Rishta-Karki.png" alt="Rishta Karki" loading="lazy" decoding="async"></div>
+        <h4 class="board-name">Rishta Karki</h4>
+        <span class="board-role">Treasurer</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/Soakshya-GC.jpg" alt="Soakshya GC" loading="lazy" decoding="async"></div>
+        <h4 class="board-name">Soakshya GC</h4>
+        <span class="board-role">Executive Member</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/Ashmita-Sapkota.jpg" alt="Ashmita Sapkota" loading="lazy" decoding="async"></div>
+        <h4 class="board-name">Ashmita Sapkota</h4>
+        <span class="board-role">Executive Member</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/Bandana-Parajuli--scaled.jpg" alt="Bandana Parajuli" loading="lazy" decoding="async"></div>
+        <h4 class="board-name">Bandana Parajuli</h4>
+        <span class="board-role">Executive Member</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/Ira-Joshi-scaled.jpg" alt="Ira Joshi" loading="lazy" decoding="async"></div>
+        <h4 class="board-name">Ira Joshi</h4>
+        <span class="board-role">Executive Member</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/Ram-Devi-Palikhe-.jpg" alt="Ram Devi Palikhe Shrestha" loading="lazy" decoding="async"></div>
+        <h4 class="board-name">Ram Devi Palikhe Shrestha</h4>
+        <span class="board-role">Executive Member</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/Rita-Raut-.jpg" alt="Rita Raut" loading="lazy" decoding="async"></div>
+        <h4 class="board-name">Rita Raut</h4>
+        <span class="board-role">Executive Member</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/Bindu-Sapkota-.jpg" alt="Bindu Sapkota" loading="lazy" decoding="async"></div>
+        <h4 class="board-name">Bindu Sapkota</h4>
+        <span class="board-role">Executive Member</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/Sapana-Sharma-.jpg" alt="Sapana Sharma" loading="lazy" decoding="async"></div>
+        <h4 class="board-name">Sapana Sharma</h4>
+        <span class="board-role">Executive Member</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo" style="background:linear-gradient(135deg,#d35400,#e67e22);"><span class="initials">PK</span></div>
+        <h4 class="board-name">Preeti Karki</h4>
+        <span class="board-role">Executive Member</span>
+      </div>
+      <div class="board-card">
+        <div class="board-photo"><img src="recovered-images/board/Kranti-Aryal.jpg" alt="Kranti Aryal Bhandari" loading="lazy" decoding="async"></div>
+        <h4 class="board-name">Kranti Aryal Bhandari</h4>
+        <span class="board-role">Executive Member</span>
+      </div>
+    </div>
+  </div>
+  </section>
+<!-- PAST PRESIDENTS -->
+<section id="presidents">
+  <div class="section-inner">
+    <h2 class="section-title">Past Presidents</h2>
+    <p style="color:var(--mid-gray);max-width:560px;line-height:1.7;margin-bottom:0.5rem;">We honor the dedicated women who have led the NWGN California Chapter since its founding in 2012.</p>
+    <div class="presidents-list">
+      <div class="president-row">
+        <div class="pres-initial">LK</div>
+        <div><h4>Laxmi Kharel</h4><span>Past President</span></div>
+      </div>
+      <div class="president-row">
+        <div class="pres-initial">BS</div>
+        <div><h4>Bishnu Subedi</h4><span>Past President</span></div>
+      </div>
+      <div class="president-row">
+        <div class="pres-initial">GD</div>
+        <div><h4>Geeta Dongol</h4><span>Past President</span></div>
+      </div>
+      <div class="president-row">
+        <div class="pres-initial">GS</div>
+        <div><h4>Geeta Shrestha</h4><span>Past President</span></div>
+      </div>
+      <div class="president-row">
+        <div class="pres-initial">BG</div>
+        <div><h4>Bishnu Gurung &ldquo;Ekata&rdquo;</h4><span>Founder President</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- MEMBERSHIP -->
 <section id="membership">
   <div class="section-inner">
@@ -980,7 +1142,7 @@
   <div class="section-inner" style="position:relative;">
     <h2>Want to Contribute? Donate Here</h2>
     <p>Your generous donation helps us provide financial assistance, counseling, scholarships, and resources to Nepalese women in California. Every contribution makes a difference.</p>
-    <a href="#" class="btn-donate" onclick="openDonate(event)">Donate Now via Stripe</a>
+    <a href="#" class="btn-donate" onclick="openDonate(event)"><svg class="heart" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.9 4.5 6.6 4.5c2.1 0 3.6 1.1 4.4 2.5.8-1.4 2.3-2.5 4.4-2.5 3.7 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg><span>Donate Now via Stripe</span></a>
   </div>
 </div>
 <!-- CONTACT -->
@@ -1047,6 +1209,11 @@
       </div>
     </div>
   </div>
+</section>
+<!-- MOVING PHOTO RIBBON -->
+<section class="ribbon" aria-label="Moments from our events">
+  <p class="ribbon-title">Together since <em>2012</em></p>
+  <div class="ribbon-track"><ul class="ribbon-row"><li><img src="Events/2026%20Teej%20Special/p3.jpg" alt="Teej Special 2026" loading="lazy" decoding="async"></li><li><img src="gallery/albums/iwd2024-2.jpg" alt="International Women's Day 2024" loading="lazy" decoding="async"></li><li><img src="Events/International%20Women%27s%20Day%202026/w4.jpg" alt="Walk-a-Thon 2026" loading="lazy" decoding="async"></li><li><img src="recovered-images/events/nwgn7.jpeg" alt="Walk-A-Thon 2022" loading="lazy" decoding="async"></li><li><img src="Events/CPR%20Training/cpr3.jpg" alt="CPR Training" loading="lazy" decoding="async"></li><li><img src="Events/2026%20Teej%20Special/p6.jpg" alt="Teej Special 2026" loading="lazy" decoding="async"></li><li><img src="recovered-images/events/4R5A2066-scaled-e1674939102187.jpg" alt="Chapter Handover 2023" loading="lazy" decoding="async"></li><li><img src="Events/International%20Women%27s%20Day%202025/wd3.jpg" alt="International Women's Day 2025" loading="lazy" decoding="async"></li><li><img src="gallery/albums/iwd2024-4.jpg" alt="International Women's Day 2024" loading="lazy" decoding="async"></li><li><img src="Events/International%20Women%27s%20Day%202026/w8.jpg" alt="Walk-a-Thon 2026" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="Events/2026%20Teej%20Special/p3.jpg" alt="" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="gallery/albums/iwd2024-2.jpg" alt="" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="Events/International%20Women%27s%20Day%202026/w4.jpg" alt="" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="recovered-images/events/nwgn7.jpeg" alt="" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="Events/CPR%20Training/cpr3.jpg" alt="" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="Events/2026%20Teej%20Special/p6.jpg" alt="" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="recovered-images/events/4R5A2066-scaled-e1674939102187.jpg" alt="" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="Events/International%20Women%27s%20Day%202025/wd3.jpg" alt="" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="gallery/albums/iwd2024-4.jpg" alt="" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="Events/International%20Women%27s%20Day%202026/w8.jpg" alt="" loading="lazy" decoding="async"></li></ul></div>
 </section>
 <!-- FOOTER -->
 <footer>
@@ -1879,7 +2046,7 @@ function closeContact() {
 // so the single-page site is scannable on a phone. The wrapper
 // is built on every viewport; CSS only reveals it under 700px.
 // ═══════════════════════════════════════════════════════════
-const ACCORDION_SECTIONS = ['about','members','presidents','events','gallery','membership','contact'];
+const ACCORDION_SECTIONS = ['about','events','gallery','members','presidents','membership','contact'];
 const ACCORDION_BREAKPOINT = 700;
 
 function setupAccordions() {
@@ -2043,8 +2210,8 @@ document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
     window.revealIn = function (root) {
       const groups = [
-        '.section-title, .about-story h2, .about-estd, .about-story p, .albums-heading, .membership-intro, .contact-info h3, .contact-form, .donate-banner h2, .donate-banner p, .donate-banner .btn-donate, #members .section-inner > p, #presidents .section-inner > p, .events-tabs',
-        '.about-img-wrap, .about-pull, .carousel',
+        '.section-title, .empower-title, .empower-lead, .empower-body, .impact-head, .about-estd, .albums-heading, .membership-intro, .contact-info h3, .contact-form, .donate-banner h2, .donate-banner p, .donate-banner .btn-donate, #members .section-inner > p, #presidents .section-inner > p, .events-tabs',
+        '.about-img-wrap, .about-pull, .carousel, .circle',
         '.mission-card, .board-card, .president-row, .event-card, .plan-card, .album-card, .contact-item'
       ];
       groups.forEach(function (sel, gi) {
@@ -2067,7 +2234,7 @@ document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
   // --- magnetic buttons (desktop) ---
   if (motion && finePointer) {
     document.addEventListener('pointermove', function (e) {
-      const el = e.target.closest && e.target.closest('.btn-primary, .btn-gold, .btn-secondary, .btn-donate, .nav-donate');
+      const el = e.target.closest && e.target.closest('.btn-primary, .btn-gold, .btn-secondary, .btn-donate, .nav-donate, .btn-ghost-light');
       document.querySelectorAll('[data-magnet]').forEach(function (m) { if (m !== el) { m.style.translate = ''; delete m.dataset.magnet; } });
       if (!el || el.closest('.modal')) return;
       const r = el.getBoundingClientRect();
