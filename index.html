@@ -715,6 +715,13 @@
   .president-row h4 { font-size: 1.15rem; margin: 0; line-height: 1.2; }
   .president-row span { display: block; margin-top: 2px; font-size: 10.5px; letter-spacing: 0.12em; }
   @media (max-width: 540px) { .presidents-list { grid-template-columns: 1fr; } }
+
+  /* ---------- Past Presidents: plain list ---------- */
+  .presidents-list { display: block; max-width: 640px; margin-top: 2rem; border-top: 1px solid #DCCBBE; }
+  .president-row, .president-row:hover { display: flex; flex-direction: row; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 1rem 0; background: none; border: 0; border-bottom: 1px solid #DCCBBE; border-radius: 0; box-shadow: none; transform: none; text-align: left; }
+  .president-row .pres-initial { display: none; }
+  .president-row h4 { font-size: 1.25rem; margin: 0; }
+  .president-row span { margin: 0; font-size: 11px; letter-spacing: 0.12em; white-space: nowrap; }
 </style>
 </head>
 <body>
