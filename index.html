@@ -670,6 +670,20 @@
   .side-donate:hover .heart { color: #FFB3A7; transform: rotate(90deg) scale(1.15); }
   .side-donate:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
   @media (max-width: 700px) { .side-donate { font-size: 12px; padding: 13px 8px; gap: 7px; } }
+
+  /* ---------- Impact circles: ivory with rose rings ---------- */
+  #impact { background: var(--ivory); color: var(--ink); border-top: 1px solid #E8DDD3; border-bottom: 1px solid #E8DDD3; }
+  #impact::before, #impact::after { border-color: rgba(178,58,58,0.18); }
+  .impact-head .eyebrow { color: var(--rose); }
+  .impact-head h2 { color: var(--ink); }
+  .impact-head h2 em { color: var(--rose); }
+  .circle.photo { box-shadow: 0 0 0 2px var(--ivory), 0 0 0 4px rgba(178,58,58,0.55); }
+  .circle.stat { background: transparent; border: 1.5px solid var(--rose); }
+  .circle.stat:hover { background: var(--rose-soft); }
+  .circle.stat strong { color: var(--rose); }
+  .circle.stat span { color: var(--mid-gray); }
+  .btn-ghost-light { border-color: var(--rose); color: var(--rose); }
+  .btn-ghost-light:hover { background: var(--rose); color: #fff; }
 </style>
 </head>
 <body>
