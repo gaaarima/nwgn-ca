@@ -706,6 +706,15 @@
   .plan-price span { font-family: 'DM Sans', sans-serif; font-weight: 400; }
   .ribbon-title .since { font-size: 0.6em; font-style: italic; color: var(--mid-gray); margin: 0 0.1em; }
   .ribbon-title .num { font-size: 1.45em; color: var(--rose); vertical-align: -0.06em; }
+
+  /* ---------- Past Presidents: compact rectangular list rows ---------- */
+  .presidents-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0.75rem; margin-top: 2.25rem; max-width: 1000px; }
+  .president-row { flex-direction: row; align-items: center; text-align: left; gap: 1rem; padding: 0.85rem 1.1rem; border-radius: 6px; background: #fff; border: 1px solid #E5D7CB; border-left: 4px solid var(--rose); }
+  .president-row:hover { transform: translateX(4px); border-color: #E5D7CB; border-left-color: var(--wine); box-shadow: 0 10px 24px -18px rgba(110,34,50,0.5); }
+  .pres-initial { width: 42px; height: 42px; border-radius: 4px; font-size: 0.95rem; background: var(--rose-soft); color: var(--rose); }
+  .president-row h4 { font-size: 1.15rem; margin: 0; line-height: 1.2; }
+  .president-row span { display: block; margin-top: 2px; font-size: 10.5px; letter-spacing: 0.12em; }
+  @media (max-width: 540px) { .presidents-list { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
