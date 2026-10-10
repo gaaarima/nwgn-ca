@@ -692,6 +692,20 @@
   .btn-donate .heart, .side-donate .heart, .nav-donate .heart { color: #fff !important; }
   .btn-donate:hover, .side-donate:hover, .side-donate:focus-visible { background: var(--wine) !important; color: #fff !important; }
   .btn-donate:hover .heart, .side-donate:hover .heart { color: #FFC7BD !important; }
+
+  /* ---------- Photo ribbon: every photo the same size ---------- */
+  .ribbon-row { align-items: center; }
+  .ribbon-row li, .ribbon-row li:nth-child(3n+2) { height: auto; margin-top: 0; width: 380px; aspect-ratio: 3 / 2; }
+  .ribbon-row img { width: 100%; height: 100%; max-width: none; object-fit: cover; }
+  @media (max-width: 700px) { .ribbon-row li, .ribbon-row li:nth-child(3n+2) { width: 260px; height: auto; margin-top: 0; } }
+
+  /* ---------- Bold display numerals everywhere ---------- */
+  .num, .circle.stat strong, .plan-price, .tier .price, .event-banner.is-placeholder strong, .stat strong {
+    font-family: 'Playfair Display', serif !important; font-weight: 700 !important; font-style: normal !important; font-variant-numeric: lining-nums; letter-spacing: -0.01em;
+  }
+  .plan-price span { font-family: 'DM Sans', sans-serif; font-weight: 400; }
+  .ribbon-title .since { font-size: 0.6em; font-style: italic; color: var(--mid-gray); margin: 0 0.1em; }
+  .ribbon-title .num { font-size: 1.45em; color: var(--rose); vertical-align: -0.06em; }
 </style>
 </head>
 <body>
@@ -809,7 +823,7 @@
   <div class="section-inner">
     <div class="impact-head">
       <p class="eyebrow">Our community in numbers</p>
-      <h2 id="impact-title">Rooted in the Bay Area, <em>growing</em> since 2012</h2>
+      <h2 id="impact-title">Rooted in the Bay Area, <em>growing</em> since <span class="num">2012</span></h2>
     </div>
     <ul class="circles">
       <li class="circle photo"><img src="Events/2026%20Teej%20Special/p1.jpg" alt="Members celebrating at the 2026 Teej Special" loading="lazy" decoding="async"></li>
@@ -1245,7 +1259,7 @@
 </section>
 <!-- MOVING PHOTO RIBBON -->
 <section class="ribbon" aria-label="Moments from our events">
-  <p class="ribbon-title">Together since <em>2012</em></p>
+  <p class="ribbon-title">Together <span class="since">since</span> <em class="num">2012</em></p>
   <div class="ribbon-track"><ul class="ribbon-row"><li><img src="Events/2026%20Teej%20Special/p3.jpg" alt="Teej Special 2026" loading="lazy" decoding="async"></li><li><img src="gallery/albums/iwd2024-2.jpg" alt="International Women's Day 2024" loading="lazy" decoding="async"></li><li><img src="Events/International%20Women%27s%20Day%202026/w4.jpg" alt="Walk-a-Thon 2026" loading="lazy" decoding="async"></li><li><img src="recovered-images/events/nwgn7.jpeg" alt="Walk-A-Thon 2022" loading="lazy" decoding="async"></li><li><img src="Events/CPR%20Training/cpr3.jpg" alt="CPR Training" loading="lazy" decoding="async"></li><li><img src="Events/2026%20Teej%20Special/p6.jpg" alt="Teej Special 2026" loading="lazy" decoding="async"></li><li><img src="recovered-images/events/4R5A2066-scaled-e1674939102187.jpg" alt="Chapter Handover 2023" loading="lazy" decoding="async"></li><li><img src="Events/International%20Women%27s%20Day%202025/wd3.jpg" alt="International Women's Day 2025" loading="lazy" decoding="async"></li><li><img src="gallery/albums/iwd2024-4.jpg" alt="International Women's Day 2024" loading="lazy" decoding="async"></li><li><img src="Events/International%20Women%27s%20Day%202026/w8.jpg" alt="Walk-a-Thon 2026" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="Events/2026%20Teej%20Special/p3.jpg" alt="" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="gallery/albums/iwd2024-2.jpg" alt="" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="Events/International%20Women%27s%20Day%202026/w4.jpg" alt="" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="recovered-images/events/nwgn7.jpeg" alt="" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="Events/CPR%20Training/cpr3.jpg" alt="" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="Events/2026%20Teej%20Special/p6.jpg" alt="" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="recovered-images/events/4R5A2066-scaled-e1674939102187.jpg" alt="" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="Events/International%20Women%27s%20Day%202025/wd3.jpg" alt="" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="gallery/albums/iwd2024-4.jpg" alt="" loading="lazy" decoding="async"></li><li aria-hidden="true"><img src="Events/International%20Women%27s%20Day%202026/w8.jpg" alt="" loading="lazy" decoding="async"></li></ul></div>
 </section>
 <!-- FOOTER -->
