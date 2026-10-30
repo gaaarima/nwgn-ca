@@ -452,8 +452,10 @@
     .nav-links a:hover { color: var(--crimson) !important; }
     .nav-links a.nav-donate { justify-content: center; margin: 1rem 0 0; padding: 14px 22px !important; color: var(--charcoal) !important; }
     .nav-action-item { margin-left: 0; padding-left: 0; }
-    .nav-links li.has-drop > a::after { display: none; }
-    .nav-drop { display: block; position: static; box-shadow: none; border: none; border-radius: 0; padding: 0 0 0 1rem; background: transparent; }
+    .nav-links li.has-drop > a::after { display: inline-block; border-color: var(--charcoal); }
+    .nav-drop { display: none; position: static; box-shadow: none; border: none; border-radius: 0; padding: 0 0 0 1rem; background: transparent; }
+    .nav-links li.has-drop.mob-open .nav-drop { display: block; }
+    .nav-links li.has-drop.mob-open > a::after { transform: rotate(-135deg) translateY(-2px); }
     .nav-drop li { border-bottom: none; }
     .nav-drop a { font-size: 12px; padding: 8px 4px; color: var(--mid-gray) !important; }
     .nav-drop a:hover { color: var(--crimson) !important; background: none; }
@@ -1615,6 +1617,18 @@ function toggleMenu() {
   document.querySelector('nav').classList.toggle('menu-open', open);
   document.querySelector('.hamburger').setAttribute('aria-expanded', open ? 'true' : 'false');
 }
+
+// Mobile dropdown toggle — tap parent link to expand sub-items
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.nav-links li.has-drop > a').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      if (window.innerWidth <= 1100) {
+        e.preventDefault();
+        this.parentElement.classList.toggle('mob-open');
+      }
+    });
+  });
+});
 
 // ─── TABS ────────────────────────────────────────────────
 function switchTab(tab, btn) {
