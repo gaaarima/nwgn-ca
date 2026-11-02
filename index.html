@@ -425,19 +425,6 @@
     .upcoming-form { flex-direction: column; }
     .upcoming-form button { width: 100%; }
   }
-  /* UPLOAD */
-  .upload-area { border: 2px dashed var(--border); border-radius: 12px; padding: 2rem 1.5rem; text-align: center; cursor: pointer; transition: all 0.2s; background: var(--warm-white); }
-  .upload-area:hover { border-color: var(--crimson); background: rgba(192,57,43,0.03); }
-  .upload-area .upload-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-  .upload-area p { color: var(--mid-gray); font-size: 0.875rem; line-height: 1.5; }
-  .upload-area small { font-size: 11px; }
-  .upload-previews { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 0.75rem; }
-  .upload-previews img { width: 72px; height: 72px; object-fit: cover; border-radius: 8px; border: 2px solid var(--border); }
-  .upload-progress-wrap { margin-top: 1rem; }
-  .upload-progress-bar-bg { background: var(--light-gray); border-radius: 100px; height: 6px; overflow: hidden; }
-  .upload-progress-bar { background: var(--crimson); height: 100%; width: 0; transition: width 0.3s; }
-  .gallery-upload-trigger { text-align: center; margin-top: 1.5rem; padding: 1.25rem; background: var(--cream); border-radius: 12px; border: 1px dashed var(--border); }
-  .gallery-upload-trigger p { color: var(--mid-gray); font-size: 0.875rem; margin-bottom: 0.75rem; }
   /* collapsed nav: below 1100px the links don't fit on one line, so they move into a dropdown panel */
   @media (max-width: 1100px) {
     .hamburger { display: flex; }
@@ -488,7 +475,6 @@
   .event-banner.is-placeholder { background: linear-gradient(135deg, var(--crimson), var(--deep-red)); color: #fff; flex-direction: column; gap: 6px; text-align: center; }
   .event-banner.is-placeholder strong { font-family: 'Cormorant Garamond', serif; font-size: 2.75rem; font-weight: 600; line-height: 1; }
   .event-banner.is-placeholder span { font-size: 13px; opacity: 0.88; }
-  .upload-icon svg { color: var(--crimson); }
   /* brand social: identical tiles so the Facebook and Gmail marks read as one set */
   .social-links a svg { display: block; }
   .social-brand { gap: 12px; }
@@ -744,6 +730,9 @@
 
   /* ---------- Impact circles: still and level ---------- */
   .circles li, .circles li:nth-child(n) { transform: none !important; translate: none !important; animation: none !important; }
+
+  /* spam trap: off-screen for people, still present for bots */
+  .hp-field { position: absolute !important; left: -10000px !important; top: auto; width: 1px; height: 1px; overflow: hidden; }
 </style>
 </head>
 <body>
@@ -924,6 +913,7 @@
         <h3>More Events Coming Soon</h3>
         <p>Add your email below and we'll let you know as soon as new events are announced.</p>
         <form class="upcoming-form" onsubmit="handleEventSubscribe(event)">
+          <div class="hp-field" aria-hidden="true"><label>Leave this field empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
           <input type="email" id="event-email" autocomplete="email" placeholder="your@email.com" required>
           <button type="submit" class="btn-primary">Notify Me &rarr;</button>
         </form>
@@ -1287,6 +1277,7 @@
       <div class="contact-form">
         <h3>Send Us a Message</h3>
         <form onsubmit="handleContact(event)">
+          <div class="hp-field" aria-hidden="true"><label>Leave this field empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
           <div class="form-row">
             <div class="form-group"><label for="contact-first">First Name</label><input type="text" id="contact-first" autocomplete="given-name" placeholder="Sita" required></div>
             <div class="form-group"><label for="contact-last">Last Name</label><input type="text" id="contact-last" autocomplete="family-name" placeholder="Sharma" required></div>
@@ -1390,6 +1381,7 @@
         </ul>
       </div>
       <form id="membershipForm" onsubmit="handleMembership(event)">
+          <div class="hp-field" aria-hidden="true"><label>Leave this field empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
         <div class="form-sep">Personal Information</div>
         <div class="form-group"><label for="mem-fullname">Full Name *</label><input type="text" id="mem-fullname" autocomplete="name" placeholder="Sita Sharma" required></div>
         <div class="form-group"><label for="mem-email">Email Address *</label><input type="email" id="mem-email" autocomplete="email" placeholder="you@example.com" required></div>
@@ -1444,6 +1436,7 @@
       <p>Your generosity empowers Nepalese women in California</p>
     </div>
     <div class="modal-body" id="donateFormBody">
+      <div class="hp-field" aria-hidden="true"><label>Leave this field empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
       <p style="color:var(--mid-gray);line-height:1.7;margin-bottom:1.5rem;">NWGN-CA is a 501(c)(3) non-profit. Your donation supports scholarships, crisis support, leadership training, and community events for Nepalese women.</p>
       <div class="tier-grid" id="donateAmounts">
         <button class="tier selected" onclick="selectDonate(this,'25')"><div class="price">$25</div><div class="tier-desc">Supporter</div></button>
@@ -1493,6 +1486,7 @@
     <div class="modal-body" id="ticketFormBody">
       <p style="color:var(--mid-gray);line-height:1.7;margin-bottom:1.25rem;font-size:0.9rem;">Lifetime members attend all NWGN-CA events for free. Tell us which event you'd like to attend and how many tickets you need, and we'll confirm your reservation by email.</p>
       <form id="ticketForm" onsubmit="handleTicketClaim(event)">
+          <div class="hp-field" aria-hidden="true"><label>Leave this field empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
         <div class="form-group"><label for="tk-name">Full Name *</label><input type="text" id="tk-name" autocomplete="name" placeholder="Sita Sharma" required></div>
         <div class="form-group"><label for="tk-email">Email Address *</label><input type="email" id="tk-email" autocomplete="email" placeholder="you@example.com" required></div>
         <div class="form-row">
@@ -1508,53 +1502,6 @@
       <h3>Reservation received!</h3>
       <p>Thank you! We'll verify your Lifetime membership and email your free ticket confirmation shortly.</p>
       <button class="btn-primary" style="margin-top:1.5rem;" onclick="closeTicket()">Close</button>
-    </div>
-  </div>
-</div>
-<!-- UPLOAD MODAL -->
-<div class="modal-overlay" id="uploadModal">
-  <div class="modal">
-    <div class="modal-header">
-      <button class="modal-close" onclick="closeUpload()" aria-label="Close">&#x2715;</button>
-      <h2>Upload Event Photos</h2>
-      <p>Add photos directly to the gallery</p>
-    </div>
-    <div class="modal-body" id="uploadFormBody">
-      <div id="upload-auth">
-        <p style="color:var(--mid-gray);font-size:0.875rem;margin-bottom:1.25rem;line-height:1.65;">Enter the admin password to upload photos to the gallery.</p>
-        <div class="form-group">
-          <label for="upload-pwd">Admin Password</label>
-          <input type="password" id="upload-pwd" placeholder="Enter password" onkeydown="if(event.key==='Enter')verifyUploadPassword()">
-        </div>
-        <div id="upload-pwd-error" style="color:var(--crimson);font-size:13px;display:none;margin-bottom:0.75rem;">Incorrect password. Please try again.</div>
-        <button class="btn-primary" onclick="verifyUploadPassword()" style="width:100%;padding:13px;">Continue &rarr;</button>
-      </div>
-      <div id="upload-form" style="display:none;">
-        <div class="form-group">
-          <label for="upload-caption">Event Name / Caption *</label>
-          <input type="text" id="upload-caption" placeholder="e.g. IWD 2025 Celebration">
-        </div>
-        <div class="form-group">
-          <label for="upload-file-input">Select Photos</label>
-          <div class="upload-area" id="upload-area" onclick="document.getElementById('upload-file-input').click()">
-            <div class="upload-icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
-            <p>Click to select photos<br><small>JPG, PNG, WEBP &middot; up to 10MB each</small></p>
-          </div>
-          <input type="file" id="upload-file-input" multiple accept="image/*" style="display:none" onchange="handleFileSelect(this.files)">
-        </div>
-        <div class="upload-previews" id="upload-previews"></div>
-        <div class="upload-progress-wrap" id="upload-progress" style="display:none;">
-          <div class="upload-progress-bar-bg"><div class="upload-progress-bar" id="upload-progress-bar"></div></div>
-          <p id="upload-progress-text" style="font-size:12px;color:var(--mid-gray);margin-top:6px;text-align:center;">Uploading…</p>
-        </div>
-        <button class="btn-primary" onclick="submitPhotos()" id="upload-submit-btn" style="width:100%;margin-top:1.5rem;padding:13px;" disabled>Upload to Gallery &rarr;</button>
-      </div>
-    </div>
-    <div class="success-msg" id="uploadSuccess" style="display:none;">
-      <div class="check-circle">&#x2713;</div>
-      <h3>Photos Added!</h3>
-      <p>Your photos are now live in the gallery.</p>
-      <button class="btn-primary" style="margin-top:1.5rem;" onclick="closeUpload()">View Gallery</button>
     </div>
   </div>
 </div>
@@ -1595,22 +1542,16 @@ const STRIPE_DONATION_LINK = 'YOUR_STRIPE_DONATION_LINK';
 // ═══════════════════════════════════════════════════════════
 const FORMSPREE_ID = 'xljjwpab';
 
-// ═══════════════════════════════════════════════════════════
-// CLOUDINARY — photo uploads
-// 1. cloudinary.com → free account
-// 2. Settings → Upload → Add upload preset (set to Unsigned)
-// 3. Paste your Cloud Name and Upload Preset below
-// ═══════════════════════════════════════════════════════════
-const CLOUDINARY_CONFIG = {
-  cloudName:    'YOUR_CLOUDINARY_CLOUD_NAME',
-  uploadPreset: 'YOUR_CLOUDINARY_PRESET'
-};
-
-// ═══════════════════════════════════════════════════════════
-// ADMIN PASSWORD — for the photo upload feature
-// Change this to something private before deploying
-// ═══════════════════════════════════════════════════════════
-const UPLOAD_PASSWORD = 'nwgn2025';
+// ─── SPAM TRAP ───────────────────────────────────────────
+// A hidden "_gotcha" field people never see: bots that fill it in, or forms
+// sent faster than a person could type, are quietly dropped (the visitor still
+// sees the normal thank-you message, so bots learn nothing).
+const PAGE_OPENED_AT = Date.now();
+function looksLikeBot(scope) {
+  const trap = scope && scope.querySelector('input[name="_gotcha"]');
+  if (trap && trap.value.trim() !== '') return true;
+  return Date.now() - PAGE_OPENED_AT < 3000;
+}
 
 // ─── NAV ─────────────────────────────────────────────────
 function toggleMenu() {
@@ -1697,7 +1638,7 @@ async function handleMembership(e) {
     '_subject':   '[' + membershipId + '] New NWGN-CA Membership – ' + selTierName
   };
 
-  if (FORMSPREE_ID && !FORMSPREE_ID.includes('YOUR_')) {
+  if (FORMSPREE_ID && !FORMSPREE_ID.includes('YOUR_') && !looksLikeBot(e.target)) {
     try {
       await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
         method: 'POST',
@@ -1748,7 +1689,7 @@ async function proceedDonate() {
   if (!name)  { document.getElementById('donate-name').focus();  return; }
   if (!email) { document.getElementById('donate-email').focus(); return; }
 
-  if (FORMSPREE_ID && !FORMSPREE_ID.includes('YOUR_')) {
+  if (FORMSPREE_ID && !FORMSPREE_ID.includes('YOUR_') && !looksLikeBot(document.getElementById('donateFormBody'))) {
     try {
       await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
         method: 'POST',
@@ -1818,8 +1759,6 @@ const ALBUMS = [
     photos: ['gallery/albums/leadership-1.jpg','gallery/albums/leadership-2.jpg'] }
 ];
 
-const GALLERY_KEY = 'nwgnca_gallery_v1';
-
 function escHtml(str) {
   return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
@@ -1855,12 +1794,7 @@ function carGo(step) { carShow(carIdx + step); carAuto(); }
 function carAuto() { clearInterval(carTimer); if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; carTimer = setInterval(function() { carShow(carIdx + 1); }, 6000); }
 
 // ─── albums ──────────────────────────────────────────────
-function allAlbums() {
-  const uploaded = JSON.parse(localStorage.getItem(GALLERY_KEY) || '[]');
-  if (!uploaded.length) return ALBUMS;
-  return [{ id: 'recent', title: 'Recent Additions', meta: 'Newly uploaded',
-            photos: uploaded.map(function(p) { return p.url; }) }].concat(ALBUMS);
-}
+function allAlbums() { return ALBUMS; }
 
 function buildAlbums() {
   const grid = document.getElementById('album-grid');
@@ -1924,120 +1858,7 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'ArrowRight') lbGo(1);
 });
 
-// uploaded photos land in a "Recent Additions" album
 function loadUploadedPhotos() { buildCarousel(); buildAlbums(); }
-
-function addToGallery(url, caption) {
-  const photos = JSON.parse(localStorage.getItem(GALLERY_KEY) || '[]');
-  photos.unshift({ url: url, caption: caption, addedAt: Date.now() });
-  localStorage.setItem(GALLERY_KEY, JSON.stringify(photos));
-  buildAlbums();
-}
-
-// ─── UPLOAD MODAL ────────────────────────────────────────
-let selectedFiles = [];
-
-function openUpload(e) {
-  e && e.preventDefault();
-  document.getElementById('uploadModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeUpload() {
-  document.getElementById('uploadModal').classList.remove('open');
-  document.body.style.overflow = '';
-  document.getElementById('upload-auth').style.display = 'block';
-  document.getElementById('upload-form').style.display = 'none';
-  document.getElementById('uploadFormBody').style.display = 'block';
-  document.getElementById('uploadSuccess').style.display = 'none';
-  document.getElementById('upload-pwd').value = '';
-  document.getElementById('upload-pwd-error').style.display = 'none';
-  document.getElementById('upload-caption').value = '';
-  document.getElementById('upload-previews').innerHTML = '';
-  document.getElementById('upload-progress').style.display = 'none';
-  document.getElementById('upload-submit-btn').disabled = true;
-  document.getElementById('upload-file-input').value = '';
-  selectedFiles = [];
-}
-
-function verifyUploadPassword() {
-  const pwd = document.getElementById('upload-pwd').value;
-  if (pwd === UPLOAD_PASSWORD) {
-    document.getElementById('upload-auth').style.display = 'none';
-    document.getElementById('upload-form').style.display = 'block';
-    document.getElementById('upload-pwd-error').style.display = 'none';
-  } else {
-    document.getElementById('upload-pwd-error').style.display = 'block';
-    document.getElementById('upload-pwd').value = '';
-    document.getElementById('upload-pwd').focus();
-  }
-}
-
-function handleFileSelect(files) {
-  selectedFiles = Array.from(files);
-  const preview = document.getElementById('upload-previews');
-  preview.innerHTML = '';
-  selectedFiles.forEach(function(file) {
-    const reader = new FileReader();
-    reader.onload = function(ev) {
-      const img = document.createElement('img');
-      img.src = ev.target.result;
-      preview.appendChild(img);
-    };
-    reader.readAsDataURL(file);
-  });
-  document.getElementById('upload-submit-btn').disabled = selectedFiles.length === 0;
-}
-
-async function submitPhotos() {
-  const caption = document.getElementById('upload-caption').value.trim() || 'Event Photo';
-  if (selectedFiles.length === 0) return;
-
-  const btn = document.getElementById('upload-submit-btn');
-  btn.disabled = true;
-  document.getElementById('upload-progress').style.display = 'block';
-
-  const bar  = document.getElementById('upload-progress-bar');
-  const text = document.getElementById('upload-progress-text');
-  let uploaded = 0;
-
-  for (let i = 0; i < selectedFiles.length; i++) {
-    text.textContent = 'Uploading photo ' + (i + 1) + ' of ' + selectedFiles.length + '…';
-    const file = selectedFiles[i];
-
-    if (CLOUDINARY_CONFIG.cloudName && !CLOUDINARY_CONFIG.cloudName.includes('YOUR_')) {
-      try {
-        const fd = new FormData();
-        fd.append('file', file);
-        fd.append('upload_preset', CLOUDINARY_CONFIG.uploadPreset);
-        const res  = await fetch('https://api.cloudinary.com/v1_1/' + CLOUDINARY_CONFIG.cloudName + '/image/upload', { method: 'POST', body: fd });
-        const data = await res.json();
-        addToGallery(data.secure_url, caption);
-      } catch (err) {
-        console.warn('Cloudinary upload failed, using local preview:', err);
-        const localUrl = await readAsDataURL(file);
-        addToGallery(localUrl, caption);
-      }
-    } else {
-      const localUrl = await readAsDataURL(file);
-      addToGallery(localUrl, caption);
-    }
-
-    uploaded++;
-    bar.style.width = Math.round((uploaded / selectedFiles.length) * 100) + '%';
-  }
-
-  document.getElementById('uploadFormBody').style.display = 'none';
-  document.getElementById('uploadSuccess').style.display = 'block';
-}
-
-function readAsDataURL(file) {
-  return new Promise(function(resolve) {
-    const reader = new FileReader();
-    reader.onload = function(ev) { resolve(ev.target.result); };
-    reader.readAsDataURL(file);
-  });
-}
 
 // ─── EVENT SUBSCRIBE ─────────────────────────────────────
 async function handleEventSubscribe(e) {
@@ -2047,7 +1868,7 @@ async function handleEventSubscribe(e) {
   const btn = e.target.querySelector('button');
   btn.disabled = true; btn.textContent = 'Subscribing…';
 
-  if (FORMSPREE_ID && !FORMSPREE_ID.includes('YOUR_')) {
+  if (FORMSPREE_ID && !FORMSPREE_ID.includes('YOUR_') && !looksLikeBot(e.target)) {
     try {
       await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
         method: 'POST',
@@ -2089,7 +1910,7 @@ async function handleTicketClaim(e) {
     '_subject':   'Lifetime Member Free Ticket Claim – ' + document.getElementById('tk-event').value
   };
 
-  if (FORMSPREE_ID && !FORMSPREE_ID.includes('YOUR_')) {
+  if (FORMSPREE_ID && !FORMSPREE_ID.includes('YOUR_') && !looksLikeBot(e.target)) {
     try {
       await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
         method: 'POST',
@@ -2119,7 +1940,7 @@ async function handleContact(e) {
     '_subject':   'NWGN-CA Contact Form \u2013 ' + subject
   };
 
-  if (FORMSPREE_ID && !FORMSPREE_ID.includes('YOUR_')) {
+  if (FORMSPREE_ID && !FORMSPREE_ID.includes('YOUR_') && !looksLikeBot(e.target)) {
     try {
       await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
         method: 'POST',
