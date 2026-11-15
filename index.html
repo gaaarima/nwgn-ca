@@ -720,6 +720,7 @@
   .president-row h4 { font-size: 1.15rem; margin: 0; line-height: 1.2; }
   .president-row span { display: block; margin-top: 2px; font-size: 10.5px; letter-spacing: 0.12em; }
   @media (max-width: 540px) { .presidents-list { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) { #presidents .section-inner > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; } }
 
   /* ---------- Past Presidents: plain list ---------- */
   .presidents-list { display: block; max-width: 640px; margin-top: 2rem; border-top: 1px solid #DCCBBE; }
@@ -1170,26 +1171,57 @@
   <div class="section-inner">
     <h2 class="section-title">Past Presidents</h2>
     <p style="color:var(--mid-gray);max-width:560px;line-height:1.7;margin-bottom:0.5rem;">We honor the dedicated women who have led the NWGN California Chapter since its founding in 2012.</p>
-    <div class="presidents-list">
-      <div class="president-row">
-        <div class="pres-initial">LK</div>
-        <div><h4>Laxmi Kharel</h4><span>Past President</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:1rem;">
+      <div class="presidents-list">
+        <div class="president-row">
+          <div class="pres-initial">LK</div>
+          <div><h4>Laxmi Kharel</h4><span>Past President</span></div>
+        </div>
+        <div class="president-row">
+          <div class="pres-initial">BS</div>
+          <div><h4>Bishnu Subedi</h4><span>Past President</span></div>
+        </div>
+        <div class="president-row">
+          <div class="pres-initial">GD</div>
+          <div><h4>Geeta Dongol</h4><span>Past President</span></div>
+        </div>
+        <div class="president-row">
+          <div class="pres-initial">SK</div>
+          <div><h4>Sushmita Khadka</h4><span>Past President</span></div>
+        </div>
+        <div class="president-row">
+          <div class="pres-initial">GS</div>
+          <div><h4>Geeta Shrestha</h4><span>Past President</span></div>
+        </div>
+        <div class="president-row">
+          <div class="pres-initial">BG</div>
+          <div><h4>Bishnu Gurung &ldquo;Ekata&rdquo;</h4><span>Founder President</span></div>
+        </div>
       </div>
-      <div class="president-row">
-        <div class="pres-initial">BS</div>
-        <div><h4>Bishnu Subedi</h4><span>Past President</span></div>
-      </div>
-      <div class="president-row">
-        <div class="pres-initial">GD</div>
-        <div><h4>Geeta Dongol</h4><span>Past President</span></div>
-      </div>
-      <div class="president-row">
-        <div class="pres-initial">GS</div>
-        <div><h4>Geeta Shrestha</h4><span>Past President</span></div>
-      </div>
-      <div class="president-row">
-        <div class="pres-initial">BG</div>
-        <div><h4>Bishnu Gurung &ldquo;Ekata&rdquo;</h4><span>Founder President</span></div>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:1.25rem;color:var(--charcoal);border-bottom:2px solid var(--champagne);padding-bottom:0.6rem;">Advisors</h3>
+        <div class="presidents-list" style="margin-top:0;">
+          <div class="president-row">
+            <div class="pres-initial">KP</div>
+            <div><h4>Kamala Pyakurel</h4><span>Advisor</span></div>
+          </div>
+          <div class="president-row">
+            <div class="pres-initial">LC</div>
+            <div><h4>Laxmi Choudary</h4><span>Advisor</span></div>
+          </div>
+          <div class="president-row">
+            <div class="pres-initial">KL</div>
+            <div><h4>Kalpana Lama</h4><span>Advisor</span></div>
+          </div>
+          <div class="president-row">
+            <div class="pres-initial">PW</div>
+            <div><h4>Pragya Wagle</h4><span>Advisor</span></div>
+          </div>
+          <div class="president-row">
+            <div class="pres-initial">SG</div>
+            <div><h4>Sadhana Ghimire</h4><span>Advisor</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
