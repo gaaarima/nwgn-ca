@@ -734,6 +734,18 @@
 
   /* spam trap: off-screen for people, still present for bots */
   .hp-field { position: absolute !important; left: -10000px !important; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+  /* ---------- Carousels: darker fade at both ends ---------- */
+  /* moving photo strip: photos sink into a dark wine shade at each edge */
+  .ribbon-track { position: relative; -webkit-mask-image: none; mask-image: none; }
+  .ribbon-track::before, .ribbon-track::after { content: ""; position: absolute; top: 0; bottom: 0; width: clamp(90px, 22vw, 340px); z-index: 2; pointer-events: none; }
+  .ribbon-track::before { left: 0; background: linear-gradient(90deg, rgba(42,18,26,1) 0%, rgba(42,18,26,0.8) 30%, rgba(42,18,26,0) 100%); }
+  .ribbon-track::after { right: 0; background: linear-gradient(270deg, rgba(42,18,26,1) 0%, rgba(42,18,26,0.8) 30%, rgba(42,18,26,0) 100%); }
+  .ribbon-track { border-radius: 18px; }
+  /* featured gallery carousel: soft dark vignette on the left and right edges */
+  .carousel::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: linear-gradient(90deg, rgba(20,14,16,0.7) 0%, rgba(20,14,16,0) 22%, rgba(20,14,16,0) 78%, rgba(20,14,16,0.7) 100%); }
+  .car-cap, .car-dots, .car-btn { z-index: 2; }
 </style>
 </head>
 <body>
